@@ -1,0 +1,31 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+view {
+  font-size: 14px;
+}
+button {
+  font-size: 28rpx;
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+input {
+  outline: none;
+  border: none;
+  list-style: none;
+}
+
+button::after {
+  border: none;
+}

@@ -1,0 +1,73 @@
+/* pages/activity/activity.wxss */
+.activity {
+	background-color: #f7f7f7;
+}
+.activity-tab {
+	display: flex;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
+}
+.tab-item {
+	width: 50%;
+	text-align: center;
+}
+.tab-item-active {
+	position: relative;
+	color: #f47920;
+}
+.active-border {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 3px;
+	width: 100%;
+	background-color: #f47920;
+}
+.activity-content {
+	padding: 0 10px;
+	background-color: #fff;
+}
+.activity-item {
+	display: flex;
+	padding: 10px 0;
+	border-bottom: 1px solid #dfdfdf;
+}
+.item-image {
+	min-width: 75px;
+	width: 75px;
+	height: 105px;
+	background-color: red;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.item-info {
+	position: relative;
+	width: 100%;
+	margin-left: 10px;
+}
+.item-info-name {
+	display: block;
+	height: 40px;
+	line-height: 20px;
+	width: 100%;
+	padding-right: 100px;
+	color: #000;
+}
+.item-info-panel {
+	display: block;
+	color: #999;
+	line-height: 20px;
+}
+.item-info-status {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 10px;
+	background-color: blue;
+	color: #fff;
+}

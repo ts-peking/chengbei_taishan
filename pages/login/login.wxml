@@ -1,0 +1,42 @@
+<!--login.wxml-->
+<view class="login">
+	<view class="avator-panel">
+        <block>
+            <image bindtap="changeAvator" class="login-avator" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        </block>
+    </view>	
+    <view class="login-form">
+    	<view class="form-item">
+    		<span class="form-item-title">姓名</span>
+			<input class="form-item-input" type="text" placeholder="请填写姓名"/>
+    	</view>
+		<view class="form-item">
+    		<span class="form-item-title">性别</span>
+			<radio-group class="form-item-input" bindchange="radioChange">
+				<label class="radio" wx:for="{{sex}}" wx:for-index="index">
+				    <radio value="{{item.value}}" checked="{{item.checked}}" color="#f47920"/>
+				    {{item.value}}
+				</label>
+			</radio-group>
+    	</view>
+		<view class="form-item">
+    		<span class="form-item-title">分队</span>
+			<picker class="form-item-input" 
+				mode="selector" 
+				bindchange="bindPickerChange" 
+				value="{{index}}" 
+				range="{{teamArray}}">
+			    <view class="picker">
+			      {{teamArray[index]}}
+			    </view>
+		  </picker>
+    	</view>    	
+		<view class="form-item">
+    		<span class="form-item-title">身份证</span>
+			<input class="form-item-input" type="text" placeholder="身份证号不可更改"/>
+    	</view>    	
+    </view>
+	<view class="submit-info" bindtap="finishUserInfo">
+        <button class="submit-info-btn"> 注册完成 </button>
+    </view>  
+</view>
