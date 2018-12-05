@@ -7,6 +7,13 @@ Page({
             'finished':'已结束',
             'underway':'进行中'
         },
+        statusClassMap: {
+            'apply':'background-color: #f47920;',
+            'registered':'background-color: #dfdfdf; color: #f47920;',
+            'finished':'background-color: #dfdfdf; color: #f47920;',
+            'underway':'background-color: #f47920;'            
+        },
+        selectTab: 'match',
         activityList: [
             {
                 activityImg: '',
@@ -67,7 +74,15 @@ Page({
     onHide: function () {
       	
     },
-    selectTab: function (e) {
-        console.log(e);
+    selectMatch: function (e) {
+        this.setData({
+            selectTab : 'match'
+        })
+    },
+    selectPlay: function (e) {
+        this.setData({
+            selectTab : 'play'
+        })
+
     }
 });
