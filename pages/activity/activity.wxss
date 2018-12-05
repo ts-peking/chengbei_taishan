@@ -66,8 +66,10 @@
 	right: 10px;
 	top: 10px;
 	height: 30px;
+	width: 50px;
 	line-height: 30px;
 	border-radius: 10px;
-	background-color: blue;
+	background-color: #f47920;
 	color: #fff;
+	text-align: center;
 }

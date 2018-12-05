@@ -1,6 +1,12 @@
 Page({
 	data: {
 	    globalData: 'I am global data',
+        statusMap: {
+            'apply':'可报名',
+            'registered':'已报名',
+            'finished':'已结束',
+            'underway':'进行中'
+        },
         activityList: [
             {
                 activityImg: '',
@@ -61,4 +67,7 @@ Page({
     onHide: function () {
       	
     },
+    selectTab: function (e) {
+        console.log(e);
+    }
 });

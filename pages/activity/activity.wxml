@@ -1,21 +1,22 @@
 <view class="activity">
 	<view class="activity-tab">
-		<view class="tab-item tab-item-active">
+		<view class="tab-item tab-item-active" bindtap="selectMatch">
 			<span>看球</span>
 			<span class="active-border"></span>
 		</view>
-		<view class="tab-item">踢球</view>
+		<view class="tab-item" bindtap="selectPlay">踢球</view>
 	</view>
+	<block></block>
 	<view class="activity-content">
 		<block wx:for="{{activityList}}" wx:key="{{index}}" wx:for-item="item">
 			<view class="activity-item">
 				<view class="item-image"></view>
 				<view class="item-info">
-					<span class="item-info-name">观赛:{{item.activityName}}</span>
-					<span class="item-info-panel">地点:{{item.activityLocation}}</span>
-					<span class="item-info-panel">时间:{{item.activityDate}}</span>
-					<span class="item-info-panel">费用:&nbsp;{{item.activityPrice}}</span>
-					<span class="item-info-status">{{item.activityStatus}}</span>
+					<span class="item-info-name">观赛: {{item.activityName}}</span>
+					<span class="item-info-panel">地点: {{item.activityLocation}}</span>
+					<span class="item-info-panel">时间: {{item.activityDate}}</span>
+					<span class="item-info-panel">费用: {{item.activityPrice}}</span>
+					<span class="item-info-status">{{statusMap[item.activityStatus]}}</span>
 				</view>
 			</view>
 		</block>
