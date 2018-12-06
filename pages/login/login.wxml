@@ -30,7 +30,11 @@
 			      {{teamArray[index]}}
 			    </view>
 		  </picker>
-    	</view>    	
+    	</view>  
+		<view class="form-item">
+    		<span class="form-item-title">会员号</span>
+			<input class="form-item-input" type="text" placeholder="会员号不可更改"/>
+    	</view>     	  	
 		<view class="form-item">
     		<span class="form-item-title">身份证</span>
 			<input class="form-item-input" type="text" placeholder="身份证号不可更改"/>

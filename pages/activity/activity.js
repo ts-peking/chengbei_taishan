@@ -61,6 +61,35 @@ Page({
                 activityStatus: 'finished',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中
             },
         ],
+        playList: [
+            {
+                playName: '中国地质大学踢球局',
+                playLocation: '中国地质大学',
+                playPoi: '',//留作接入腾讯地图
+                playStartDate: 1543759535822,
+                playEndDate: 1543759535822,
+                playPrice: '100元',
+                playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
+            },
+            {
+                playName: '中国地质大学踢球局',
+                playLocation: '中国地质大学',
+                playPoi: '',//留作接入腾讯地图
+                playStartDate: 1543759535822,
+                playEndDate: 1543759535822,
+                playPrice: '100元',
+                playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
+            },            
+            {
+                playName: '中国地质大学踢球局',
+                playLocation: '中国地质大学',
+                playPoi: '',//留作接入腾讯地图
+                playStartDate: 1543759535822,
+                playEndDate: 1543759535822,
+                playPrice: '100元',
+                playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
+            }            
+        ]
 	},
     onLaunch: function () {
     	

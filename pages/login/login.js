@@ -33,6 +33,6 @@ Page({
 
 	},
 	bindPickerChange:function(e) {
-
+		console.log(e)
 	}
 })

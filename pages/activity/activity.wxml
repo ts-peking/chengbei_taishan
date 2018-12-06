@@ -27,7 +27,16 @@
 	</block>
 	<block wx:if="{{selectTab=='play'}}">
 		<view class="play-content">
-
+			<block wx:for="{{playList}}" wx:key="{{index}}" wx:for-item="item">
+				<view class="play-item">
+					<span class="item-info-name">观赛: {{item.playName}}</span>
+					<span class="item-info-panel">地点: {{item.playLocation}}</span>
+					<span class="item-info-panel">开始时间: {{item.playStartDate}}</span>
+					<span class="item-info-panel">结束时间: {{item.playEndDate}}</span>
+					<span class="item-info-panel">费用: {{item.playPrice}}</span>
+					<span class="item-info-status" style="{{statusClassMap[item.playStatus]}}">{{statusMap[item.playStatus]}}</span>
+				</view>
+			</block>			
 		</view>
 	</block>
 </view>
