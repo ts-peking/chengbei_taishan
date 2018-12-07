@@ -10,7 +10,7 @@ Page({
         statusClassMap: {
             'apply':'background-color: #f47920;',
             'registered':'background-color: #dfdfdf; color: #f47920;',
-            'finished':'background-color: #dfdfdf; color: #f47920;',
+            'finished':'background-color: #dfdfdf; color: #fff;',
             'underway':'background-color: #f47920;'            
         },
         selectTab: 'match',

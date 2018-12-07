@@ -29,7 +29,7 @@
 		<view class="play-content">
 			<block wx:for="{{playList}}" wx:key="{{index}}" wx:for-item="item">
 				<view class="play-item">
-					<span class="item-info-name">观赛: {{item.playName}}</span>
+					<span class="item-info-name">局子: {{item.playName}}</span>
 					<span class="item-info-panel">地点: {{item.playLocation}}</span>
 					<span class="item-info-panel">开始时间: {{item.playStartDate}}</span>
 					<span class="item-info-panel">结束时间: {{item.playEndDate}}</span>
