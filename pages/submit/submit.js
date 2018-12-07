@@ -3,7 +3,16 @@ Page({
 	 * 页面的初始数据
 	 */
 	data:{
-		
+		activityData: {
+			title: '橙南VS橙北',
+			location: '中国地质大学',
+			startDate: 1543759535822,
+			endData: 1543759535822,
+			price: 'AA制',
+			deadLine: 1543759535822,
+			creatorPhone: 18512345678,
+			description: '这是备注',
+		}
 	},
 
 	/**
