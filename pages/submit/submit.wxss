@@ -1,0 +1,38 @@
+.submit {
+	padding: 0 10px;
+}
+.submit-item {
+	display: flex;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
+	border-bottom: 1px solid #dfdfdf;
+}
+.submit-desc {
+	display: block;
+	height: 100px;
+}
+.submit-desc .submit-item-title {
+	display: block;
+}
+.submit-logo {
+	display: flex;
+	justify-content: space-between;
+	height: 100px;
+	line-height: 100px;
+}
+.submit-item .submit-item-title {
+	width: 40%;
+	min-width: 20%;
+}
+.submit-item .submit-item-panel {
+	width: 60%;
+	text-align: right;
+	height: 40px;
+}
+.submit-item .submit-item-textarea {
+	display: block;
+	height: 60px;
+	width: 100%;
+	line-height: 20px;
+}

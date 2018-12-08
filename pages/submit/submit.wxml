@@ -1,15 +1,17 @@
 <view class="submit">
 	<block>
-		<view class="submit-item">
+		<view class="submit-item submit-logo">
+			<view class="submit-item-image"></view>
+			<view>VS</view>
 			<view class="submit-item-image"></view>
 		</view>
 		<view class="submit-item">
 			<view class="submit-item-title">活动名称</view>
-			<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel">{{activityData.title}}</input>
+			<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.title}}"></input>
 		</view>
 		<view class="submit-item">
-			<view class="submit-item-panel">地点</view>
-			<input bindinput="{{activityData.location}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			<view class="submit-item-title">地点</view>
+			<input bindinput="{{activityData.location}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.location}}"></input>
 		</view>		
 		<view class="submit-item">
 			<view class="submit-item-title">开始时间</view>
@@ -35,9 +37,9 @@
 			<view class="submit-item-title">联系方式</view>
 			<input bindinput="{{activityData.creatorPhone}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
 		</view>		
-		<view class="submit-item">
+		<view class="submit-item submit-desc">
 			<view class="submit-item-title">备注</view>
-			<input bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			<textarea bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-textarea"></textarea>
 		</view>			
 	</block>
 </view>
