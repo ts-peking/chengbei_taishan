@@ -1,45 +1,60 @@
 <view class="submit">
 	<block>
-		<view class="submit-item submit-logo">
-			<view class="submit-item-image"></view>
-			<view>VS</view>
-			<view class="submit-item-image"></view>
+		<view class="submit-content">
+			<view class="submit-item submit-logo">
+				<view class="submit-item-image"></view>
+				<view>VS</view>
+				<view class="submit-item-image"></view>
+			</view>
+			<view class="submit-item">
+				<view class="submit-item-title">活动名称</view>
+				<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.title}}"></input>
+			</view>
+			<view class="submit-item">
+				<view class="submit-item-title">地点</view>
+				<input bindinput="{{activityData.location}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.location}}"></input>
+			</view>		
+			<view class="submit-item">
+				<view class="submit-item-title">开始时间</view>
+				<input bindinput="{{activityData.startDate}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			</view>		
+			<view class="submit-item">
+				<view class="submit-item-title">结束时间</view>
+				<input bindinput="{{activityData.endData}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			</view>			
+			<view class="submit-item">
+				<view class="submit-item-title">费用</view>
+				<input bindinput="{{activityData.price}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			</view>		
+			<view class="submit-item">
+				<view class="submit-item-title">人数</view>
+				<input bindinput="{{activityData.title}}" placeholder="这是活动名称" class="submit-item-panel"></input>
+			</view>	
+			<view class="submit-item">
+				<view class="submit-item-title">报名截止时间</view>
+				<input bindinput="{{activityData.deadLine}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			</view>		
+			<view class="submit-item">
+				<view class="submit-item-title">联系方式</view>
+				<input bindinput="{{activityData.creatorPhone}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+			</view>		
+			<view class="submit-item submit-desc">
+				<view class="submit-item-title">备注</view>
+				<textarea bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-textarea"></textarea>
+			</view>
 		</view>
-		<view class="submit-item">
-			<view class="submit-item-title">活动名称</view>
-			<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.title}}"></input>
-		</view>
-		<view class="submit-item">
-			<view class="submit-item-title">地点</view>
-			<input bindinput="{{activityData.location}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.location}}"></input>
-		</view>		
-		<view class="submit-item">
-			<view class="submit-item-title">开始时间</view>
-			<input bindinput="{{activityData.startDate}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
-		</view>		
-		<view class="submit-item">
-			<view class="submit-item-title">结束时间</view>
-			<input bindinput="{{activityData.endData}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
-		</view>			
-		<view class="submit-item">
-			<view class="submit-item-title">费用</view>
-			<input bindinput="{{activityData.price}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
-		</view>		
-		<view class="submit-item">
-			<view class="submit-item-title">人数</view>
-			<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+		<view class="submit-play-list">
+			<view class="submit-play-item">
+				<view class="play-item-title">报名</view>
+				<scroll-view class="play-item-scroll" scroll-x="true">
+					<block wx:for="{{9}}" wx:for-item="item" wx:for-index="index">
+						<view class="scroll-content">
+							<view class="scroll-item-img" style="background-color: red;"></view>
+							<view class="scroll-item-name">{{index+1}}</view>
+						</view>
+					</block>
+				</scroll-view>
+			</view>
 		</view>	
-		<view class="submit-item">
-			<view class="submit-item-title">报名截止时间</view>
-			<input bindinput="{{activityData.deadLine}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
-		</view>		
-		<view class="submit-item">
-			<view class="submit-item-title">联系方式</view>
-			<input bindinput="{{activityData.creatorPhone}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
-		</view>		
-		<view class="submit-item submit-desc">
-			<view class="submit-item-title">备注</view>
-			<textarea bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-textarea"></textarea>
-		</view>			
 	</block>
 </view>

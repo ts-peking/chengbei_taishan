@@ -1,11 +1,14 @@
 .submit {
+	background-color: #dfdfdf;
+}
+.submit-content {
 	padding: 0 10px;
+	background-color: #fff;
 }
 .submit-item {
 	display: flex;
 	height: 40px;
 	line-height: 40px;
-	background-color: #fff;
 	border-bottom: 1px solid #dfdfdf;
 }
 .submit-desc {
@@ -35,4 +38,41 @@
 	height: 60px;
 	width: 100%;
 	line-height: 20px;
+}
+.submit-play-list {
+	margin-top: 10px;
+	background-color: #fff;
+	padding: 0 10px;
+}
+.submit-play-list .submit-play-item {
+	height: 50px;
+	line-height: 50px;
+}
+.submit-play-list .play-item-title {
+	width: 15%;
+	float: left;
+}
+.submit-play-list .play-item-scroll {
+	float: left;
+	height: 50px;
+	width: 85%;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.submit-play-list .play-item-scroll .scroll-content{
+	display: inline-block;
+	width: 70px;
+	height: 50px;
+	text-align: center;
+}
+.submit-play-list .scroll-item-img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.submit-play-list .scroll-item-name {
 }
