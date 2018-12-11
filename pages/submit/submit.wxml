@@ -43,18 +43,53 @@
 				<textarea bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-textarea"></textarea>
 			</view>
 		</view>
-		<view class="submit-play-list">
-			<view class="submit-play-item">
-				<view class="play-item-title">报名</view>
-				<scroll-view class="play-item-scroll" scroll-x="true">
-					<block wx:for="{{9}}" wx:for-item="item" wx:for-index="index">
-						<view class="scroll-content">
-							<view class="scroll-item-img" style="background-color: red;"></view>
-							<view class="scroll-item-name">{{index+1}}</view>
-						</view>
-					</block>
-				</scroll-view>
+		<block>
+			<view class="submit-play-list">
+				<view class="submit-play-item">
+					<view class="play-item-title">报名</view>
+					<scroll-view class="play-item-scroll" scroll-x="true">
+						<block wx:for="{{9}}" wx:for-item="item" wx:for-index="index">
+							<view class="scroll-content">
+								<span class="scroll-item-img" style="background-color: red;"></span>
+								<span class="scroll-item-name">{{index+1}}</span>
+							</view>
+						</block>
+					</scroll-view>
+				</view>
 			</view>
-		</view>	
+			<view class="submit-play-list">
+				<view class="submit-play-item">
+					<view class="play-item-title">请假</view>
+					<scroll-view class="play-item-scroll" scroll-x="true">
+						<block wx:for="{{3}}" wx:for-item="item" wx:for-index="index">
+							<view class="scroll-content">
+								<span class="scroll-item-img" style="background-color: red;"></span>
+								<span class="scroll-item-name">{{index+1}}</span>
+							</view>
+						</block>
+					</scroll-view>
+				</view>	
+			</view>
+			<view class="submit-play-list">		
+				<view class="submit-play-item">
+					<view class="play-item-title">待定</view>
+					<scroll-view class="play-item-scroll" scroll-x="true">
+						<block wx:for="{{2}}" wx:for-item="item" wx:for-index="index">
+							<view class="scroll-content">
+								<span class="scroll-item-img" style="background-color: red;"></span>
+								<span class="scroll-item-name">{{index+1}}</span>
+							</view>
+						</block>
+					</scroll-view>
+				</view>			
+			</view>	
+		</block>
+		<block>
+			<view class="submit-play-button">
+				<view class="button-panel">
+					<button class="button-item"></button>
+				</view>
+			</view>
+		</block>
 	</block>
 </view>

@@ -14,6 +14,7 @@
 .submit-desc {
 	display: block;
 	height: 100px;
+	border: none;
 }
 .submit-desc .submit-item-title {
 	display: block;
@@ -45,8 +46,8 @@
 	padding: 0 10px;
 }
 .submit-play-list .submit-play-item {
-	height: 50px;
-	line-height: 50px;
+	height: 80px;
+	line-height: 80px;
 }
 .submit-play-list .play-item-title {
 	width: 15%;
@@ -54,19 +55,25 @@
 }
 .submit-play-list .play-item-scroll {
 	float: left;
-	height: 50px;
 	width: 85%;
+	height: 80px;
 	overflow:hidden;
 	white-space:nowrap;
 }
 .submit-play-list .play-item-scroll .scroll-content{
 	display: inline-block;
-	width: 70px;
-	height: 50px;
+	position: relative;
+	height: 80px;
+	width: 60px;
+	padding-top: 10px;
+	box-sizing: border-box;
 	text-align: center;
 }
 .submit-play-list .scroll-item-img {
 	display: inline-block;
+	position: absolute;
+	left: 50%;
+	margin-left: -15px;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -75,4 +82,7 @@
 	background-position: center;
 }
 .submit-play-list .scroll-item-name {
+	width: 100%;
+	text-align: center;
+	display: block;
 }
