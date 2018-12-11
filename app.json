@@ -1,9 +1,9 @@
 {
     "pages":[
-        "pages/submit/submit",
         "pages/index/index",
         "pages/activity/activity",
         "pages/login/login",
+        "pages/submit/submit",
         "pages/logs/logs"
     ],
     "window":{

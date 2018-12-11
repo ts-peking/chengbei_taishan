@@ -12,7 +12,7 @@
 	<block wx:if="{{selectTab=='match'}}">
 		<view class="activity-content">
 			<block wx:for="{{activityList}}" wx:key="{{index}}" wx:for-item="item">
-				<view class="activity-item">
+				<view class="activity-item" data-item="{{item}}" bindtap="goActivityDetail">
 					<view class="item-image"></view>
 					<view class="item-info">
 						<span class="item-info-name">观赛: {{item.activityName}}</span>
@@ -28,7 +28,7 @@
 	<block wx:if="{{selectTab=='play'}}">
 		<view class="play-content">
 			<block wx:for="{{playList}}" wx:key="{{index}}" wx:for-item="item">
-				<view class="play-item">
+				<view class="play-item" data-item="{{item}}" bindtap="goPlayDetail">
 					<span class="item-info-name">局子: {{item.playName}}</span>
 					<span class="item-info-panel">地点: {{item.playLocation}}</span>
 					<span class="item-info-panel">开始时间: {{item.playStartDate}}</span>
