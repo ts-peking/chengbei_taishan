@@ -13,7 +13,7 @@ Page({
             'finished':'background-color: #dfdfdf; color: #fff;',
             'underway':'background-color: #f47920;'            
         },
-        selectTab: 'match',
+        selectTab: 'play',
         activityList: [
             {
                 activityImg: '',
@@ -94,7 +94,7 @@ Page({
             }            
         ],
         pageSize: 10,
-        pageNum: 0,
+        pageNum: 1,
         status: '',
 	},
     onLaunch: function () {
@@ -104,25 +104,28 @@ Page({
 		wx.setNavigationBarTitle({
 	        title: "活动页面"
 	    });     	
+        this.initActivityList();
       	console.log('这是活动页面');
-
     },
     onHide: function () {
       	
     },
     initActivityList:function() {
         var req = {
-            pageSize: this.pageSize,
-            pageNum: this.pageNum,
-            // status: this.status       
+            PageSize: this.data.pageSize,
+            PageNum: this.data.pageNum,
+            // status: this.status     //用作筛选  
         }
         wx.request({
-            url:"http://47.105.193.164/mobileInterf/queryActivityList",
-            method:'POST',
+            url:"http://47.105.193.164/orangeNorth/mobileInterf/queryActivityList",
+            method:'GET',
             data: req,
             dataType: 'json',
             success:function(res){
                 //拿到活动列表赋值
+                if (res && res.data) {
+                    this.data.activityList = res.data;
+                }
                 console.log(res)
             },
             fail:function(res){
