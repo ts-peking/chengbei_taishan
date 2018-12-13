@@ -8,39 +8,63 @@
 			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">活动名称</view>
-				<input bindinput="{{activityData.title}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.title}}"></input>
+				<input bindinput="{{activityData.title}}" placeholder="请填写活动名称"  class="submit-item-panel" value="{{activityData.title}}"></input>
 			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">地点</view>
-				<input bindinput="{{activityData.location}}" placeholder="这是活动名称"  class="submit-item-panel" value="{{activityData.location}}"></input>
+				<input bindinput="{{activityData.location}}" placeholder="请填写活动地点"  class="submit-item-panel" value="{{activityData.location}}"></input>
 			</view>		
 			<view class="submit-item">
 				<view class="submit-item-title">开始时间</view>
-				<input bindinput="{{activityData.startDate}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+				<picker
+					class="submit-item-panel"
+				    mode="date"
+				    value="{{date}}"
+				    start="2018-12-13"
+				    end="2038-12-31"
+				    bindchange="bindDateChange">
+				    <view class="picker"> {{date}} </view>
+			    </picker>
 			</view>		
 			<view class="submit-item">
 				<view class="submit-item-title">结束时间</view>
-				<input bindinput="{{activityData.endData}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+				<picker
+					class="submit-item-panel"
+				    mode="date"
+				    value="{{date}}"
+				    start="2018-12-13"
+				    end="2038-12-31"
+				    bindchange="bindDateChange">
+				    <view class="picker"> {{date}} </view>
+			    </picker>
 			</view>			
 			<view class="submit-item">
 				<view class="submit-item-title">费用</view>
-				<input bindinput="{{activityData.price}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+				<input bindinput="{{activityData.price}}" placeholder="请输入活动费用"  class="submit-item-panel"></input>
 			</view>		
 			<view class="submit-item">
 				<view class="submit-item-title">人数</view>
-				<input bindinput="{{activityData.title}}" placeholder="这是活动名称" class="submit-item-panel"></input>
+				<input bindinput="{{activityData.title}}" placeholder="请输入活动人数" class="submit-item-panel"></input>
 			</view>	
 			<view class="submit-item">
 				<view class="submit-item-title">报名截止时间</view>
-				<input bindinput="{{activityData.deadLine}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+				<picker
+					class="submit-item-panel"
+				    mode="date"
+				    value="{{date}}"
+				    start="2018-12-13"
+				    end="2038-12-31"
+				    bindchange="bindDateChange">
+				    <view class="picker"> {{date}} </view>
+			    </picker>				
 			</view>		
 			<view class="submit-item">
 				<view class="submit-item-title">联系方式</view>
-				<input bindinput="{{activityData.creatorPhone}}" placeholder="这是活动名称"  class="submit-item-panel"></input>
+				<input bindinput="{{activityData.creatorPhone}}" placeholder="请输入主办人联系方式"  class="submit-item-panel"></input>
 			</view>		
 			<view class="submit-item submit-desc">
 				<view class="submit-item-title">备注</view>
-				<textarea bindinput="{{activityData.description}}" placeholder="这是活动名称"  class="submit-item-textarea"></textarea>
+				<textarea bindinput="{{activityData.description}}" placeholder="请填写活动相关备注"  class="submit-item-textarea"></textarea>
 			</view>
 		</view>
 		<block>

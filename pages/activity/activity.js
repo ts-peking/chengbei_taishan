@@ -104,13 +104,16 @@ Page({
 		wx.setNavigationBarTitle({
 	        title: "活动页面"
 	    });     	
-        this.initActivityList();
-      	console.log('这是活动页面');
+        this.initPlayList();
     },
     onHide: function () {
       	
     },
     initActivityList:function() {
+
+    },
+    initPlayList:function() {
+        var self = this;
         var req = {
             PageSize: this.data.pageSize,
             PageNum: this.data.pageNum,
@@ -124,9 +127,12 @@ Page({
             success:function(res){
                 //拿到活动列表赋值
                 if (res && res.data) {
-                    this.data.activityList = res.data;
+                    console.log(res.data);
+                    self.setData({
+                        playList: res.data.data
+                    })
+                    console.log(self.data)
                 }
-                console.log(res)
             },
             fail:function(res){
                 console.log(res)
@@ -144,7 +150,7 @@ Page({
         })
     },
     goPlayDetail:function(e) {
-        var playId = e.currentTarget.dataset.item.playId
+        var playId = e.currentTarget.dataset.item.activityId
         wx.navigateTo({
             url:'/pages/submit/submit?playId=' + playId,
             success:function(){

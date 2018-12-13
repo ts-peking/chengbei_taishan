@@ -37,7 +37,7 @@
     	</view>     	  	
 		<view class="form-item">
     		<span class="form-item-title">身份证</span>
-			<input class="form-item-input" type="text" placeholder="身份证号不可更改" bindinput="{{personalCardId}}"/>
+			<input class="form-item-input" type="idcard" placeholder="身份证号不可更改" bindinput="{{personalCardId}}"/>
     	</view>    	
     </view>
 	<view class="submit-info" bindtap="finishUserInfo">

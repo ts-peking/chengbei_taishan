@@ -3,6 +3,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data:{
+		date: '2018-12-13',
 		activityData: {
 			title: '橙南VS橙北',
 			location: '中国地质大学',
@@ -19,7 +20,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(options)
+		console.log(options);
+	},
+	bindDateChange: function(e) {
+		this.setData({
+		    date: e.detail.value
+		})
 	},
 
 	/**
