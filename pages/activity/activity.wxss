@@ -84,6 +84,10 @@
 	box-sizing: border-box;
 	border-bottom: 1px solid #dfdfdf;
 }
+.play-content .name-title {
+	display: inline-block;
+	width: 75px;
+}
 .play-content .play-item .item-info-name {
 	display: block;
 	width: 80%;
