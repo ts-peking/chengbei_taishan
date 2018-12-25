@@ -71,7 +71,7 @@ Page({
 		//     	if (res) {
 		//     		console.log(red)
 		// 	        wx.navigateTo({
-		// 		        url:'pages/activity/activity',
+		// 		        url:'/pages/activity/activity',
 		// 		        success:function(){
 		// 		        },
 		// 		        fail:function(){
@@ -83,10 +83,17 @@ Page({
 		//         console.log(res)
 		//     }
 	 //    })		
-		wx.showModal({
-            title: '别急，注册还在开发中。。。',
-            showCancel: false,
-        });			
+		// wx.showModal({
+  //           title: '别急，注册还在开发中。。。',
+  //           showCancel: false,
+  //       });	
+        wx.navigateTo({
+	        url:'/pages/activity/activity',
+	        success:function(){
+	        },
+	        fail:function(){
+	        }
+	    })  		
 	},
 	radioChange:function(e) {
 		this.selectSex = e.detail.value
