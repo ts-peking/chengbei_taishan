@@ -83,17 +83,11 @@ Page({
 		//         console.log(res)
 		//     }
 	 //    })		
-		// wx.showModal({
-  //           title: '别急，注册还在开发中。。。',
-  //           showCancel: false,
-  //       });	
-        wx.navigateTo({
-	        url:'/pages/activity/activity',
-	        success:function(){
-	        },
-	        fail:function(){
-	        }
-	    })  		
+		wx.showModal({
+            title: '别急，注册还在开发中。。。',
+            showCancel: false,
+        });	
+        		
 	},
 	radioChange:function(e) {
 		this.selectSex = e.detail.value

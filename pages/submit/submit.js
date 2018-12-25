@@ -4,6 +4,7 @@ Page({
 	 */
 	data:{
 		date: '2018-12-13',
+		submitCheck: true,
 		activityData: {
 			title: '橙南VS橙北',
 			location: '中国地质大学',
