@@ -114,11 +114,11 @@
 		<block>
 			<view class="submit-play-button">
 				<view class="button-panel">
-					<button class="button-item" wx-if="{{fasle}}">报名</button>
+					<button class="button-item" wx-if="{{fasle}}" bindtap="changeStatus('submit')">报名</button>
 					<button class="button-item button-item-cancel" wx-if="true">已报名</button>
-					<button class="button-item" wx-if="{{fasle}}">请假</button>
+					<button class="button-item" wx-if="{{fasle}}" bindtap="changeStatus('submit')">请假</button>
 					<button class="button-item button-item-cancel" wx-if="true">已请假</button>
-					<button class="button-item" wx-if="{{fasle}}">待定</button>					
+					<button class="button-item" wx-if="{{fasle}}" bindtap="changeStatus('submit')">待定</button>					
 					<button class="button-item button-item-cancel" wx-if="true">已待定</button>
 				</view>
 			</view>
