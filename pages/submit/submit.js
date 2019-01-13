@@ -4,7 +4,7 @@ Page({
 	 */
 	data:{
 		date: '2018-12-13',
-		submitCheck: true,
+		submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
 		activityData: {
 			title: '橙南VS橙北',
 			location: '中国地质大学',
@@ -22,14 +22,19 @@ Page({
 	 */
 	onLoad: function (options) {
 		console.log(options);
+		if (!options) {
+			this.setData({
+				submitCheck: false
+			})
+		}
 	},
 	bindDateChange: function(e) {
 		this.setData({
 		    date: e.detail.value
 		})
 	},
-	changeStatus: function(status) {
-
+	changeStatus: function(e) {
+		console.log(e.currentTarget.dataset);
 	},
 
 	/**
