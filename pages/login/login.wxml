@@ -21,8 +21,8 @@
     	</view>
 		<view class="form-item">
     		<span class="form-item-title">分队</span>
-			<picker class="form-item-input" 
-				mode="selector" 
+			<picker class="form-item-picker" 
+				mode="selector"
 				bindchange="bindPickerChange" 
 				value="{{index}}" 
 				range="{{teamArray}}">

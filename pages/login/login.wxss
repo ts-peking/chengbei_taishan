@@ -28,6 +28,14 @@
 	position: absolute;
 	left: 10px;
 }
+.form-item-picker {
+	position: absolute;
+	width: 100px;
+	right: 10px;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;	
+}
 .form-item-input {
 	position: absolute;
 	right: 10px;
