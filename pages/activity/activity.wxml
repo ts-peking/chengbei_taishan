@@ -29,10 +29,10 @@
 		<view class="play-content">
 			<block wx:for="{{playList}}" wx:key="{{index}}" wx:for-item="item">
 				<view class="play-item" data-item="{{item}}" bindtap="goPlayDetail">
-					<span class="item-info-name"><span class="name-title">局子: </span>{{item.activityName}}</span>
+					<span class="item-info-panel"><span class="name-title">名称: </span>{{item.activityName}}</span>
 					<span class="item-info-name"><span class="name-title">对阵双方: </span>{{item.homeTeam}}VS{{item.visitingTeam}}</span>
-					<span class="item-info-panel"><span class="name-title">地点: </span>{{item.activityLocation}}</span>
-					<span class="item-info-panel"><span class="name-title">开始时间: </span>{{item.activityBeginTime}}</span>
+					<span class="item-info-name"><span class="name-title">地点: </span>{{item.activityLocation}}</span>
+					<span class="item-info-name"><span class="name-title">开始时间: </span>{{item.activityBeginTime}}</span>
 					<span class="item-info-panel"><span class="name-title">结束时间: </span>{{item.activityEndTime}}</span>
 					<span class="item-info-panel"><span class="name-title">费用: </span>{{item.activityCost}}</span>
 					<span class="item-info-status" style="{{statusClassMap[item.activityStatus]}}">{{statusMap[item.activityStatus]}}</span>
