@@ -14,6 +14,19 @@ Page({
     })
   },
 
+  getDataBase: function() {
+    wx.cloud.callFunction({
+      name: 'gettestdatabase',
+      data: {},
+      success: res => {
+        console.log('success', res)
+      },
+      fail: err => {
+        console.error('调用失败', err)
+      }
+    })
+  },
+
   cloudGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({

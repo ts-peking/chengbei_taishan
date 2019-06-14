@@ -1,4 +1,5 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <button class="userinfo-nickname" bindtap="cloudGetOpenid">点击获取 openid</button>
+  <button class="log-btn" bindtap="cloudGetOpenid">点击获取 openid</button>
+  <button class="log-btn" bindtap="getDataBase">获取云函数数据库数据</button>
 </view>
