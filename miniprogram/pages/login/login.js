@@ -7,8 +7,15 @@ Page({
 		realName: '张三',
 		sex: [{ value: '男', checked: false},{ value: '女', checked: false},{ value: '其他', checked: false}],
 		selectSex: '',
-		teamArray: ['橙北', '橙南', '橙通'],
-		selectTeam: '橙北',
+		teamArray: ['橙北', '橙南', '橙通', '其他'],
+		selectTeam: '其他',
+		teamIdMap: {
+			'橙北' : 1,
+			'橙南' : 2,
+			'橙通' : 3,
+			'其他' : 0
+		},
+		selectTeamId: 0,
 		vipId: '',
 		personalCardId: '',
 	    index: 0
@@ -40,49 +47,20 @@ Page({
 		//     }
 	 //    })		
 		wx.showModal({
-            title: '别急，换头像还在开发中。。。',
+            title: '谁叫你点的，乱点什么。。呸。。',
             showCancel: false,
         });		
 	},
 	finishUserInfo:function() {
-		let data = {
-			realName: this.realName,
-			sex: this.selectSex,
-			teamName: this.selectTeam,
+		let params = {
+			userInfo: this.userInfo,
+		  	realName: this.realName,
+		  	selectTeamId: this.teamIdMap[this.selectTeam],
+		  	vipId: this.vipId,
+		  	personalCardId: this.personalCardId
 		}
-		console.log(data)
-
-		//测试用参数
-		// wx.request({
-		//     url:"http:// 47.105.193.164/mobileInterf/saveUser",
-		//     method:'POST',
-		//     data:{
-		//         telnum: '18516905286',
-		//         realName: '张晓斌',
-		//         homeTown: '山东德州',
-		//         occupation: '程序猿',
-		//         sex: '男',
-		//         residence: '北京朝阳',
-		//         teamId: '1234',
-		//         teamName: '橙北'
-		//     },
-		//     dataType: 'json',
-		//     success:function(res){
-		//     	if (res) {
-		//     		console.log(red)
-		// 	        wx.navigateTo({
-		// 		        url:'/pages/activity/activity',
-		// 		        success:function(){
-		// 		        },
-		// 		        fail:function(){
-		// 		        }
-		// 		    })  
-		//     	}
-		//     },
-		//     fail:function(res){
-		//         console.log(res)
-		//     }
-	 //    })		
+		console.log(params)
+		
 		wx.showModal({
             title: '别急，注册还在开发中。。。',
             showCancel: false,

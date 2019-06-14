@@ -8,12 +8,13 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"appid": "wx56fe75a8a027dba8",
+	"appid": "wx5771464a2baf6180",
 	"projectname": "chengbei_taishan",
 	"libVersion": "2.4.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -13,7 +13,7 @@
 		<view class="form-item">
     		<span class="form-item-title">性别</span>
 			<radio-group class="form-item-input" bindchange="radioChange">
-				<label class="radio" wx:for="{{sex}}" wx:for-index="index">
+				<label class="radio" wx:for="{{sex}}" wx:for-index="index" wx:key="item">
 				    <radio value="{{item.value}}" checked="{{item.checked}}" color="#f47920"/>
 				    {{item.value}}
 				</label>
