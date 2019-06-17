@@ -1,7 +1,7 @@
 {
   "name": "gettestdatabase",
   "version": "1.0.0",
-  "description": "",
+  "description": "测试获取云数据库数据",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
