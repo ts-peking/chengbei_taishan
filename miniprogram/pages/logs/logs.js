@@ -17,7 +17,7 @@ Page({
 
   getTestDataBase: function() {
     // const db = wx.cloud.database() // 初始化数据库
-    db.collection('testdatabase').get({
+    db.collection('testdatabase').orderBy('vipid', 'desc').get({
       success: function(res) {
         console.log('getTestDataBase', res.data)
       },
@@ -31,8 +31,8 @@ Page({
     let params = {
       personalCardId: '123',
       realName: '测试3',
-      selectTeamId: '1',
-      vipId: 1314
+      selectTeamId: 1,
+      vipId: 1319
     }
     db.collection('testdatabase').add({
       data: params,
