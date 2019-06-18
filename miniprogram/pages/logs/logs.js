@@ -14,15 +14,14 @@ Page({
     })
   },
 
-  getDataBase: function() {
-    wx.cloud.callFunction({
-      name: 'gettestdatabase',
-      data: {},
-      success: res => {
-        console.log('success', res)
+  getTestDataBase: function() {
+    const db = wx.cloud.database() // 初始化数据库
+    db.collection('testdatabase').get({
+      success: function(res) {
+        console.log('getTestDataBase', res.data)
       },
-      fail: err => {
-        console.error('调用失败', err)
+      fail: function(err) {
+        console.log('error', err)
       }
     })
   },
