@@ -1,5 +1,6 @@
 //logs.js
 const util = require('../../utils/util.js')
+const db = wx.cloud.database() // 初始化数据库
 const app = getApp()
 
 Page({
@@ -15,7 +16,7 @@ Page({
   },
 
   getTestDataBase: function() {
-    const db = wx.cloud.database() // 初始化数据库
+    // const db = wx.cloud.database() // 初始化数据库
     db.collection('testdatabase').get({
       success: function(res) {
         console.log('getTestDataBase', res.data)
@@ -24,6 +25,24 @@ Page({
         console.log('error', err)
       }
     })
+  },
+
+  addTestDataBase: function() {
+    let params = {
+      personalCardId: '123',
+      realName: '测试3',
+      selectTeamId: '1',
+      vipId: 1314
+    }
+    db.collection('testdatabase').add({
+      data: params,
+      success: function(res) {
+        console.log('getTestDataBase', res)
+      },
+      fail: function(err) {
+        console.log('error', err)
+      }
+    })    
   },
 
   cloudGetOpenid: function() {

@@ -4,22 +4,8 @@
 // 部署: 在 cloud-functions/gettestdatabase 文件夹右击选择 “上传并部署”
 
 const cloud = require('wx-server-sdk')
-let result = {}
 
 cloud.init()
-
-const db = cloud.database() // 初始化数据库
-db.collection('testdatabase').get({
-	success: function(res) {
-		console.log(res.data)
-		result = res.data
-	},
-	fail: function(err) {
-		console.log('error', err)
-	}
-})
-
-console.log('testdatabase',result)
 
 exports.main = (event, context, result) => {
 
@@ -28,6 +14,6 @@ exports.main = (event, context, result) => {
 
   return {
     event,
-    result: result
+    wxContext
   }
 }
