@@ -29,10 +29,10 @@ Page({
 
   addTestDataBase: function() {
     let params = {
-      personalCardId: '123',
-      realName: '测试3',
-      selectTeamId: 1,
-      vipId: 1319
+      _personalcardid: '123',
+      _realname: '测试3',
+      _selectteamid: 1,
+      _vipid: 1319
     }
     db.collection('testdatabase').add({
       data: params,

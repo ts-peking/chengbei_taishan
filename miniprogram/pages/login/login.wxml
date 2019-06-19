@@ -10,6 +10,10 @@
     		<span class="form-item-title">姓名</span>
 			<input class="form-item-input" type="text" placeholder="请填写姓名" bindinput="inputRealName"/>
     	</view>
+		<!-- <view class="form-item">
+    		<span class="form-item-title">昵称</span>
+			<input class="form-item-input" type="text" placeholder="您在球队中的昵称" bindinput="inputRealName"/>
+    	</view>  -->   	
 		<view class="form-item">
     		<span class="form-item-title">性别</span>
 			<radio-group class="form-item-input" bindchange="radioChange">
@@ -33,12 +37,12 @@
     	</view>  
 		<view class="form-item">
     		<span class="form-item-title">会员号</span>
-			<input class="form-item-input" type="text" placeholder="会员号不可更改" bindinput="{{vipId}}"/>
+			<input class="form-item-input" type="text" placeholder="请务必填写真实会员号" bindinput="{{vipId}}"/>
     	</view>     	  	
 		<view class="form-item">
-    		<span class="form-item-title">身份证</span>
-			<input class="form-item-input" type="idcard" placeholder="身份证号不可更改" bindinput="{{personalCardId}}"/>
-    	</view>    	
+    		<span class="form-item-title">身份证号</span>
+			<input class="form-item-input" type="idcard" placeholder="身份证号不可更改(选填)" bindinput="{{personalCardId}}"/>
+    	</view> 	
     </view>
 	<view class="submit-info" bindtap="finishUserInfo">
         <button class="submit-info-btn"> 注册完成 </button>
