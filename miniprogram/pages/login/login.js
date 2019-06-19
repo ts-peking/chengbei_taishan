@@ -4,11 +4,11 @@ const util = require('../../utils/util.js');
 Page({
 	data: {
 		avator: '',
-		realName: '张三',
-		sex: [{ value: '男', checked: false},{ value: '女', checked: false},{ value: '其他', checked: false}],
-		selectSex: '',
+		realName: '',
+		sex: [{ value: '男', checked: true},{ value: '女', checked: false},{ value: '其他', checked: false}],
+		selectSex: '男',
 		teamArray: ['橙北', '橙南', '橙通', '其他'],
-		selectTeam: '其他',
+		selectTeam: '橙北',
 		teamIdMap: {
 			'橙北' : 1,
 			'橙南' : 2,
@@ -26,26 +26,10 @@ Page({
 		});		
 		this.setData({
             userInfo: app.globalData.userInfo,
-        })		
+        })
     	console.log(app);
     },	
 	changeAvator:function() {
-		// 测试用参数
-		// wx.request({
-		//     url:"http://47.105.193.164/mobileInterf/login",
-		//     method:'POST',
-		//     data:{
-		//         telnum: '15510297181',
-		//         pwd: '111111'
-		//     },
-		//     dataType: 'json',
-		//     success:function(res){
-		//         console.log(res)
-		//     },
-		//     fail:function(res){
-		//         console.log(res)
-		//     }
-	 //    })		
 		wx.showModal({
             title: '谁叫你点的，乱点什么。。呸。。',
             showCancel: false,
@@ -53,11 +37,12 @@ Page({
 	},
 	finishUserInfo:function() {
 		let params = {
-			userInfo: this.userInfo,
-		  	realName: this.realName,
-		  	selectTeamId: this.teamIdMap[this.selectTeam],
-		  	vipId: this.vipId,
-		  	personalCardId: this.personalCardId
+			userInfo: this.data.userInfo,
+		  	realName: this.data.realName,
+		  	sex: this.data.selectSex,
+		  	selectTeamId: this.data.teamIdMap[this.data.selectTeam],
+		  	vipId: this.data.vipId,
+		  	personalCardId: this.data.personalCardId
 		}
 		console.log(params)
 		
@@ -68,15 +53,29 @@ Page({
         		
 	},
 	radioChange:function(e) {
-		this.selectSex = e.detail.value
+		this.setData({
+			selectSex: e.detail.value
+		})
+	},
+	bindVipId:function(e) {
+		this.setData({
+			vipId: parseInt(e.detail.value)
+		})
+	},
+	bindPersonalCardId:function(e) {
+		this.setData({
+			personalCardId: parseInt(e.detail.value)
+		})
 	},
 	bindPickerChange:function(e) {
 		this.setData({
-			index: e.detail.value
+			index: e.detail.value,
+			selectTeam: this.data.teamArray[e.detail.value]
 		})
-		this.selectTeam = this.data.teamArray[e.detail.value];
 	},
 	inputRealName:function(e) {
-		this.realName = e.detail.value;
+		this.setData({
+			realName: e.detail.value
+		})
 	}
 })

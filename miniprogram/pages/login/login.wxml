@@ -37,14 +37,14 @@
     	</view>  
 		<view class="form-item">
     		<span class="form-item-title">会员号</span>
-			<input class="form-item-input" type="text" placeholder="请务必填写真实会员号" bindinput="{{vipId}}"/>
+			<input class="form-item-input" type="number" placeholder="请务必填写真实会员号" bindinput="bindVipId"/>
     	</view>     	  	
 		<view class="form-item">
     		<span class="form-item-title">身份证号</span>
-			<input class="form-item-input" type="idcard" placeholder="身份证号不可更改(选填)" bindinput="{{personalCardId}}"/>
+			<input class="form-item-input" type="idcard" placeholder="身份证号不可更改(选填)" bindinput="bindPersonalCardId"/>
     	</view> 	
     </view>
 	<view class="submit-info" bindtap="finishUserInfo">
-        <button class="submit-info-btn"> 注册完成 </button>
+        <button class="submit-info-btn"> 填写完成 </button>
     </view>  
 </view>
