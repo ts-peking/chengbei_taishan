@@ -8,11 +8,11 @@
     <view class="login-form">
     	<view class="form-item">
     		<span class="form-item-title">姓名</span>
-			<input class="form-item-input" type="text" placeholder="请填写姓名" bindinput="inputRealName"/>
+			<input class="form-item-input" type="text" placeholder="请填写姓名" bindinput="bindRealName"/>
     	</view>
 		<!-- <view class="form-item">
     		<span class="form-item-title">昵称</span>
-			<input class="form-item-input" type="text" placeholder="您在球队中的昵称" bindinput="inputRealName"/>
+			<input class="form-item-input" type="text" placeholder="您在球队中的昵称" bindinput="bindRealName"/>
     	</view>  -->   	
 		<view class="form-item">
     		<span class="form-item-title">性别</span>

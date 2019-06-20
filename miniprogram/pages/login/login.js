@@ -47,10 +47,15 @@ Page({
 		console.log(params)
 		
 		wx.showModal({
-            title: '别急，注册还在开发中。。。',
-            showCancel: false,
-        });	
-        		
+            title: '确认提交？',
+            success (res) {
+			    if (res.confirm) {
+			        console.log('用户点击确定')
+			    } else if (res.cancel) {
+			        console.log('用户点击取消')
+			    }
+			}
+        });
 	},
 	radioChange:function(e) {
 		this.setData({
@@ -73,7 +78,7 @@ Page({
 			selectTeam: this.data.teamArray[e.detail.value]
 		})
 	},
-	inputRealName:function(e) {
+	bindRealName:function(e) {
 		this.setData({
 			realName: e.detail.value
 		})
