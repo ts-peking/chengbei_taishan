@@ -38,9 +38,10 @@ App({
       wx.cloud.init({
         traceUser: true,
       })
-    }    
+    }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    databaseEnv: 'taishanchengbei', // 全局云数据库环境ID  测试环境 'taishanchengbei' 生产环境 ''
   }
 })

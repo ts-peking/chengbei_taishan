@@ -7,12 +7,14 @@ Page({
 		realName: '',
 		sex: [{ value: '男', checked: true},{ value: '女', checked: false},{ value: '其他', checked: false}],
 		selectSex: '男',
-		teamArray: ['橙北', '橙南', '橙通', '其他'],
+		teamArray: ['泰山橙北', '泰山橙南', '泰山橙通', '泰山壹柒', '泰山零八', '其他'],
 		selectTeam: '橙北',
 		teamIdMap: {
-			'橙北' : 1,
-			'橙南' : 2,
-			'橙通' : 3,
+			'泰山橙北' : 1,
+			'泰山橙南' : 2,
+			'泰山橙通' : 3,
+			'泰山壹柒' : 4,
+			'泰山零八' : 5,
 			'其他' : 0
 		},
 		selectTeamId: 0,
@@ -47,7 +49,7 @@ Page({
 		console.log(params)
 		
 		wx.showModal({
-            title: '确认提交？',
+            title: '确认信息无误提交？',
             success (res) {
 			    if (res.confirm) {
 			        console.log('用户点击确定')
@@ -56,6 +58,9 @@ Page({
 			    }
 			}
         });
+	},
+	sendUserInfo:function() {
+		
 	},
 	radioChange:function(e) {
 		this.setData({

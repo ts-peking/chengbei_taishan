@@ -1,7 +1,7 @@
 //logs.js
 const util = require('../../utils/util.js')
-const db = wx.cloud.database() // 初始化数据库
 const app = getApp()
+const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
 
 Page({
   data: {
@@ -16,7 +16,6 @@ Page({
   },
 
   getTestDataBase: function() {
-    // const db = wx.cloud.database() // 初始化数据库
     db.collection('testdatabase').orderBy('vipid', 'desc').get({
       success: function(res) {
         console.log('getTestDataBase', res.data)
