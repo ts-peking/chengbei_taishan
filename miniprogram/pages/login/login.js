@@ -1,5 +1,6 @@
 const app = getApp();
 const util = require('../../utils/util.js');
+const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
 
 Page({
 	data: {
@@ -8,7 +9,7 @@ Page({
 		sex: [{ value: '男', checked: true},{ value: '女', checked: false},{ value: '其他', checked: false}],
 		selectSex: '男',
 		teamArray: ['泰山橙北', '泰山橙南', '泰山橙通', '泰山壹柒', '泰山零八', '其他'],
-		selectTeam: '橙北',
+		selectTeam: '泰山橙北',
 		teamIdMap: {
 			'泰山橙北' : 1,
 			'泰山橙南' : 2,
@@ -24,20 +25,22 @@ Page({
 	},
 	onLoad: function () {
 		wx.setNavigationBarTitle({
-		    title: "完善个人信息"
+	    title: "完善个人信息"
 		});		
 		this.setData({
-            userInfo: app.globalData.userInfo,
-        })
-    	console.log(app);
-    },	
+      userInfo: app.globalData.userInfo,
+    })
+  	console.log(app);
+  },	
 	changeAvator:function() {
 		wx.showModal({
-            title: '谁叫你点的，乱点什么。。呸。。',
-            showCancel: false,
-        });		
+      title: '谁叫你点的，乱点什么。。呸。。',
+      showCancel: false,
+	  });		
 	},
+	// 收集用户信息
 	finishUserInfo:function() {
+		let self = this
 		let params = {
 			userInfo: this.data.userInfo,
 		  	realName: this.data.realName,
@@ -49,18 +52,46 @@ Page({
 		console.log(params)
 		
 		wx.showModal({
-            title: '确认信息无误提交？',
-            success (res) {
-			    if (res.confirm) {
-			        console.log('用户点击确定')
-			    } else if (res.cancel) {
-			        console.log('用户点击取消')
-			    }
+      title: '确认信息无误提交？',
+      content: '会员号信息填写后无法更改，请确认填写正确',
+      success (res) {
+		    if (res.confirm) {
+	        self.sendUserInfo(params)
+		    } else if (res.cancel) {
+	        console.log('用户点击取消')
+		    }
 			}
-        });
+    });
 	},
-	sendUserInfo:function() {
-		
+	// 向云端数据库增加用户信息
+	sendUserInfo:function(params) {
+		wx.showToast({
+		  title: '资料提交中。。。',
+		  icon: 'loading',
+		  mask: true,
+		})
+
+		db.collection('userinfo').add({
+      data: params,
+      success: function(res) {
+				wx.showToast({
+				  title: '资料提交成功',
+				  icon: 'success',
+				  mask: true,
+				  duration: 2000
+				})
+        console.log('getTestDataBase', res)
+      },
+      fail: function(err) {
+				wx.showToast({
+				  title: '资料提交失败',
+				  icon: 'fail',
+				  mask: true,
+				  duration: 2000
+				})         	
+        console.log('error', err)
+      }
+    })
 	},
 	radioChange:function(e) {
 		this.setData({

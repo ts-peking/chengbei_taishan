@@ -4,14 +4,15 @@ Page({
 	 */
 	data:{
 		date: '2018-12-13',
-		submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
+		submitCheck: false,//true不可发布活动，仅用于报名与查看; false可发布活动
 		activityData: {
 			title: '橙南VS橙北',
 			location: '中国地质大学',
-			startDate: 1543759535822,
-			endData: 1543759535822,
+			startDate: '2019-06-24',
+			startTime: '16:00',
+			endTime: '18:00',
 			price: 'AA制',
-			deadLine: 1543759535822,
+			activityNum: '100人',
 			creatorPhone: 18512345678,
 			description: '这是备注',
 		}
@@ -21,12 +22,48 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(options);
 		if (!options) {
 			this.setData({
 				submitCheck: false
 			})
 		}
+	},
+	bindDataChange:function(e) {
+		let params = e.currentTarget.dataset.params
+		this.setData({
+	    ['activityData.' + params]: e.detail.value
+		})
+		console.log(this.data.activityData)
+	},
+	bindTitle: function(e) {
+		this.setData({
+	    'activityData.title': e.detail.value
+		})
+	},
+	bindLocation: function(e) {
+		this.setData({
+	    'activityData.location': e.detail.value
+		})
+	},
+	bindPrice: function(e) {
+		this.setData({
+	    'activityData.price': e.detail.value
+		})
+	},
+	bindActivityNum: function(e) {
+		this.setData({
+	    'activityData.activityNum': e.detail.value
+		})
+	},
+	bindCreatorPhone: function(e) {
+		this.setData({
+			'activityData.creatorPhone': e.detail.value
+		})
+	},
+	bindDescription:function(e) {
+		this.setData({
+			'activityData.description': e.detail.value
+		})		
 	},
 	bindDateChange: function(e) {
 		this.setData({

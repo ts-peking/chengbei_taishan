@@ -8,47 +8,63 @@
 			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">活动名称</view>
-				<input bindinput="{{activityData.title}}" placeholder="请填写活动名称"  class="submit-item-panel" value="{{activityData.title}}" disabled="{{submitCheck}}"></input>
+				<input bindinput="bindDataChange" data-params="title" placeholder="请填写活动名称" class="submit-item-panel" value="{{activityData.title}}" disabled="{{submitCheck}}"></input>
 			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">地点</view>
-				<input bindinput="{{activityData.location}}" placeholder="请填写活动地点"  class="submit-item-panel" value="{{activityData.location}}" disabled="{{submitCheck}}"></input>
-			</view>		
+				<input bindinput="bindDataChange" data-params="location" placeholder="请填写活动地点" class="submit-item-panel" value="{{activityData.location}}" disabled="{{submitCheck}}"></input>
+			</view>
+			<view class="submit-item">
+				<view class="submit-item-title">开始日期</view>
+				<picker
+					class="submit-item-panel"
+			    mode="date"
+			    value="{{activityData.startDate}}"
+			    start="2018-12-13"
+			    end="2038-12-31"
+			    bindchange="bindDataChange"
+			    data-params="startDate"
+			    disabled="{{submitCheck}}">
+			    <view class="picker"> {{activityData.startDate}} </view>
+		    </picker>
+			</view>			
 			<view class="submit-item">
 				<view class="submit-item-title">开始时间</view>
 				<picker
 					class="submit-item-panel"
-				    mode="date"
-				    value="{{date}}"
-				    start="2018-12-13"
-				    end="2038-12-31"
-				    bindchange="bindDateChange"
-				    disabled="{{submitCheck}}">
-				    <view class="picker"> {{date}} </view>
-			    </picker>
-			</view>		
+			    mode="time"
+			    value="{{activityData.startTime}}"
+			    start="00:00"
+			    end="23:59"
+			    bindchange="bindDataChange"
+			    data-params="startTime"
+			    disabled="{{submitCheck}}">
+			    <view class="picker"> {{activityData.startTime}} </view>
+		    </picker>
+			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">结束时间</view>
 				<picker
 					class="submit-item-panel"
-				    mode="date"
-				    value="{{date}}"
-				    start="2018-12-13"
-				    end="2038-12-31"
-				    bindchange="bindDateChange"
-				    disabled="{{submitCheck}}">
-				    <view class="picker"> {{date}} </view>
-			    </picker>
+			    mode="time"
+			    value="{{activityData.endTime}}"
+			    start="00:00"
+			    end="23:59"
+			    bindchange="bindDataChange"
+			    data-params="endTime"
+			    disabled="{{submitCheck}}">
+			    <view class="picker"> {{activityData.endTime}} </view>
+		    </picker>
 			</view>			
 			<view class="submit-item">
 				<view class="submit-item-title">费用</view>
-				<input bindinput="{{activityData.price}}" placeholder="请输入活动费用"  class="submit-item-panel" disabled="{{submitCheck}}"></input>
-			</view>		
+				<input bindinput="bindDataChange" data-params="price" value="{{activityData.price}}" placeholder="请输入活动费用,如: AA制" class="submit-item-panel" disabled="{{submitCheck}}"></input>
+			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">人数</view>
-				<input bindinput="{{activityData.title}}" placeholder="请输入活动人数" class="submit-item-panel" disabled="{{submitCheck}}"></input>
+				<input bindinput="bindDataChange" data-params="activityNum" value="{{activityData.activityNum}}" placeholder="请输入活动人数" class="submit-item-panel" disabled="{{submitCheck}}"></input>
 			</view>	
-			<view class="submit-item">
+			<!-- <view class="submit-item">
 				<view class="submit-item-title">报名截止时间</view>
 				<picker
 					class="submit-item-panel"
@@ -60,14 +76,14 @@
 				    disabled="{{submitCheck}}">
 				    <view class="picker"> {{date}} </view>
 			    </picker>				
-			</view>		
+			</view>	 -->	
 			<view class="submit-item">
 				<view class="submit-item-title">联系方式</view>
-				<input bindinput="{{activityData.creatorPhone}}" placeholder="请输入主办人联系方式"  class="submit-item-panel" disabled="{{submitCheck}}"></input>
+				<input bindinput="bindDataChange" data-params="creatorPhone" placeholder="请输入主办人联系方式" class="submit-item-panel" disabled="{{submitCheck}}"></input>
 			</view>		
 			<view class="submit-item submit-desc">
 				<view class="submit-item-title">备注</view>
-				<textarea bindinput="{{activityData.description}}" placeholder="请填写活动相关备注"  class="submit-item-textarea" disabled="{{submitCheck}}"></textarea>
+				<textarea bindinput="bindDataChange" data-params="description" placeholder="请填写活动相关备注" class="submit-item-textarea" disabled="{{submitCheck}}"></textarea>
 			</view>
 		</view>
 		<block>
@@ -75,7 +91,7 @@
 				<view class="submit-play-item">
 					<view class="play-item-title">报名</view>
 					<scroll-view class="play-item-scroll" scroll-x="true">
-						<block wx:for="{{9}}" wx:for-item="item" wx:for-index="index">
+						<block wx:for="{{9}}" wx:for-item="item" wx:for-index="index" wx:key="index">
 							<view class="scroll-content">
 								<span class="scroll-item-img" style="background-color: red;"></span>
 								<span class="scroll-item-name">{{index+1}}</span>
@@ -88,7 +104,7 @@
 				<view class="submit-play-item">
 					<view class="play-item-title">请假</view>
 					<scroll-view class="play-item-scroll" scroll-x="true">
-						<block wx:for="{{3}}" wx:for-item="item" wx:for-index="index">
+						<block wx:for="{{3}}" wx:for-item="item" wx:for-index="index" wx:key="index">
 							<view class="scroll-content">
 								<span class="scroll-item-img" style="background-color: red;"></span>
 								<span class="scroll-item-name">{{index+1}}</span>
@@ -101,7 +117,7 @@
 				<view class="submit-play-item">
 					<view class="play-item-title">待定</view>
 					<scroll-view class="play-item-scroll" scroll-x="true">
-						<block wx:for="{{2}}" wx:for-item="item" wx:for-index="index">
+						<block wx:for="{{2}}" wx:for-item="item" wx:for-index="index" wx:key="index">
 							<view class="scroll-content">
 								<span class="scroll-item-img" style="background-color: red;"></span>
 								<span class="scroll-item-name">{{index+1}}</span>

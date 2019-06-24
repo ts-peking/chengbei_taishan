@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/logs/logs",
-    "pages/index/index",
-    "pages/activity/activity",
+    "pages/submit/submit",
     "pages/login/login",
-    "pages/submit/submit"
+    "pages/logs/logs",
+    "pages/activity/activity",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
