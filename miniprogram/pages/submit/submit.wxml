@@ -20,8 +20,6 @@
 					class="submit-item-panel"
 			    mode="date"
 			    value="{{activityData.startDate}}"
-			    start="2018-12-13"
-			    end="2038-12-31"
 			    bindchange="bindDataChange"
 			    data-params="startDate"
 			    disabled="{{submitCheck}}">
@@ -86,7 +84,7 @@
 				<textarea bindinput="bindDataChange" data-params="description" placeholder="请填写活动相关备注" class="submit-item-textarea" disabled="{{submitCheck}}"></textarea>
 			</view>
 		</view>
-		<block>
+		<block wx:if="{{submitCheck}}">
 			<view class="submit-play-list">
 				<view class="submit-play-item">
 					<view class="play-item-title">报名</view>
@@ -127,7 +125,7 @@
 				</view>			
 			</view>	
 		</block>
-		<block>
+		<block wx:if="{{submitCheck}}">
 			<view class="submit-play-button">
 				<view class="button-panel">
 					<button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="submit">报名</button>

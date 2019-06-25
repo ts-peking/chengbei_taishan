@@ -35,39 +35,9 @@ Page({
 		})
 		console.log(this.data.activityData)
 	},
-	bindTitle: function(e) {
-		this.setData({
-	    'activityData.title': e.detail.value
-		})
-	},
-	bindLocation: function(e) {
-		this.setData({
-	    'activityData.location': e.detail.value
-		})
-	},
-	bindPrice: function(e) {
-		this.setData({
-	    'activityData.price': e.detail.value
-		})
-	},
-	bindActivityNum: function(e) {
-		this.setData({
-	    'activityData.activityNum': e.detail.value
-		})
-	},
-	bindCreatorPhone: function(e) {
-		this.setData({
-			'activityData.creatorPhone': e.detail.value
-		})
-	},
-	bindDescription:function(e) {
-		this.setData({
-			'activityData.description': e.detail.value
-		})		
-	},
 	bindDateChange: function(e) {
 		this.setData({
-		    date: e.detail.value
+	    date: e.detail.value
 		})
 	},
 	changeStatus: function(e) {
