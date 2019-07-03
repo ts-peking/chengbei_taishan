@@ -139,7 +139,9 @@
 		</block>
 		<block>
 			<view class="submit-play-button">
-				<view class=""></view>
+				<view class="button-panel">
+					<button class="button-item button-item-submit" wx-if="{{true}}" bindtap="submitActivity">发布活动</button>
+				</view>
 			</view>
 		</block>
 	</block>

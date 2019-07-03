@@ -43,6 +43,9 @@ Page({
 	changeStatus: function(e) {
 		console.log(e.currentTarget.dataset);
 	},
+	submitActivity: function(e) {
+		console.log(this.data.activityData)
+	},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

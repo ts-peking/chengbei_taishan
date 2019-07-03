@@ -108,6 +108,9 @@
 	color: #fff;
 	font-weight: bold;
 }
+.submit-play-button .button-panel .button-item-submit {
+	width: 100%;
+}
 .submit-play-button .button-panel .button-item-cancel {
 	background-color: #fff;
 	color: #f47920;	
