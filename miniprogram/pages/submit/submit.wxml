@@ -137,5 +137,10 @@
 				</view>
 			</view>
 		</block>
+		<block>
+			<view class="submit-play-button">
+				<view class=""></view>
+			</view>
+		</block>
 	</block>
 </view>
