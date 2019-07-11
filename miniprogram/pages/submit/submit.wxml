@@ -2,9 +2,11 @@
 	<block>
 		<view class="submit-content">
 			<view class="submit-item submit-logo">
-				<view class="submit-item-image"></view>
-				<view>VS</view>
-				<view class="submit-item-image"></view>
+				<view class="submit-item-image">
+					<view class="submit-item-addIcon">点击添加一张封面图</view>
+				</view>
+				<!-- <view>VS</view>
+				<view class="submit-item-image"></view> -->
 			</view>
 			<view class="submit-item">
 				<view class="submit-item-title">活动名称</view>
@@ -74,7 +76,7 @@
 				    disabled="{{submitCheck}}">
 				    <view class="picker"> {{date}} </view>
 			    </picker>				
-			</view>	 -->	
+			</view>	 -->
 			<view class="submit-item">
 				<view class="submit-item-title">联系方式</view>
 				<input bindinput="bindDataChange" data-params="creatorPhone" placeholder="请输入主办人联系方式" class="submit-item-panel" disabled="{{submitCheck}}"></input>
