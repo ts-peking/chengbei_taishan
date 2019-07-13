@@ -39,9 +39,6 @@ Page({
 	    date: e.detail.value
 		})
 	},
-	changeStatus: function(e) {
-		console.log(e.currentTarget.dataset)
-	},
 	addImage: function() {
 		wx.showModal({
       title: '谁叫你点的，乱点什么。。呸。。',

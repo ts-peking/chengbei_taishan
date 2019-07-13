@@ -1,0 +1,14 @@
+{
+  "name": "docupdata",
+  "version": "1.0.0",
+  "description": "创建可供所有人更新的云数据库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

@@ -58,7 +58,49 @@ Page({
       fail: function(err) {
         console.log('error', err)
       }
+    })
+  },
+  changeStatus: function(e) {
+    let status = e.currentTarget.dataset.status
+    console.log(status)
+    // let data = {
+    //   dbId: 'activityLog',
+    //   data: {
+    //     _id: this.data.detailId,
+    //     submit: [],
+    //     leave: [],
+    //     undetermined: []
+    //   }
+    // }
+    let data = {
+      dbId: 'activityLog',
+      docId: '9afd9b6a5d2a127206e0f61c24b225bc',
+      data: {
+        submit: [{data:123}],
+        leave: [],
+        undetermined: []
+      }
+    }    
+    // _id: 9afd9b6a5d2a127206e0f61c24b225bc
+    wx.cloud.callFunction({
+      name: 'docupdata',
+      data: data,
+      success: function (res) {
+        console.log('changeStatus', res)
+      },
+      fail:function(err){
+        console.error(err)
+      }
     })     
+    // db.collection('activityLog').doc(this.data.detailId).set({
+    //   data: data,
+    //   success: function(resp) {
+    //     console.log('submitActivity', resp)
+    //   },
+    //   fail: function(err) {
+    //     console.log(err)
+    //   }
+    // })    
   },
   goToActivity: function(id) {
     console.log(id)
