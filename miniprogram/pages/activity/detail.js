@@ -74,14 +74,13 @@ Page({
     // }
     let data = {
       dbId: 'activityLog',
-      docId: '9afd9b6a5d2a127206e0f61c24b225bc',
+      docId: this.data.detailId,
       data: {
         submit: [{data:123}],
         leave: [],
         undetermined: []
       }
     }    
-    // _id: 9afd9b6a5d2a127206e0f61c24b225bc
     wx.cloud.callFunction({
       name: 'docupdata',
       data: data,
