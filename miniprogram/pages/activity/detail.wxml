@@ -1,0 +1,100 @@
+<view class="submit">
+  <block>
+    <view class="submit-content">
+      <view class="submit-item submit-logo">
+        <view class="submit-item-image">
+          <view class="submit-item-addIcon">封面图下版本再做</view>
+        </view>
+      </view>
+      <view class="submit-item">
+        <view class="submit-item-title">活动名称</view>
+        <text class="submit-item-panel">{{activityData.title}}</text>
+      </view>
+      <view class="submit-item">
+        <view class="submit-item-title">地点</view>
+        <text class="submit-item-panel">{{activityData.location}}</text>
+      </view>
+      <view class="submit-item">
+        <view class="submit-item-title">开始日期</view>
+        <text class="submit-item-panel">{{activityData.startDate}}</text>
+      </view>         
+      <view class="submit-item">
+        <view class="submit-item-title">开始时间</view>
+        <text class="submit-item-panel">{{activityData.startTime}}</text>
+      </view>
+      <view class="submit-item">
+        <view class="submit-item-title">结束时间</view>
+        <text class="submit-item-panel">{{activityData.endTime}}</text>
+      </view>         
+      <view class="submit-item">
+        <view class="submit-item-title">费用</view>
+        <text class="submit-item-panel">{{activityData.price}}</text>
+      </view>
+      <view class="submit-item">
+        <view class="submit-item-title">人数</view>
+        <text class="submit-item-panel">{{activityData.activityNum}}</text>
+      </view> 
+      <view class="submit-item">
+        <view class="submit-item-title">发起人联系方式</view>
+        <text class="submit-item-panel">{{activityData.creatorPhone}}</text>
+      </view>
+      <view class="submit-item submit-desc">
+        <view class="submit-item-title">备注</view>
+        <text class="submit-item-panel">{{activityData.description}}</text>
+      </view>
+    </view>
+    <block wx:if="{{submitCheck}}">
+      <view class="submit-play-list">
+        <view class="submit-play-item">
+          <view class="play-item-title">报名</view>
+          <scroll-view class="play-item-scroll" scroll-x="true">
+            <block wx:for="{{9}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view class="scroll-content">
+                <span class="scroll-item-img" style="background-color: red;"></span>
+                <span class="scroll-item-name">{{index+1}}</span>
+              </view>
+            </block>
+          </scroll-view>
+        </view>
+      </view>
+      <view class="submit-play-list">
+        <view class="submit-play-item">
+          <view class="play-item-title">请假</view>
+          <scroll-view class="play-item-scroll" scroll-x="true">
+            <block wx:for="{{3}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view class="scroll-content">
+                <span class="scroll-item-img" style="background-color: red;"></span>
+                <span class="scroll-item-name">{{index+1}}</span>
+              </view>
+            </block>
+          </scroll-view>
+        </view> 
+      </view>
+      <view class="submit-play-list">     
+        <view class="submit-play-item">
+          <view class="play-item-title">待定</view>
+          <scroll-view class="play-item-scroll" scroll-x="true">
+            <block wx:for="{{2}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view class="scroll-content">
+                <span class="scroll-item-img" style="background-color: red;"></span>
+                <span class="scroll-item-name">{{index+1}}</span>
+              </view>
+            </block>
+          </scroll-view>
+        </view>         
+      </view> 
+    </block>
+    <block wx:if="{{submitCheck}}">
+      <view class="submit-play-button">
+        <view class="button-panel">
+          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="submit">报名</button>
+          <button class="button-item button-item-cancel" wx-if="{{false}}">已报名</button>
+          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="leave">请假</button>
+          <button class="button-item button-item-cancel" wx-if="{{false}}">已请假</button>
+          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
+          <button class="button-item button-item-cancel" wx-if="{{false}}">已待定</button>
+        </view>
+      </view>
+    </block>
+  </block>
+</view>

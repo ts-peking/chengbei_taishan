@@ -1,3 +1,7 @@
+const util = require('../../utils/util.js')
+const app = getApp()
+const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
+
 Page({
 	/**
 	 * 页面的初始数据
@@ -34,7 +38,6 @@ Page({
 		this.setData({
 	    ['activityData.' + params]: e.detail.value
 		})
-		console.log(this.data.activityData)
 	},
 	bindDateChange: function(e) {
 		this.setData({
@@ -42,7 +45,7 @@ Page({
 		})
 	},
 	changeStatus: function(e) {
-		console.log(e.currentTarget.dataset);
+		console.log(e.currentTarget.dataset)
 	},
 	addImage: function() {
 		wx.showModal({
@@ -51,7 +54,46 @@ Page({
 	  });			
 	},
 	submitActivity: function(e) {
+		let self = this
 		console.log(this.data.activityData)
+		db.collection('activityList').add({
+      data: this.data.activityData,
+      success: function(resp) {
+        console.log('submitActivity', resp)
+				wx.showModal({
+		      content: '发布成功',
+		      cancelText: '查看活动',
+		      confirmText: '确定',
+		      success: function(res) {
+		      	if (res.confirm) {
+		      		console.log('跳转到活动列表')
+				      self.goToActivity()
+				    } else if (res.cancel) {
+				      console.log('跳转到活动详情')
+				      self.goToActivity(resp._id)
+				    }
+		      }
+			  })     
+      },
+      fail: function(err) {
+        wx.showToast({
+				  title: '活动发布失败,请稍后重新提交',
+				  duration: 2000
+				})
+        console.log(err)
+      }
+    })		
+	},
+	goToActivity: function(id) {
+		console.log(id)
+		let url = id ? `/pages/activity/detail?id=${id}` : '/pages/activity/activity' 
+		wx.navigateTo({
+      url: url,
+	    success:function(){
+	    },
+	    fail:function(){
+	    }
+    });	
 	},
 
 	/**
