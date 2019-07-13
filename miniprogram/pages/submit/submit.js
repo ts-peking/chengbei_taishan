@@ -26,11 +26,6 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		if (!options) {
-			this.setData({
-				submitCheck: false
-			})
-		}
 	},
 	// todo：全局封装setData
 	bindDataChange:function(e) {
