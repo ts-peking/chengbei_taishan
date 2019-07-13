@@ -2,8 +2,8 @@
 	<block>
 		<view class="submit-content">
 			<view class="submit-item submit-logo">
-				<view class="submit-item-image">
-					<view class="submit-item-addIcon">点击添加一张封面图</view>
+				<view class="submit-item-image" bindtap="addImage">
+					<view class="submit-item-addIcon">点击添加封面图下版本再做</view>
 				</view>
 				<!-- <view>VS</view>
 				<view class="submit-item-image"></view> -->
@@ -79,11 +79,11 @@
 			</view>	 -->
 			<view class="submit-item">
 				<view class="submit-item-title">联系方式</view>
-				<input bindinput="bindDataChange" data-params="creatorPhone" placeholder="请输入主办人联系方式" class="submit-item-panel" disabled="{{submitCheck}}"></input>
+				<input bindinput="bindDataChange" data-params="creatorPhone" value="{{activityData.creatorPhone}}" placeholder="请输入主办人联系方式" class="submit-item-panel" disabled="{{submitCheck}}"></input>
 			</view>		
 			<view class="submit-item submit-desc">
 				<view class="submit-item-title">备注</view>
-				<textarea bindinput="bindDataChange" data-params="description" placeholder="请填写活动相关备注" class="submit-item-textarea" disabled="{{submitCheck}}"></textarea>
+				<textarea bindinput="bindDataChange" data-params="description" value="{{activityData.description}}" placeholder="请填写活动相关备注" class="submit-item-textarea" disabled="{{submitCheck}}"></textarea>
 			</view>
 		</view>
 		<block wx:if="{{submitCheck}}">

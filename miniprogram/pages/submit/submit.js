@@ -28,6 +28,7 @@ Page({
 			})
 		}
 	},
+	// todo：全局封装setData
 	bindDataChange:function(e) {
 		let params = e.currentTarget.dataset.params
 		this.setData({
@@ -42,6 +43,12 @@ Page({
 	},
 	changeStatus: function(e) {
 		console.log(e.currentTarget.dataset);
+	},
+	addImage: function() {
+		wx.showModal({
+      title: '谁叫你点的，乱点什么。。呸。。',
+      showCancel: false,
+	  });			
 	},
 	submitActivity: function(e) {
 		console.log(this.data.activityData)
