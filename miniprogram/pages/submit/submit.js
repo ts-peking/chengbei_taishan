@@ -7,7 +7,6 @@ Page({
 	 * 页面的初始数据
 	 */
 	data:{
-		date: '2018-12-13',
 		submitCheck: false,//true不可发布活动，仅用于报名与查看; false可发布活动
 		activityData: {
 			title: '橙南VS橙北',
@@ -52,6 +51,7 @@ Page({
       data: this.data.activityData,
       success: function(resp) {
         console.log('submitActivity', resp)
+        self.addActivityLog(resp._id)
 				wx.showModal({
 		      content: '发布成功',
 		      cancelText: '查看活动',
@@ -65,7 +65,7 @@ Page({
 				      self.goToActivity(resp._id)
 				    }
 		      }
-			  })     
+			  })
       },
       fail: function(err) {
         wx.showToast({
@@ -76,8 +76,29 @@ Page({
       }
     })		
 	},
+	addActivityLog: function(id) {
+		console.log('logid', id)
+		let data = {
+      dbId: 'activityLog',
+      data: {
+        _id: id,
+        submit: [],
+        leave: [],
+        undetermined: []
+      }
+    }
+		wx.cloud.callFunction({
+      name: 'docadd',
+      data: data,
+      success: function (res) {
+        console.log('addlog', res)
+      },
+      fail:function(err){
+        console.error(err)
+      }
+    })
+	},
 	goToActivity: function(id) {
-		console.log(id)
 		let url = id ? `/pages/activity/detail?id=${id}` : '/pages/activity/activity' 
 		wx.navigateTo({
       url: url,
