@@ -64,13 +64,19 @@
     height: 80px;
     line-height: 80px;
 }
-.submit-play-list .play-item-title {
-    width: 15%;
+.submit-play-list .submit-play-info {
+    width: 14%;
+    height: 80px;
     float: left;
+}
+.submit-play-list .play-item-title {
+    display: block;
+    line-height: 40px;
+    width: 100%;
 }
 .submit-play-list .play-item-scroll {
     float: left;
-    width: 85%;
+    width: 86%;
     height: 80px;
     overflow:hidden;
     white-space:nowrap;

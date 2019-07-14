@@ -1,5 +1,5 @@
 <view class="submit">
-  <block>
+  <block wx:if="detailId">
     <view class="submit-content">
       <view class="submit-item submit-logo">
         <view class="submit-item-image">
@@ -46,9 +46,12 @@
     <block wx:if="{{submitCheck}}">
       <view class="submit-play-list">
         <view class="submit-play-item">
-          <view class="play-item-title">报名</view>
+          <view class="submit-play-info">
+            <view class="play-item-title">已报名</view>
+            <view class="play-item-title">{{activityLog.submit.length}}人</view>
+          </view>
           <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{9}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <block wx:for="{{activityLog.submit}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
                 <span class="scroll-item-img" style="background-color: red;"></span>
                 <span class="scroll-item-name">{{index+1}}</span>
@@ -59,9 +62,12 @@
       </view>
       <view class="submit-play-list">
         <view class="submit-play-item">
-          <view class="play-item-title">请假</view>
+          <view class="submit-play-info">
+            <view class="play-item-title">已请假</view>
+            <view class="play-item-title">{{activityLog.leave.length}}人</view>
+          </view>
           <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{3}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <block wx:for="{{activityLog.leave}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
                 <span class="scroll-item-img" style="background-color: red;"></span>
                 <span class="scroll-item-name">{{index+1}}</span>
@@ -72,9 +78,12 @@
       </view>
       <view class="submit-play-list">     
         <view class="submit-play-item">
-          <view class="play-item-title">待定</view>
+          <view class="submit-play-info">
+            <view class="play-item-title">待定</view>
+            <view class="play-item-title">{{activityLog.undetermined.length}}人</view>
+          </view>
           <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{2}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <block wx:for="{{activityLog.undetermined}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
                 <span class="scroll-item-img" style="background-color: red;"></span>
                 <span class="scroll-item-name">{{index+1}}</span>

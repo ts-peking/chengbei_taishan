@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data:{
-    detailId: '',
+    detailId: '13dba11c5d2b4091078d64010d194747',
     submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
     activityData: {
       title: '',
@@ -19,14 +19,19 @@ Page({
       activityNum: '',
       creatorPhone: '',
       description: '',
-    }
+    },
+    activityLog: {
+      leave: [],
+      submit: [],
+      undetermined: []
+    } 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log('options', options)
-    this.data.detailId = options.id
+    // this.data.detailId = options.id
     if (!options) {
       this.setData({
         submitCheck: false
@@ -54,6 +59,7 @@ Page({
   initActivityLog: function() {
     db.collection('activityLog').doc(this.data.detailId).get({
       success: function(res) {
+
         console.log('activityLog', res.data)
       },
       fail: function(err) {
@@ -64,15 +70,6 @@ Page({
   changeStatus: function(e) {
     let status = e.currentTarget.dataset.status
     console.log(status)
-    // let data = {
-    //   dbId: 'activityLog',
-    //   data: {
-    //     _id: this.data.detailId,
-    //     submit: [],
-    //     leave: [],
-    //     undetermined: []
-    //   }
-    // }
     let data = {
       dbId: 'activityLog',
       docId: this.data.detailId,
@@ -92,15 +89,6 @@ Page({
         console.error(err)
       }
     })     
-    // db.collection('activityLog').doc(this.data.detailId).set({
-    //   data: data,
-    //   success: function(resp) {
-    //     console.log('submitActivity', resp)
-    //   },
-    //   fail: function(err) {
-    //     console.log(err)
-    //   }
-    // })    
   },
   goToActivity: function(id) {
     console.log(id)
