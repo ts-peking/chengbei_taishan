@@ -10,7 +10,6 @@ const formatTime = date => {
 }
 
 const backformatTime = date => {
-  console.log(date)
   if (!date) { return }
   date = date.substring(0,16)
   date = date.replace(/-/g,'/')
