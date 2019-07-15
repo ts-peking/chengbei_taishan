@@ -1,3 +1,7 @@
+const util = require('../../utils/util.js')
+const app = getApp()
+const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
+
 Page({
 	data: {
     globalData: 'I am global data',
@@ -11,10 +15,10 @@ Page({
         'apply':'background-color: #f47920;',
         'registered':'background-color: #dfdfdf; color: #f47920;',
         'finished':'background-color: #dfdfdf; color: #fff;',
-        'underway':'background-color: #f47920;'            
+        'underway':'background-color: #f47920;'          
     },
     selectTab: 'play',
-    activityList: [
+    watchGameList: [
         {
             activityImg: '',
             activityName: '鲁能VS国安',
@@ -61,93 +65,76 @@ Page({
             activityStatus: 'finished',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中
         },
     ],
-    playList: [
-        {
-            playId: 123,
-            playName: '中国地质大学踢球局',
-            playLocation: '中国地质大学',
-            playPoi: '',//留作接入腾讯地图
-            playStartDate: 1543759535822,
-            playEndDate: 1543759535822,
-            playPrice: '100元',
-            playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
-        },
-        {
-            playId: 223,
-            playName: '中国地质大学踢球局',
-            playLocation: '中国地质大学',
-            playPoi: '',//留作接入腾讯地图
-            playStartDate: 1543759535822,
-            playEndDate: 1543759535822,
-            playPrice: '100元',
-            playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
-        },            
-        {
-            playId: 323,
-            playName: '中国地质大学踢球局',
-            playLocation: '中国地质大学',
-            playPoi: '',//留作接入腾讯地图
-            playStartDate: 1543759535822,
-            playEndDate: 1543759535822,
-            playPrice: '100元',
-            playStatus: 'apply',//报名状态：apply.可报名，registered，已报名，finished.已结束，underway.进行中                
-        }            
-    ],
+    activityList: [],
     pageSize: 10,
     pageNum: 1,
     status: '',
 	},
-  onLaunch: function () {
-  	
-  },
-  onShow: function () {
-	wx.setNavigationBarTitle({
-        title: "活动页面"
-    });     	
-      this.initPlayList();
-  },
-  onHide: function () {
-    	
+  onLoad: function () {
+  	wx.setNavigationBarTitle({
+      title: "活动页面"
+    })
+    this.initActivityList()
+    
   },
   initActivityList:function() {
-
-  },
-  initPlayList:function() {
-    var self = this;
-    var req = {
-      PageSize: this.data.pageSize,
-      PageNum: this.data.pageNum,
-      // status: this.status     //用作筛选  
-    }
-  },
-  selectMatch: function (e) {
-    this.setData({
-      selectTab : 'match'
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 2000
     })
-  },
-  selectPlay: function (e) {
-    this.setData({
-      selectTab : 'play'
-    })
-  },
-  goPlayDetail:function(e) {
-    var playId = e.currentTarget.dataset.item.activityId
-    wx.navigateTo({
-      url:'/pages/submit/submit?playId=' + playId,
-      success:function(){
+    let self = this
+    db.collection('activityList').limit(10).get({
+      success: function(res) {
+        let listData = res.data
+        listData.forEach(item => {
+          let status = self.initStatus(item)
+          item.status = status
+        })
+        self.setData({
+          activityList: [...listData]
+        })
+        wx.hideToast()
       },
-      fail:function(){
+      fail: function(err) {
+        console.log('error', err)
+        wx.hideToast()
       }
+    })    
+  },
+  initWatchGameList: function() {
+  },
+  initStatus: function(item) {
+    let startDate = `${item.startDate} ${item.startTime}`,
+        endDate = `${item.startDate} ${item.endTime}`,
+        currentDate = util.formatTime(new Date())
+    if (startDate > currentDate) { return 'apply' }
+    else if (currentDate > endDate) { return 'finished' }
+    else if (endDate > currentDate && currentDate > startDate) { return 'apply' }
+    else { return '' }    
+  },
+  initStatusBack: function(item) {
+    let startDate = `${item.startDate} ${item.startTime}`,
+        endDate = `${item.startDate} ${item.endTime}`,
+        startTimeStamp = util.backformatTime(startDate),
+        endTimeStamp = util.backformatTime(endDate),
+        currentStamp = new Date().getTime()
+    if (startTimestamp > currentStamp) { return 'apply' }
+    else if (currentStamp > endTimeStamp) { return 'finished' }
+    else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'apply' }
+    else { return '' }
+  },
+  bindSelectTab: function (e) {
+    let type = e.currentTarget.dataset.type
+    this.setData({
+      selectTab: type
     })
   },
   goActivityDetail:function(e) {
-    var activityId = e.currentTarget.dataset.item.activityId
+    let activityId = e.currentTarget.dataset.item._id
+    // console.log('/pages/activity/detail?id=' + activityId)
     wx.navigateTo({
-      url:'/pages/submit/submit?activityId=' + activityId,
-      success:function(){
-      },
-      fail:function(){
-      }
-    })         
-  }    
+      url:'/pages/activity/detail?id=' + activityId,
+    })      
+  },
 });

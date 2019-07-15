@@ -74,6 +74,18 @@
 	font-weight: bold;
 	text-align: center;
 }
+.activity-content .activity-none {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	text-align: center;
+	color: #888;
+	font-size: 20px;
+	font-weight: bold;
+}
 .play-content {
 	padding: 0 10px;
 	background-color: #fff;

@@ -1,18 +1,18 @@
 <view class="activity">
 	<view class="activity-tab">
-		<view class="tab-item {{selectTab=='match' ? 'tab-item-active' : ''}}" bindtap="selectMatch">
-			<span>看球</span>
-			<span class="active-border" wx:if="{{selectTab=='match'}}"></span>
-		</view>
-		<view class="tab-item {{selectTab=='play' ? 'tab-item-active' : ''}}" bindtap="selectPlay">
-			<span>踢球</span>
+		<view class="tab-item {{selectTab=='play' ? 'tab-item-active' : ''}}" bindtap="bindSelectTab" data-type="play">
+			<span>踢球够级泡马子</span>
 			<span class="active-border" wx:if="{{selectTab=='play'}}"></span>
+		</view>
+		<view class="tab-item {{selectTab=='match' ? 'tab-item-active' : ''}}" bindtap="bindSelectTab" data-type="match">
+			<span>看球喝酒呲牛逼</span>
+			<span class="active-border" wx:if="{{selectTab=='match'}}"></span>
 		</view>
 	</view>
 	<block wx:if="{{selectTab=='match'}}">
-		<view class="activity-content">
-			<block wx:for="{{activityList}}" wx:key="{{index}}" wx:for-item="item">
-				<view class="activity-item" data-item="{{item}}" bindtap="goActivityDetail">
+		<view class="activity-content" wx:if="{{false}}">
+			<block wx:for="{{watchGameList}}" wx:key="{{index}}" wx:for-item="item">
+				<view class="activity-item" data-item="{{item}}" bindtap="">
 					<view class="item-image"></view>
 					<view class="item-info">
 						<span class="item-info-name">观赛: {{item.activityName}}</span>
@@ -24,18 +24,22 @@
 				</view>
 			</block>
 		</view>
+		<view class="activity-content" wx:if="{{true}}">
+			<block>
+				<view class="activity-none"><text>看球还在开发中，别急慌\n如果您也想参与开发，请微信联系\n鲁能泰山北京球迷会1311会员</text></view>
+			</block>
+		</view>		
 	</block>
 	<block wx:if="{{selectTab=='play'}}">
 		<view class="play-content">
-			<block wx:for="{{playList}}" wx:key="{{index}}" wx:for-item="item">
-				<view class="play-item" data-item="{{item}}" bindtap="goPlayDetail">
-					<span class="item-info-panel"><span class="name-title">名称: </span>{{item.activityName}}</span>
-					<span class="item-info-name"><span class="name-title">对阵双方: </span>{{item.homeTeam}}VS{{item.visitingTeam}}</span>
-					<span class="item-info-name"><span class="name-title">地点: </span>{{item.activityLocation}}</span>
-					<span class="item-info-name"><span class="name-title">开始时间: </span>{{item.activityBeginTime}}</span>
-					<span class="item-info-panel"><span class="name-title">结束时间: </span>{{item.activityEndTime}}</span>
-					<span class="item-info-panel"><span class="name-title">费用: </span>{{item.activityCost}}</span>
-					<span class="item-info-status" style="{{statusClassMap[item.activityStatus]}}">{{statusMap[item.activityStatus]}}</span>
+			<block wx:for="{{activityList}}" wx:key="{{index}}" wx:for-item="item">
+				<view class="play-item" data-item="{{item}}" bindtap="goActivityDetail">
+					<span class="item-info-panel"><span class="name-title">名称: </span>{{item.title}}</span>
+					<span class="item-info-name"><span class="name-title">地点: </span>{{item.location}}</span>
+					<span class="item-info-name"><span class="name-title">开始时间: </span>{{item.startDate}}  {{item.startTime}}</span>
+					<span class="item-info-panel"><span class="name-title">结束时间: </span>{{item.startDate}}  {{item.endTime}}</span>
+					<span class="item-info-panel"><span class="name-title">费用: </span>{{item.price}}</span>
+					<span class="item-info-status" style="{{statusClassMap[item.status]}}">{{statusMap[item.status]}}</span>
 				</view>
 			</block>			
 		</view>

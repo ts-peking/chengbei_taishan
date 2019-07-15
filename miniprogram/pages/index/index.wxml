@@ -8,7 +8,6 @@
         </block>
     </view>
     <view class="usermotto">
-        <!-- <text>{{motto}}</text> -->
         <text class="user-motto" wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
         <text class="user-slogan">我们是永不倒的泰山</text>
     </view>
