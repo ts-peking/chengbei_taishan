@@ -18,6 +18,7 @@ Page({
 			activityNum: '100人',
 			creatorPhone: 18512345678,
 			description: '这是备注',
+			submitTime: new Date().getTime()
 		}
 	},
 

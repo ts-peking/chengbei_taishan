@@ -73,6 +73,7 @@
     display: block;
     line-height: 40px;
     width: 100%;
+    text-align: center;
 }
 .submit-play-list .play-item-scroll {
     float: left;
