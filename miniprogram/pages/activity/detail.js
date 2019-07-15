@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data:{
-    detailId: '13dba11c5d2b4091078d64010d194747',
+    detailId: '', // 13dba11c5d2b4091078d64010d194747
     submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
     activityData: {
       title: '',
@@ -31,7 +31,7 @@ Page({
    */
   onLoad: function (options) {
     console.log('options', options)
-    // this.data.detailId = options.id
+    this.data.detailId = options.id
     if (!options) {
       this.setData({
         submitCheck: false

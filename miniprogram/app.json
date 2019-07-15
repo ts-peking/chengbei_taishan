@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/activity/detail",
     "pages/submit/submit",
     "pages/login/login",
     "pages/logs/logs",
-    "pages/activity/activity",
     "pages/index/index"
   ],
   "window": {
