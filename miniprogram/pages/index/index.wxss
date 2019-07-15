@@ -39,6 +39,7 @@ button {
 	height: 40px;
 	line-height: 40px;
 	padding: 0 10px;
+    margin-bottom: 20px;
 	box-sizing: border-box;
 	font-size: 14px;
 	font-weight: bold;
