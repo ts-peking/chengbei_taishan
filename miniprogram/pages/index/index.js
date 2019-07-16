@@ -4,7 +4,6 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -56,11 +55,12 @@ Page({
   },
   goLogin: function(e) {
     wx.navigateTo({
-      url:'/pages/login/login',
-      success:function(){
-      },
-      fail:function(){
-      }
+      url:'/pages/login/login'
     });    
+  },
+  goActivityList: function() {
+    wx.navigateTo({
+      url: '/pages/activity/activity'
+    })
   }
 })

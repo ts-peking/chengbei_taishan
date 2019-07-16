@@ -11,8 +11,8 @@
     <text class="user-motto" wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
     <text class="user-slogan">我们是永不倒的泰山</text>
   </view>
-  <view class="submitpage" bindtap="goLogin">
-    <button wx:if="{{hasUserInfo}}"> 点击完善个人信息 </button>
-    <button> 查看活动列表 </button>
+  <view class="submitpage">
+    <button wx:if="{{hasUserInfo}}"  bindtap="goLogin"> 点击完善个人信息 </button>
+    <button bindtap="goActivityList"> 查看活动列表 </button>
   </view>
 </view>
