@@ -44,4 +44,7 @@
 			</block>			
 		</view>
 	</block>
+	<block>
+		<icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
+	</block>
 </view>

@@ -29,3 +29,14 @@ input {
 button::after {
   border: none;
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1072169 */
+  src: url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.eot');
+  src: url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.svg#iconfont') format('svg');
+}
+@import 'assets/iconfont.wxss'

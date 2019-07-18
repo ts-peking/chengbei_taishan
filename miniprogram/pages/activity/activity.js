@@ -88,6 +88,25 @@ Page({
     else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'apply' }
     else { return '' }
   },
+  editActivity: function () {
+    let editType = this.data.selectTab
+    switch (editType) {
+      case 'play': {
+        console.log(editType)
+        break
+      }
+      case 'match': {
+        wx.showModal({
+          title: '发布活动',
+          content: '发布观球活动暂未开发',
+          showCancel: false
+        })
+        break
+      }
+      default: {
+      }
+    }
+  },
   bindSelectTab: function (e) {
     let type = e.currentTarget.dataset.type
     this.setData({
