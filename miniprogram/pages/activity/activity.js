@@ -113,11 +113,16 @@ Page({
       selectTab: type
     })
   },
+  goLogin:function(e) {
+    wx.navigateTo({
+      url:'/pages/login/login',
+    })
+  },
   goActivityDetail:function(e) {
     let activityId = e.currentTarget.dataset.item._id
     // console.log('/pages/activity/detail?id=' + activityId)
     wx.navigateTo({
       url:'/pages/activity/detail?id=' + activityId,
-    })      
+    })
   },
 });

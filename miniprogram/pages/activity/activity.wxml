@@ -41,10 +41,11 @@
 					<span class="item-info-panel"><span class="name-title">费用: </span>{{item.price}}</span>
 					<span class="item-info-status" style="{{statusClassMap[item.status]}}">{{statusMap[item.status]}}</span>
 				</view>
-			</block>			
+			</block>
 		</view>
 	</block>
 	<block>
+		<icon class="iconfont iconadd-staff login-icon" bindtap="goLogin"></icon>
 		<icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
 	</block>
 </view>
