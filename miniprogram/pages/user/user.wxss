@@ -1,3 +1,48 @@
 .user {
-  color: red;
+  height: 100%;
+  background-color: #e8e8e8;
+}
+.user .user-info {
+  position: relative;
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+.user .user-info-infos {
+  
+}
+.user .user-info-infos text{
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+  font-weight: bold;
+  font-size: 14px;
+}
+.user .user-info-avatar {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.user .user-target {
+}
+.user .user-target .user-target-item {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+  background-color: #fff;
+}
+.user-target .user-target-item icon {
+  float: right;
+  font-size: 10px;
+  font-weight: normal;
 }
