@@ -16,7 +16,7 @@ Page({
   },
   onLoad: function () {
     wx.setNavigationBarTitle({
-        title: "永不倒的泰山"
+      title: "永不倒的泰山"
     });     
     if (app.globalData.userInfo) {
       this.setData({
@@ -56,7 +56,7 @@ Page({
   goLogin: function(e) {
     wx.navigateTo({
       url:'/pages/login/login'
-    });    
+    })
   },
   goActivityList: function() {
     wx.navigateTo({
