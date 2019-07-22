@@ -35,7 +35,7 @@ Page({
     noMoreList: false
 	},
   onLoad: function() {
-  	wx.setNavigationBarTitle({
+    wx.setNavigationBarTitle({
       title: "活动页面"
     })
     this.initActivityList()
@@ -51,7 +51,6 @@ Page({
       duration: 2000
     })
     let self = this
-    console.log(this.data.pageSize * this.data.pageNum)
     db.collection('activityList').limit(this.data.pageSize).skip(this.data.pageSize * this.data.pageNum).orderBy('submitTime', 'desc').get({
       success: function(res) {
         let listData = res.data
@@ -97,7 +96,9 @@ Page({
     let editType = this.data.selectTab
     switch (editType) {
       case 'play': {
-        console.log(editType)
+        // wx.redirectTo({
+        //   url: '/pages/submit/submit?editType=' + editType
+        // })
         wx.navigateTo({
           url:'/pages/submit/submit?editType=' + editType,
         })
