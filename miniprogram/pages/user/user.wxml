@@ -9,8 +9,8 @@
     <image class="user-info-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
   </view>
   <view class="user-target">
-    <view class="user-target-item">我的发布<icon class="iconfont iconxiangyou"></icon></view>
-    <view class="user-target-item">个人资料<icon class="iconfont iconxiangyou"></icon></view>
+    <view class="user-target-item">我的发布<icon class="iconfont iconxiangyou" bindtap="myActivity"></icon></view>
+    <view class="user-target-item">个人资料<icon class="iconfont iconxiangyou" bindtap="editInfo"></icon></view>
     <view class="user-target-item">我的球队<icon class="iconfont iconxiangyou"></icon></view>
     <view class="user-target-item">协会公告<icon class="iconfont iconxiangyou"></icon></view>
   </view>
