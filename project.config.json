@@ -8,6 +8,7 @@
 		"minified": true,
 		"newFeature": true
 	},
+	"version": "1.1.0",
 	"appid": "wx5771464a2baf6180",
 	"projectname": "chengbei_taishan",
 	"libVersion": "2.4.0",

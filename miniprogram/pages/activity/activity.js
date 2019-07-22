@@ -4,7 +4,6 @@ const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化�
 
 Page({
 	data: {
-    globalData: 'I am global data',
     statusMap: {
         'apply':'可报名',
         'registered':'已报名',
@@ -15,7 +14,7 @@ Page({
         'apply':'background-color: #f47920;',
         'registered':'background-color: #dfdfdf; color: #f47920;',
         'finished':'background-color: #dfdfdf; color: #fff;',
-        'underway':'background-color: #f47920;'          
+        'underway':'background-color: #f47920;'     
     },
     selectTab: 'play',
     watchGameList: [
@@ -31,15 +30,19 @@ Page({
     ],
     activityList: [],
     pageSize: 10,
-    pageNum: 1,
+    pageNum: 0,
     status: '',
+    noMoreList: false
 	},
-  onLoad: function () {
+  onLoad: function() {
   	wx.setNavigationBarTitle({
       title: "活动页面"
     })
     this.initActivityList()
-    
+  },
+  onReachBottom: function() {
+    this.data.pageNum++
+    this.initActivityList()
   },
   initActivityList:function() {
     wx.showToast({
@@ -48,7 +51,8 @@ Page({
       duration: 2000
     })
     let self = this
-    db.collection('activityList').limit(10).get({
+    console.log(this.data.pageSize * this.data.pageNum)
+    db.collection('activityList').limit(this.data.pageSize).skip(this.data.pageSize * this.data.pageNum).orderBy('submitTime', 'desc').get({
       success: function(res) {
         let listData = res.data
         listData.forEach(item => {
@@ -56,8 +60,9 @@ Page({
           item.status = status
         })
         self.setData({
-          activityList: [...listData]
+          activityList: [...self.data.activityList, ...listData]
         })
+        console.log(self.data.activityList)
         wx.hideToast()
       },
       fail: function(err) {
@@ -93,6 +98,9 @@ Page({
     switch (editType) {
       case 'play': {
         console.log(editType)
+        wx.navigateTo({
+          url:'/pages/submit/submit?editType=' + editType,
+        })
         break
       }
       case 'match': {
@@ -103,8 +111,7 @@ Page({
         })
         break
       }
-      default: {
-      }
+      default: {}
     }
   },
   bindSelectTab: function (e) {
