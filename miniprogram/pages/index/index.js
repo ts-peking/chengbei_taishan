@@ -47,7 +47,6 @@ Page({
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
-    console.log('userInfo', app.globalData.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
@@ -55,7 +54,7 @@ Page({
   },
   goLogin: function(e) {
     wx.navigateTo({
-      url:'/pages/login/login'
+      url:'/pages/user/user'
     })
   },
   goActivityList: function() {

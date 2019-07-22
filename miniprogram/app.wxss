@@ -39,4 +39,4 @@ button::after {
   url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_1072169_ybxw84vsx7m.svg#iconfont') format('svg');
 }
-@import 'assets/iconfont.wxss'
+@import 'assets/wxss/iconfont.wxss'

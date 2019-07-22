@@ -2,9 +2,9 @@
   <view class="user-info">
     <view class="user-info-infos">
       <text class="userinfo-nickname" decode="{{true}}">微信昵称:&nbsp;{{userInfo.nickName}}</text>
-      <text class="userinfo-realname" decode="{{true}}">真实姓名:&nbsp;测试姓名</text>
-      <text class="userinfo-vipid" decode="{{true}}">会员号&nbsp;&nbsp;&nbsp;:&nbsp;123</text>
-      <text class="userinfo-vipid" decode="{{true}}">所属分队:&nbsp;泰山橙北</text>
+      <text class="userinfo-realname" decode="{{true}}">真实姓名:&nbsp;{{personalInfo.realName}}</text>
+      <text class="userinfo-vipid" decode="{{true}}">会员号&nbsp;&nbsp;&nbsp;:&nbsp;{{personalInfo.vipId}}</text>
+      <text class="userinfo-vipid" decode="{{true}}">所属分队:&nbsp;{{teamIdMap[personalInfo.selectTeamId]}}</text>
     </view>
     <image class="user-info-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
   </view>

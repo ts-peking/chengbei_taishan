@@ -38,10 +38,23 @@ App({
       wx.cloud.init({
         traceUser: true,
       })
+      // 获取openId
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          this.globalData.openid = res.result.openid
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+        }
+      })      
     }
   },
   globalData: {
     userInfo: null,
+    openid: null,
     databaseEnv: 'taishanchengbei', // 全局云数据库环境ID  测试环境 'taishanchengbei' 生产环境 ''
   }
 })

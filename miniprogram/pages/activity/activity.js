@@ -123,7 +123,7 @@ Page({
   },
   goLogin:function(e) {
     wx.navigateTo({
-      url:'/pages/login/login',
+      url:'/pages/user/user',
     })
   },
   goActivityDetail:function(e) {

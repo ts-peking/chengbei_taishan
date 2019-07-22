@@ -12,7 +12,7 @@
     <text class="user-slogan">我们是永不倒的泰山</text>
   </view>
   <view class="submitpage">
-    <button wx:if="{{hasUserInfo}}" bindtap="goLogin"> 点击完善个人信息 </button>
+    <button wx:if="{{hasUserInfo}}" bindtap="goLogin"> 点击进入个人中心 </button>
     <button wx:if="{{hasUserInfo}}" bindtap="goActivityList"> 查看活动列表 </button>
   </view>
 </view>
