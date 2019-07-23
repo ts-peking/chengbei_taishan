@@ -38,6 +38,7 @@ Page({
     wx.setNavigationBarTitle({
       title: "活动页面"
     })
+    wx.hideShareMenu()
     this.initActivityList()
   },
   onReachBottom: function() {
