@@ -48,8 +48,7 @@ Page({
   initActivityList:function() {
     wx.showToast({
       title: '加载中',
-      icon: 'loading',
-      duration: 2000
+      icon: 'loading'
     })
     let self = this
     db.collection('activityList').limit(this.data.pageSize).skip(this.data.pageSize * this.data.pageNum).orderBy('submitTime', 'desc').get({
