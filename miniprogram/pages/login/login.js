@@ -1,15 +1,17 @@
 const app = getApp();
 const util = require('../../utils/util.js');
 const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
+// todo: 这个页面是很早以前写的，逻辑有些混乱，我也不愿改了
 
 Page({
 	data: {
 		avator: '',
 		realName: '',
-		sex: [{ value: '男', checked: true},{ value: '女', checked: false},{ value: '其他', checked: false}],
+		sex: [{ value: '男', checked: false},{ value: '女', checked: false},{ value: '其他', checked: false}],
 		selectSex: '男',
-		teamArray: ['泰山橙北', '泰山橙南', '泰山橙通', '泰山壹柒', '泰山零八', '其他'],
+		teamArray: ['其他', '泰山橙北', '泰山橙南', '泰山橙通', '泰山壹柒', '泰山零八'],
 		selectTeam: '泰山橙北',
+    selectTeamIndex: 0,
 		teamIdMap: {
 			'泰山橙北' : 1,
 			'泰山橙南' : 2,
@@ -21,39 +23,81 @@ Page({
 		selectTeamId: 0,
 		vipId: '',
 		personalCardId: '',
-	    index: 0
+		editUserInfo: false
 	},
-	onLoad: function () {
+	onLoad: function (options) {
 		wx.setNavigationBarTitle({
 	    title: "完善个人信息"
-		});		
+		})
 		this.setData({
+      openId: app.globalData.openid,
       userInfo: app.globalData.userInfo,
+      hasUserInfo: true
     })
-  	console.log(app);
-  },	
+    if (options && options.openId) {
+    	this.setData({
+    		editUserInfo: true
+    	})
+    	this.initUserInfo()
+    }
+  },
 	changeAvator:function() {
 		wx.showModal({
       title: '谁叫你点的，乱点什么。。呸。。',
-      showCancel: false,
-	  });		
+      showCancel: false
+	  })
+	},
+	initUserInfo: function() {
+		if (!this.data.hasUserInfo) { console.log('未获得授权'); return }
+    let self = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+    })
+		db.collection('userinfo').where({ _openid: this.data.openId}).get({
+      success: function(res) {
+        console.log(res.data)
+        self.setData({
+          personalCardId: res.data[0].personalCardId,
+          realName: res.data[0].realName,
+          vipId: res.data[0].vipId,
+          selectTeamIndex: res.data[0].selectTeamId,
+          selectSex: res.data[0].sex
+        })
+        let sexArr = self.data.sex
+        sexArr.forEach(item => {
+        	if (item.value == res.data[0].sex) {
+        		item.checked = true
+        	}
+        })
+        self.setData({
+        	sex: sexArr
+        })
+        console.log(self.data.sex)
+        wx.hideToast()
+      },
+      fail: function(err) {
+        console.log('error', err)
+        wx.hideToast()
+      }
+    })		
 	},
 	// 收集用户信息
 	finishUserInfo:function() {
 		let self = this
 		let params = {
 			userInfo: this.data.userInfo,
-		  	realName: this.data.realName,
-		  	sex: this.data.selectSex,
-		  	selectTeamId: this.data.teamIdMap[this.data.selectTeam],
-		  	vipId: this.data.vipId,
-		  	personalCardId: this.data.personalCardId
+	  	realName: this.data.realName,
+	  	sex: this.data.selectSex,
+	  	selectTeamId: this.data.teamIdMap[this.data.selectTeam],
+	  	vipId: this.data.vipId,
+	  	personalCardId: this.data.personalCardId
 		}
 		console.log(params)
 		
 		wx.showModal({
       title: '确认信息无误提交？',
-      content: '会员号信息填写后无法更改，请确认填写正确',
+      content: '会员部分信息填写后无法更改，请确认填写正确',
       success (res) {
 		    if (res.confirm) {
 	        self.sendUserInfo(params)
@@ -110,7 +154,7 @@ Page({
 	},
 	bindPickerChange:function(e) {
 		this.setData({
-			index: e.detail.value,
+			selectTeamIndex: e.detail.value,
 			selectTeam: this.data.teamArray[e.detail.value]
 		})
 	},

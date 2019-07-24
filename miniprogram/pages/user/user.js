@@ -7,6 +7,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     personalInfo: {},
+    openId: '',
     teamIdMap: ['其他', '泰山橙北', '泰山橙南', '泰山橙通', '泰山壹柒', '泰山零八'],
   },
 
@@ -22,11 +23,10 @@ Page({
   },
   initUserInfo:function() {
     if (!this.data.hasUserInfo) { console.log('未获得授权'); return }
-    let self = this 
+    let self = this
     wx.showToast({
       title: '加载中',
       icon: 'loading',
-      duration: 2000
     })
     console.log(this.data.openId)
     db.collection('userinfo').where({ _openid: this.data.openId}).get({
@@ -50,9 +50,8 @@ Page({
     })    
   },
   editInfo:function() {
-    return
     wx.navigateTo({
-      url:'/pages/login/login'
+      url:'/pages/login/login?openId=' + this.data.openId
     })
   }
 })
