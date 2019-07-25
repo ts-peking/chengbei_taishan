@@ -36,7 +36,7 @@ Page({
     })
     if (options && options.openId) {
     	this.setData({
-    		editUserInfo: true
+    		editUserInfo: false
     	})
     	this.initUserInfo()
     }
