@@ -62,7 +62,7 @@
   border-radius: 50%;
   box-shadow: 0 8px 15px 0 rgba(255, 127, 36, .3);  
 }
-.login-icon {
+.soccer-icon {
   position: fixed;
   bottom: 90px;
   right: 20px;

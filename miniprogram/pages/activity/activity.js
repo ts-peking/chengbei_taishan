@@ -32,7 +32,8 @@ Page({
     pageSize: 10,
     pageNum: 0,
     status: '',
-    noMoreList: false
+    noMoreList: false,
+    touchMove: false
 	},
   onLoad: function() {
     wx.setNavigationBarTitle({
@@ -82,17 +83,27 @@ Page({
     else if (endDate > currentDate && currentDate > startDate) { return 'underway' }
     else { return '' }    
   },
-  initStatusBack: function(item) {
-    let startDate = `${item.startDate} ${item.startTime}`,
-        endDate = `${item.startDate} ${item.endTime}`,
-        startTimeStamp = util.backformatTime(startDate),
-        endTimeStamp = util.backformatTime(endDate),
-        currentStamp = new Date().getTime()
-    if (startTimestamp > currentStamp) { return 'apply' }
-    else if (currentStamp > endTimeStamp) { return 'finished' }
-    else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'underway' }
-    else { return '' }
+  bindTouchMove:function() {
+    this.setData({
+      touchMove: true
+    })
   },
+  bindTouchEnd:function() {
+    this.setData({
+      touchMove: false
+    })
+  },
+  // initStatusBack: function(item) {
+  //   let startDate = `${item.startDate} ${item.startTime}`,
+  //       endDate = `${item.startDate} ${item.endTime}`,
+  //       startTimeStamp = util.backformatTime(startDate),
+  //       endTimeStamp = util.backformatTime(endDate),
+  //       currentStamp = new Date().getTime()
+  //   if (startTimestamp > currentStamp) { return 'apply' }
+  //   else if (currentStamp > endTimeStamp) { return 'finished' }
+  //   else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'underway' }
+  //   else { return '' }
+  // },
   editActivity: function () {
     let editType = this.data.selectTab
     switch (editType) {

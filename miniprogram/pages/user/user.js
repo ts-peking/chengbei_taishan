@@ -42,7 +42,7 @@ Page({
         console.log('error', err)
         wx.hideToast()
       }
-    })    
+    })
   },
   goIndex:function() {
     wx.navigateTo({
@@ -54,11 +54,16 @@ Page({
       url:'/pages/activity/activity',
     })
   },
+  editActivity:function() {
+    wx.navigateTo({
+      url:'/pages/submit/submit',
+    })    
+  },
   myActivity:function() {
     return
     wx.navigateTo({
       url:'/pages/login/login'
-    })    
+    })
   },
   editInfo:function() {
     wx.navigateTo({

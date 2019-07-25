@@ -1,4 +1,4 @@
-<view class="activity">
+<view class="activity" bindtouchmove="bindTouchMove" bindtouchend="bindTouchEnd">
 	<view class="activity-tab">
 		<view class="tab-item {{selectTab=='play' ? 'tab-item-active' : ''}}" bindtap="bindSelectTab" data-type="play">
 			<span>踢球够级泡马子</span>
@@ -45,8 +45,10 @@
 		</view>
 	</block>
 	<block>
-		<icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
-		<icon class="iconfont iconadd-staff login-icon" bindtap="goLogin"></icon>
-		<icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
+		<view id="sideBar" class="side-bar {{touchMove ? 'side-bar-active' : ''}}">
+			<icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
+			<icon class="iconfont iconadd-staff login-icon" bindtap="goLogin"></icon>
+			<icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
+		</view>
 	</block>
 </view>

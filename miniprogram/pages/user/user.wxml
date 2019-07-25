@@ -11,12 +11,12 @@
   <view class="user-target">
     <view class="user-target-item" bindtap="myActivity">我的发布<icon class="iconfont iconxiangyou"></icon></view>
     <view class="user-target-item" bindtap="editInfo">个人资料<icon class="iconfont iconxiangyou"></icon></view>
-    <view class="user-target-item">我的球队<icon class="iconfont iconxiangyou"></icon></view>
-    <view class="user-target-item">协会公告<icon class="iconfont iconxiangyou"></icon></view>
+    <view class="user-target-item">我的球队(暂未开发)<icon class="iconfont iconxiangyou"></icon></view>
+    <view class="user-target-item">协会公告(暂未开发)<icon class="iconfont iconxiangyou"></icon></view>
   </view>
   <block>
     <icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
-    <icon class="iconfont iconzuqiu login-icon" bindtap="goActivity"></icon>
+    <icon class="iconfont icongengxinshijian soccer-icon" bindtap="goActivity"></icon>
     <icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
   </block>  
 </view>

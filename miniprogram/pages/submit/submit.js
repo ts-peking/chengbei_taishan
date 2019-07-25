@@ -11,7 +11,7 @@ Page({
 		activityData: {
 			title: '',
 			location: '',
-			startDate: '',
+			startDate: util.formatTime(new Date()).substring(0,10),
 			startTime: '14:00',
 			endTime: '18:00',
 			price: '',

@@ -14,6 +14,10 @@
   content: "\e618";
 }
 
+.iconzuqiu-copy:before {
+  content: "\e619";
+}
+
 .iconfenxiang:before {
   content: "\e62c";
 }

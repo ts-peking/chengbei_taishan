@@ -17,6 +17,13 @@
 	position: relative;
 	color: #f47920;
 }
+.side-bar {
+	opacity: 1;
+	transition: opacity 0.3s ease-out;
+}
+.side-bar-active {
+	opacity: 0!important;
+}
 .index-icon {
 	position: fixed;
 	bottom: 160px;
