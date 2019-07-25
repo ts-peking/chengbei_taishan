@@ -70,6 +70,10 @@
   content: "\e629";
 }
 
+.iconzuqiu:before {
+  content: "\e600";
+}
+
 .iconxiaoxi:before {
   content: "\e637";
 }

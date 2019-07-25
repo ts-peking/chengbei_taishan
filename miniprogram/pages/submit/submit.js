@@ -9,15 +9,15 @@ Page({
 	data:{
 		submitCheck: false,//true不可发布活动，仅用于报名与查看; false可发布活动
 		activityData: {
-			title: '橙南VS橙北',
-			location: '中国地质大学',
-			startDate: '2019-06-24',
-			startTime: '16:00',
+			title: '',
+			location: '',
+			startDate: '',
+			startTime: '14:00',
 			endTime: '18:00',
-			price: 'AA制',
-			activityNum: '100人',
-			creatorPhone: 18512345678,
-			description: '这是备注',
+			price: '',
+			activityNum: '',
+			creatorPhone: null,
+			description: '',
 			submitTime: new Date().getTime()
 		}
 	},

@@ -48,7 +48,8 @@ Page({
   initActivityList:function() {
     wx.showToast({
       title: '加载中',
-      icon: 'loading'
+      icon: 'loading',
+      mask: true
     })
     let self = this
     db.collection('activityList').limit(this.data.pageSize).skip(this.data.pageSize * this.data.pageNum).orderBy('submitTime', 'desc').get({
@@ -78,7 +79,7 @@ Page({
         currentDate = util.formatTime(new Date())
     if (startDate > currentDate) { return 'apply' }
     else if (currentDate > endDate) { return 'finished' }
-    else if (endDate > currentDate && currentDate > startDate) { return 'apply' }
+    else if (endDate > currentDate && currentDate > startDate) { return 'underway' }
     else { return '' }    
   },
   initStatusBack: function(item) {
@@ -89,7 +90,7 @@ Page({
         currentStamp = new Date().getTime()
     if (startTimestamp > currentStamp) { return 'apply' }
     else if (currentStamp > endTimeStamp) { return 'finished' }
-    else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'apply' }
+    else if (endTimeStamp > currentStamp && currentStamp > startTimeStamp) { return 'underway' }
     else { return '' }
   },
   editActivity: function () {
@@ -121,6 +122,11 @@ Page({
       selectTab: type
     })
   },
+  goIndex:function() {
+    wx.navigateTo({
+      url:'/pages/index/index',
+    })    
+  },
   goLogin:function(e) {
     wx.navigateTo({
       url:'/pages/user/user',
@@ -128,7 +134,6 @@ Page({
   },
   goActivityDetail:function(e) {
     let activityId = e.currentTarget.dataset.item._id
-    // console.log('/pages/activity/detail?id=' + activityId)
     wx.navigateTo({
       url:'/pages/activity/detail?id=' + activityId,
     })

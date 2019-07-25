@@ -18,7 +18,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    }   
+    }
     this.initUserInfo() 
   },
   initUserInfo:function() {
@@ -27,6 +27,7 @@ Page({
     wx.showToast({
       title: '加载中',
       icon: 'loading',
+      mask: true
     })
     console.log(this.data.openId)
     db.collection('userinfo').where({ _openid: this.data.openId}).get({
@@ -42,6 +43,16 @@ Page({
         wx.hideToast()
       }
     })    
+  },
+  goIndex:function() {
+    wx.navigateTo({
+      url:'/pages/index/index',
+    })    
+  },
+  goActivity:function(e) {
+    wx.navigateTo({
+      url:'/pages/activity/activity',
+    })
   },
   myActivity:function() {
     return

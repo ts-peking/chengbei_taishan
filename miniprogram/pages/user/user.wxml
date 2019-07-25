@@ -14,4 +14,9 @@
     <view class="user-target-item">我的球队<icon class="iconfont iconxiangyou"></icon></view>
     <view class="user-target-item">协会公告<icon class="iconfont iconxiangyou"></icon></view>
   </view>
+  <block>
+    <icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
+    <icon class="iconfont iconzuqiu login-icon" bindtap="goActivity"></icon>
+    <icon class="iconfont iconbianji1 edit-icon" bindtap="editActivity"></icon>
+  </block>  
 </view>

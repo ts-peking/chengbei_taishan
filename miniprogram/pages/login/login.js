@@ -73,7 +73,6 @@ Page({
         self.setData({
         	sex: sexArr
         })
-        console.log(self.data.sex)
         wx.hideToast()
       },
       fail: function(err) {
@@ -82,8 +81,22 @@ Page({
       }
     })		
 	},
+	ruleValidate: function() {
+		if (!this.data.realName) { return '请填写真实姓名' }
+		if (!this.data.vipId) { return '请填写协会会员号' }
+		return false
+	},
 	// 收集用户信息
 	finishUserInfo:function() {
+		if (this.ruleValidate()) {
+			let errInfo = this.ruleValidate()
+			wx.showModal({
+	      title: '填写有误',
+	      content: errInfo,
+	      showCancel: false
+	    })
+	    return
+		}
 		let self = this
 		let params = {
 			userInfo: this.data.userInfo,
@@ -105,7 +118,7 @@ Page({
 	        console.log('用户点击取消')
 		    }
 			}
-    });
+    })
 	},
 	// 向云端数据库增加用户信息
 	sendUserInfo:function(params) {
@@ -114,7 +127,6 @@ Page({
 		  icon: 'loading',
 		  mask: true,
 		})
-
 		db.collection('userinfo').add({
       data: params,
       success: function(res) {
@@ -124,7 +136,6 @@ Page({
 				  mask: true,
 				  duration: 2000
 				})
-        console.log('getTestDataBase', res)
       },
       fail: function(err) {
 				wx.showToast({
@@ -132,10 +143,13 @@ Page({
 				  icon: 'fail',
 				  mask: true,
 				  duration: 2000
-				})         	
+				})
         console.log('error', err)
       }
     })
+		wx.redirectTo({
+			url: '/pages/user/user'
+		})
 	},
 	radioChange:function(e) {
 		this.setData({
