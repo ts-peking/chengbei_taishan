@@ -45,7 +45,23 @@ Page({
       showCancel: false,
 	  });			
 	},
+  ruleValidate: function() {
+    if (!this.data.activityData.title) { return '请填写活动名称' }
+    if (!this.data.activityData.location) { return '请填写活动地点' }
+    if (!this.data.activityData.startDate) { return '请填写活动时间' }
+    if (!this.data.activityData.creatorPhone) { return '请填写主办人联系方式' }
+    return false    
+  },
 	submitActivity: function(e) {
+    if (this.ruleValidate()) {
+      let errInfo = this.ruleValidate()
+      wx.showModal({
+        title: '填写有误',
+        content: errInfo,
+        showCancel: false
+      })
+      return
+    }    
 		let self = this
 		console.log(this.data.activityData)
 		db.collection('activityList').add({
