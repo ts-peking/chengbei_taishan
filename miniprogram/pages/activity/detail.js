@@ -24,17 +24,19 @@ Page({
       leave: [],
       submit: [],
       undetermined: []
-    } 
+    },
+    openId: '', 
+    personalInfo: {} 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options', options)
     this.data.detailId = options.id
     if (!options) {
       this.setData({
-        submitCheck: false
+        submitCheck: false,
+        openId: app.globalData.openid
       })
     }
     this.initDetailData()
@@ -59,7 +61,6 @@ Page({
   initActivityLog: function() {
     db.collection('activityLog').doc(this.data.detailId).get({
       success: function(res) {
-
         console.log('activityLog', res.data)
       },
       fail: function(err) {
@@ -67,14 +68,56 @@ Page({
       }
     })
   },
+  initUserInfo: function() {
+    let self = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true
+    })
+    console.log(this.data.openId)
+    db.collection('userinfo').where({ _openid: this.data.openId}).get({
+      success: function(res) {
+        if (res.data && res.data.length>0) {
+          self.setData({
+            personalInfo: res.data[0]
+          })
+          return true
+        }else {
+          wx.showModal({
+            title: '请填写个人资料',
+            content: '您暂未在小程序中提交个人资料，填写后才可报名',
+            confirmText: '前往填写',
+            success: function(res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url:'/pages/login/login'
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+                return false
+              }
+            }
+          })
+        }
+        wx.hideToast()
+      },
+      fail: function(err) {
+        console.log('error', err)
+        wx.hideToast()
+        return false
+      }
+    })    
+  },
   changeStatus: function(e) {
+    if (!this.initUserInfo()) { return }
     let status = e.currentTarget.dataset.status
     console.log(status)
     let data = {
       dbId: 'activityLog',
       docId: this.data.detailId,
       data: {
-        submit: [{data:123}],
+        submit: [],
         leave: [],
         undetermined: []
       }

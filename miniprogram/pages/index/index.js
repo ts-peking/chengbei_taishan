@@ -17,7 +17,7 @@ Page({
   onLoad: function () {
     wx.setNavigationBarTitle({
       title: "永不倒的泰山"
-    });     
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -46,6 +46,7 @@ Page({
     }
   },
   getUserInfo: function(e) {
+    if (e.detail && !e.detail.userInfo) { return }
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

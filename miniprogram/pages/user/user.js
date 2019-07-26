@@ -19,7 +19,7 @@ Page({
         hasUserInfo: true
       })
     }
-    this.initUserInfo() 
+    this.initUserInfo()
   },
   initUserInfo:function() {
     if (!this.data.hasUserInfo) { console.log('未获得授权'); return }

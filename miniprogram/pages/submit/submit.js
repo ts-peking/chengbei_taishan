@@ -43,7 +43,7 @@ Page({
 		wx.showModal({
       title: '谁叫你点的，乱点什么。。呸。。',
       showCancel: false,
-	  });			
+	  })
 	},
   ruleValidate: function() {
     if (!this.data.activityData.title) { return '请填写活动名称' }
@@ -63,11 +63,9 @@ Page({
       return
     }    
 		let self = this
-		console.log(this.data.activityData)
 		db.collection('activityList').add({
       data: this.data.activityData,
       success: function(resp) {
-        console.log('submitActivity', resp)
         self.addActivityLog(resp._id)
 				wx.showModal({
 		      content: '发布成功',
@@ -94,7 +92,6 @@ Page({
     })		
 	},
 	addActivityLog: function(id) {
-		console.log('logid', id)
 		let data = {
       dbId: 'activityLog',
       data: {
@@ -118,12 +115,8 @@ Page({
 	goToActivity: function(id) {
 		let url = id ? `/pages/activity/detail?id=${id}` : '/pages/activity/activity' 
 		wx.navigateTo({
-      url: url,
-	    success:function(){
-	    },
-	    fail:function(){
-	    }
-    });	
+      url: url
+    })	
 	},
 
 	/**

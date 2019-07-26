@@ -84,7 +84,7 @@ Page({
           title: '获取信息出错',
           content: '获取个人资料出错，请退出小程序后重新打开',
           showCancel: false
-        })        
+        })
       }
     })
 	},
