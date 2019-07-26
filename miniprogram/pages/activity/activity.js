@@ -1,6 +1,7 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
+// todo: 默认非必填数据展示问题
 
 Page({
 	data: {

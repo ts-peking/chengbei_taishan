@@ -34,12 +34,7 @@ Page({
       userInfo: app.globalData.userInfo,
       hasUserInfo: true
     })
-    if (options && options.openId) {
-    	this.setData({
-    		editUserInfo: false
-    	})
-    	this.initUserInfo()
-    }
+  	this.initUserInfo()
   },
 	changeAvator:function() {
 		wx.showModal({
@@ -53,33 +48,45 @@ Page({
     wx.showToast({
       title: '加载中',
       icon: 'loading',
+      mask: true
     })
 		db.collection('userinfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         console.log(res.data)
-        self.setData({
-          personalCardId: res.data[0].personalCardId,
-          realName: res.data[0].realName,
-          vipId: res.data[0].vipId,
-          selectTeamIndex: res.data[0].selectTeamId,
-          selectSex: res.data[0].sex
-        })
-        let sexArr = self.data.sex
-        sexArr.forEach(item => {
-        	if (item.value == res.data[0].sex) {
-        		item.checked = true
-        	}
-        })
-        self.setData({
-        	sex: sexArr
-        })
+        if (res.data && res.data.length>0) {
+          let sexArr = self.data.sex
+          sexArr.forEach(item => {
+          	if (item.value == res.data[0].sex) {
+          		item.checked = true
+          	}
+          })
+          self.setData({
+            personalCardId: res.data[0].personalCardId,
+            realName: res.data[0].realName,
+            vipId: res.data[0].vipId,
+            selectTeamIndex: res.data[0].selectTeamId,
+            selectSex: res.data[0].sex,
+          	sex: sexArr,
+            editUserInfo: false
+          })
+        }else {
+          console.log(1111)
+          self.setData({
+            editUserInfo: true
+          })
+        }
         wx.hideToast()
       },
       fail: function(err) {
         console.log('error', err)
         wx.hideToast()
+        wx.showModal({
+          title: '获取信息出错',
+          content: '获取个人资料出错，请退出小程序后重新打开',
+          showCancel: false
+        })        
       }
-    })		
+    })
 	},
 	ruleValidate: function() {
 		if (!this.data.realName) { return '请填写真实姓名' }
@@ -127,6 +134,7 @@ Page({
 		  icon: 'loading',
 		  mask: true,
 		})
+    if (true) {}
 		db.collection('userinfo').add({
       data: params,
       success: function(res) {

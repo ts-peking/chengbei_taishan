@@ -32,10 +32,26 @@ Page({
     console.log(this.data.openId)
     db.collection('userinfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
-        console.log(res.data)
-        self.setData({
-          personalInfo: res.data[0]
-        })
+        if (res.data && res.data.length>0) {
+          self.setData({
+            personalInfo: res.data[0]
+          })
+        }else {
+          wx.showModal({
+            title: '请填写个人资料',
+            content: '您暂未在小程序中提交个人资料，请及时提交',
+            confirmText: '前往填写',
+            success: function(res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url:'/pages/login/login'
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
         wx.hideToast()
       },
       fail: function(err) {
