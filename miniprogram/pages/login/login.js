@@ -23,7 +23,8 @@ Page({
 		selectTeamId: 0,
 		vipId: '',
 		personalCardId: '',
-		editUserInfo: false
+		editUserInfo: false,
+    docId: '',
 	},
 	onLoad: function (options) {
 		wx.setNavigationBarTitle({
@@ -34,6 +35,8 @@ Page({
       userInfo: app.globalData.userInfo,
       hasUserInfo: true
     })
+  },
+  onShow: function() {
   	this.initUserInfo()
   },
 	changeAvator:function() {
@@ -52,7 +55,6 @@ Page({
     })
 		db.collection('userinfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
-        console.log(res.data)
         if (res.data && res.data.length>0) {
           let sexArr = self.data.sex
           sexArr.forEach(item => {
@@ -67,12 +69,12 @@ Page({
             selectTeamIndex: res.data[0].selectTeamId,
             selectSex: res.data[0].sex,
           	sex: sexArr,
-            editUserInfo: false
+            editUserInfo: true,
+            docId: res.data[0]._id
           })
         }else {
-          console.log(1111)
           self.setData({
-            editUserInfo: true
+            editUserInfo: false
           })
         }
         wx.hideToast()
@@ -113,7 +115,6 @@ Page({
 	  	vipId: this.data.vipId,
 	  	personalCardId: this.data.personalCardId
 		}
-		console.log(params)
 		
 		wx.showModal({
       title: '确认信息无误提交？',
@@ -134,31 +135,56 @@ Page({
 		  icon: 'loading',
 		  mask: true,
 		})
-    if (true) {}
-		db.collection('userinfo').add({
-      data: params,
-      success: function(res) {
-				wx.showToast({
-				  title: '资料提交成功',
-				  icon: 'success',
-				  mask: true,
-				  duration: 2000
-				})
-      },
-      fail: function(err) {
-				wx.showToast({
-				  title: '资料提交失败',
-				  icon: 'fail',
-				  mask: true,
-				  duration: 2000
-				})
-        console.log('error', err)
+    let self = this
+    if (this.data.editUserInfo) {
+      let data = {
+        dbId: 'userinfo',
+        docId: this.data.docId,
+        data: params
       }
-    })
+      wx.cloud.callFunction({
+        name: 'docupdata',
+        data: data,
+        success: function (res) {
+          self.showSuccessToast()
+        },
+        fail:function(err){
+          console.error(err)
+          self.showFailToast()
+        }
+      })
+    }else {
+  		db.collection('userinfo').add({
+        data: params,
+        success: function(res) {
+  				self.showSuccessToast()
+        },
+        fail: function(err) {
+          console.log('error', err)
+          self.showFailToast()
+        }
+      })
+    }
 		wx.redirectTo({
 			url: '/pages/user/user'
 		})
 	},
+  showSuccessToast: function() {
+    wx.showToast({
+      title: '资料提交成功',
+      icon: 'success',
+      mask: true,
+      duration: 3000
+    })
+  },
+  showFailToast: function() {
+    wx.showToast({
+      title: '资料提交失败',
+      icon: 'fail',
+      mask: true,
+      duration: 3000
+    })    
+  },
 	radioChange:function(e) {
 		this.setData({
 			selectSex: e.detail.value

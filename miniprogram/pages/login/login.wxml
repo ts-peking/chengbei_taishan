@@ -37,7 +37,7 @@
     	</view>
   		<view class="form-item">
     		<span class="form-item-title">会员号(不可更改)</span>
-  			<input class="form-item-input" type="number" placeholder="请务必填写真实会员号"  value="{{vipId}}" bindinput="bindVipId" disabled="{{!editUserInfo}}"/>
+  			<input class="form-item-input" type="number" placeholder="请务必填写真实会员号"  value="{{vipId}}" bindinput="bindVipId" disabled="{{editUserInfo}}"/>
     	</view>
   		<view class="form-item">
     		<span class="form-item-title">身份证号</span>

@@ -73,7 +73,7 @@ Page({
   editActivity:function() {
     wx.navigateTo({
       url:'/pages/submit/submit',
-    })    
+    })
   },
   myActivity:function() {
     return
