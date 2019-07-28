@@ -93,7 +93,7 @@
         </view>         
       </view> 
     </block>
-    <block wx:if="{{submitCheck}}">
+    <block wx:if="{{submitCheck && hasUserInfo}}">
       <view class="submit-play-button">
         <view class="button-panel">
           <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="submit">报名</button>
@@ -102,6 +102,13 @@
           <button class="button-item button-item-cancel" wx-if="{{false}}">已请假</button>
           <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
           <button class="button-item button-item-cancel" wx-if="{{false}}">已待定</button>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="submit-play-button">
+        <view class="button-panel">
+          <button class="button-item" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行授权 </button>
         </view>
       </view>
     </block>

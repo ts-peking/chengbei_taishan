@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data:{
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    hasUserInfo: false,
     detailId: '', // 13dba11c5d2b4091078d64010d194747
     submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
     activityData: {
@@ -33,14 +35,65 @@ Page({
    */
   onLoad: function (options) {
     this.data.detailId = options.id
+    // 检查userInfo
+    if (app.globalData.userInfo) {
+      this.setData({
+        hasUserInfo: true
+      })
+    }else {
+      app.userInfoReadyCallback = res => {
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    }
+    // 检查openId
+    if (app.globalData.openid) {
+      this.setData({
+        openId: app.globalData.openid
+      })
+    }else {
+      this.getOpenId()
+    }
     if (!options) {
       this.setData({
         submitCheck: false,
-        openId: app.globalData.openid
       })
     }
     this.initDetailData()
     this.initActivityLog()
+  },
+  getUserInfo: function(e) {
+    if (e.detail && !e.detail.userInfo) { return }
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })   
+  },
+  getOpenId: function() {
+    if (app.globalData.openid) {
+      this.setData({
+        openId: app.globalData.openid
+      })
+    }
+    let self = this
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid detail: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        self.setData({
+          openId: app.globalData.openid
+        })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })    
   },
   // 初始化详情数据
   initDetailData: function() {
@@ -75,7 +128,7 @@ Page({
       icon: 'loading',
       mask: true
     })
-    console.log(this.data.openId)
+    console.log('openId', this.data.openId)
     db.collection('userinfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
