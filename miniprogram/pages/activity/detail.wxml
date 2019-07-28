@@ -53,8 +53,8 @@
           <scroll-view class="play-item-scroll" scroll-x="true">
             <block wx:for="{{activityLog.submit}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
-                <span class="scroll-item-img" style="background-color: red;"></span>
-                <span class="scroll-item-name">{{index+1}}</span>
+                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
               </view>
             </block>
           </scroll-view>
@@ -69,8 +69,8 @@
           <scroll-view class="play-item-scroll" scroll-x="true">
             <block wx:for="{{activityLog.leave}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
-                <span class="scroll-item-img" style="background-color: red;"></span>
-                <span class="scroll-item-name">{{index+1}}</span>
+                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
               </view>
             </block>
           </scroll-view>
@@ -85,8 +85,8 @@
           <scroll-view class="play-item-scroll" scroll-x="true">
             <block wx:for="{{activityLog.undetermined}}" wx:for-item="item" wx:for-index="index" wx:key="index">
               <view class="scroll-content">
-                <span class="scroll-item-img" style="background-color: red;"></span>
-                <span class="scroll-item-name">{{index+1}}</span>
+                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
               </view>
             </block>
           </scroll-view>

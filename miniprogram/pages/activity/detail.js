@@ -23,9 +23,9 @@ Page({
       description: '',
     },
     activityLog: {
-      leave: [],
-      submit: [],
-      undetermined: []
+      // leave: [], 请假
+      // submit: [], 报名
+      // undetermined: [] 待定
     },
     openId: '', 
     personalInfo: {} 
@@ -112,8 +112,12 @@ Page({
     })    
   },
   initActivityLog: function() {
+    let self = this
     db.collection('activityLog').doc(this.data.detailId).get({
       success: function(res) {
+        self.setData({
+          activityLog: res.data
+        })
         console.log('activityLog', res.data)
       },
       fail: function(err) {
@@ -121,7 +125,7 @@ Page({
       }
     })
   },
-  initUserInfo: function() {
+  initUserInfo: function(status) {
     let self = this
     wx.showToast({
       title: '加载中',
@@ -135,7 +139,7 @@ Page({
           self.setData({
             personalInfo: res.data[0]
           })
-          return true
+          self.updataLog(status)
         }else {
           wx.showModal({
             title: '请填写个人资料',
@@ -163,28 +167,60 @@ Page({
     })    
   },
   changeStatus: function(e) {
-    if (!this.initUserInfo()) { return }
     let status = e.currentTarget.dataset.status
-    console.log(status)
+    this.initUserInfo(status)
+  },
+  updataLog: function(status) {
+    wx.showToast({
+      title: '操作中',
+      icon: 'loading',
+      mask: true
+    })    
+    let logList = this.data.activityLog
+    let personalInfo = this.data.personalInfo
+    for(let item in logList) {
+      console.log(logList[item])
+      if (item == '_id') { continue }
+      for(let i=0, len=logList[item].length; i<len; i++){
+        if (logList[item][i] && logList[item][i]._openid && logList[item][i]._openid == this.data.openId) {
+          console.log(logList[item][i])
+          logList[item].splice(i,1)
+        }
+      }
+    }
+    logList[status].push(personalInfo)
+    delete logList._id
+    console.log('logList', logList)
     let data = {
       dbId: 'activityLog',
       docId: this.data.detailId,
-      data: {
-        submit: [],
-        leave: [],
-        undetermined: []
-      }
-    }    
+      data: logList
+    }
+    let self = this
     wx.cloud.callFunction({
       name: 'docupdata',
       data: data,
       success: function (res) {
-        console.log('changeStatus', res)
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          mask: true,
+          duration: 1000
+        })
+        self.initActivityLog()
+        wx.hideToast()
       },
       fail:function(err){
         console.error(err)
+        wx.showToast({
+          title: '操作失败',
+          icon: 'none',
+          mask: true,
+          duration: 1000
+        })
+        wx.hideToast()
       }
-    })     
+    })
   },
   goToActivity: function(id) {
     console.log(id)

@@ -91,6 +91,7 @@
     padding-top: 10px;
     box-sizing: border-box;
     text-align: center;
+    overflow: hidden;
 }
 .submit-play-list .scroll-item-img {
     display: inline-block;
