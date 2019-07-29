@@ -5,7 +5,8 @@ const cloud = require('wx-server-sdk')
 
 // 初始化 cloud
 cloud.init()
-const db = cloud.database('taishanchengbei')
+// 全局云数据库环境ID  测试环境 'taishanchengbei' 生产环境 'prodenv-2sbjk'
+const db = cloud.database({ env: 'prodenv-2sbjk' })
 
 /**
  * 这个示例将经自动鉴权过的小程序用户 openid 返回给小程序端

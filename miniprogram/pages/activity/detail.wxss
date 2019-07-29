@@ -13,10 +13,12 @@
 }
 .submit-desc {
     display: block;
-    height: 100px;
+    padding-bottom: 10px;
     border: none;
 }
 .submit-desc .submit-item-title {
+    height: 40px;
+    line-height: 40px;
     display: block;
 }
 .submit-logo {
@@ -49,6 +51,11 @@
     width: 60%;
     text-align: right;
     height: 40px;
+}
+.submit-item .submit-item-text {
+    width: 60%;
+    text-align: right;
+    line-height: 30px!important;
 }
 .submit-item .submit-item-textarea {
     display: block;

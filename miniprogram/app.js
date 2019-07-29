@@ -36,6 +36,7 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
+        env: 'prodenv-2sbjk',
         traceUser: true,
       })
       // 获取openId
@@ -55,6 +56,6 @@ App({
   globalData: {
     userInfo: null,
     openid: null,
-    databaseEnv: 'taishanchengbei', // 全局云数据库环境ID  测试环境 'taishanchengbei' 生产环境 ''
+    databaseEnv: 'prodenv-2sbjk', // 全局云数据库环境ID  测试环境 'taishanchengbei' 生产环境 'prodenv-2sbjk'
   }
 })

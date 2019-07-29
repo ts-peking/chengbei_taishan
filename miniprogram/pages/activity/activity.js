@@ -1,7 +1,6 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
-// todo: 默认非必填数据展示问题
 
 Page({
 	data: {
@@ -64,7 +63,6 @@ Page({
         self.setData({
           activityList: [...self.data.activityList, ...listData]
         })
-        console.log(self.data.activityList)
         wx.hideToast()
       },
       fail: function(err) {

@@ -38,9 +38,9 @@
         <view class="submit-item-title">发起人联系方式</view>
         <text class="submit-item-panel">{{activityData.creatorPhone}}</text>
       </view>
-      <view class="submit-item submit-desc">
+      <view class="submit-desc">
         <view class="submit-item-title">备注</view>
-        <text class="submit-item-panel">{{activityData.description}}</text>
+        <text class="submit-item-text">{{activityData.description}}</text>
       </view>
     </view>
     <block wx:if="{{submitCheck}}">

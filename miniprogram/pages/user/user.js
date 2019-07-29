@@ -76,10 +76,14 @@ Page({
     })
   },
   myActivity:function() {
-    return
-    wx.navigateTo({
-      url:'/pages/login/login'
+    wx.showModal({
+      title: '暂未开发',
+      content: '如果需要更改已发布的活动信息，请主动联系泰山北京球迷会1311号会员进行手动更改',
+      showCancel: false
     })
+    // wx.navigateTo({
+    //   url:'/pages/login/login'
+    // })
   },
   editInfo:function() {
     wx.navigateTo({
