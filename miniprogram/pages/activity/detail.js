@@ -133,7 +133,7 @@ Page({
       mask: true
     })
     console.log('openId', this.data.openId)
-    db.collection('userinfo').where({ _openid: this.data.openId}).get({
+    db.collection('userInfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
           self.setData({

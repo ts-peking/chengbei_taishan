@@ -53,7 +53,7 @@ Page({
       icon: 'loading',
       mask: true
     })
-		db.collection('userinfo').where({ _openid: this.data.openId}).get({
+		db.collection('userInfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
           let sexArr = self.data.sex
@@ -138,7 +138,7 @@ Page({
     let self = this
     if (this.data.editUserInfo) {
       let data = {
-        dbId: 'userinfo',
+        dbId: 'userInfo',
         docId: this.data.docId,
         data: params
       }
@@ -154,7 +154,7 @@ Page({
         }
       })
     }else {
-  		db.collection('userinfo').add({
+  		db.collection('userInfo').add({
         data: params,
         success: function(res) {
   				self.showSuccessToast()
