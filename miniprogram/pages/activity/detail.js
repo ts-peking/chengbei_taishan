@@ -84,7 +84,6 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid detail: ', res.result.openid)
         app.globalData.openid = res.result.openid
         self.setData({
           openId: app.globalData.openid
@@ -132,7 +131,6 @@ Page({
       icon: 'loading',
       mask: true
     })
-    console.log('openId', this.data.openId)
     db.collection('userInfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
