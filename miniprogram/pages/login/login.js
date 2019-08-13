@@ -1,6 +1,7 @@
 const app = getApp();
 const util = require('../../utils/util.js');
 const db = wx.cloud.database({ env: app.globalData.databaseEnv }) // 初始化数据库
+
 // todo: 这个页面是很早以前写的，逻辑有些混乱，我也不愿改了
 
 Page({
@@ -183,7 +184,7 @@ Page({
       icon: 'fail',
       mask: true,
       duration: 3000
-    })    
+    })
   },
 	radioChange:function(e) {
 		this.setData({
