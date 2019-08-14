@@ -89,5 +89,10 @@ Page({
     wx.navigateTo({
       url:'/pages/login/login?openId=' + this.data.openId
     })
+  },
+  goInvest: function() {
+    wx.navigateTo({
+      url:'/pages/investigation/investigation'
+    })    
   }
 })
