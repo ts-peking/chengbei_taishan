@@ -10,10 +10,47 @@
 	* [微信小程序云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 * 开发工具
 	* 微信开发者工具
+* 代码管理
+	* Github
 
 ## 安装及快速开始
+* 克隆代码
+	* [开源地址](https://github.com/ts-peking/chengbei_taishan)
+* 微信开发者工具配置
+	* 权限配置
+	* 云开发配置：云开发数据库配置、云函数配置
 
 ## API
+### `docadd` 新增数据库数据项
+* 传参
+
+```
+data = {
+  dbId: 'activityLog', // 目标数据库名
+  data: {  // 存储数据
+    _id: id,
+    submit: [],
+    leave: [],
+    undetermined: []
+  }
+}
+```
+
+### `docupdata` 更新数据库数据项
+* 传参
+
+```
+data = {
+  dbId: 'activityLog',  // 目标数据库名
+  docId: this.data.detailId,  // 目标数据库数据项
+  data: logList  // 存储数据
+}
+```
+
+### `login` 获取用户数据
+### `openapi` 获取用户openapi
+### `savepersonalinfo` 存储用户个人相关信息
+
 ## 发布
 
 > 本项目未配置云函数全局变量，需要修改部分文件的环境变量才可正常访问和使用
