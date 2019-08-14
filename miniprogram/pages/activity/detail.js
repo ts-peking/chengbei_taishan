@@ -9,8 +9,8 @@ Page({
   data:{
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasUserInfo: false,
-    detailId: '', // 13dba11c5d2b4091078d64010d194747
-    submitCheck: true,//true不可发布活动，仅用于报名与查看; false可发布活动
+    detailId: '',
+    submitCheck: true, //true不可发布活动，仅用于报名与查看; false可发布活动
     activityData: {
       title: '',
       location: '',
@@ -84,7 +84,6 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid detail: ', res.result.openid)
         app.globalData.openid = res.result.openid
         self.setData({
           openId: app.globalData.openid
@@ -132,7 +131,6 @@ Page({
       icon: 'loading',
       mask: true
     })
-    console.log('openId', this.data.openId)
     db.collection('userInfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
@@ -223,7 +221,6 @@ Page({
     })
   },
   goToActivity: function(id) {
-    console.log(id)
     let url = id ? `/pages/submit/submit?id=${id}` : '/pages/activity/activity' 
     wx.navigateTo({
       url: url,
@@ -231,6 +228,6 @@ Page({
       },
       fail:function(){
       }
-    }); 
+    })
   }
 })
