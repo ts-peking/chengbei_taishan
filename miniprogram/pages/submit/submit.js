@@ -50,7 +50,7 @@ Page({
     if (!this.data.activityData.location) { return '请填写活动地点' }
     if (!this.data.activityData.startDate) { return '请填写活动时间' }
     if (!this.data.activityData.creatorPhone) { return '请填写主办人联系方式' }
-    return false    
+    return false
   },
 	submitActivity: function(e) {
     if (this.ruleValidate()) {
@@ -117,68 +117,5 @@ Page({
 		wx.navigateTo({
       url: url
     })	
-	},
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角转发
-	 */
-	onShareAppMessage: function () {
-
-	},
-
-	/**
-	 * 页面滚动触发事件的处理函数
-	 */
-	onPageScroll: function () {
-
-	},
-
-	/**
-	 * 当前是 tab 页时，点击 tab 时触发
-	 */
-	onTabItemTap: function(item) {
-
-	},
+	}
 })

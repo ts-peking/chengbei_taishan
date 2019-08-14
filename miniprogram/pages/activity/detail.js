@@ -224,6 +224,10 @@ Page({
     let url = id ? `/pages/submit/submit?id=${id}` : '/pages/activity/activity' 
     wx.navigateTo({
       url: url,
+      success:function(){
+      },
+      fail:function(){
+      }
     })
   }
 })

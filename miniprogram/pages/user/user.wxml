@@ -13,6 +13,7 @@
     <view class="user-target-item" bindtap="editInfo">个人资料<icon class="iconfont iconxiangyou"></icon></view>
     <view class="user-target-item">我的球队(暂未开发)<icon class="iconfont iconxiangyou"></icon></view>
     <view class="user-target-item">协会公告(暂未开发)<icon class="iconfont iconxiangyou"></icon></view>
+    <view class="user-target-item" bindtap="goInvest">调查问卷<icon class="iconfont iconxiangyou"></icon></view>
   </view>
   <block>
     <icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
