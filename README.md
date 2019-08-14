@@ -22,7 +22,31 @@
 
 ## API
 ### `docadd` 新增数据库数据项
+* 传参
+
+```
+data = {
+  dbId: 'activityLog', // 目标数据库名
+  data: {  // 存储数据
+    _id: id,
+    submit: [],
+    leave: [],
+    undetermined: []
+  }
+}
+```
+
 ### `docupdata` 更新数据库数据项
+* 传参
+
+```
+data = {
+  dbId: 'activityLog',  // 目标数据库名
+  docId: this.data.detailId,  // 目标数据库数据项
+  data: logList  // 存储数据
+}
+```
+
 ### `login` 获取用户数据
 ### `openapi` 获取用户openapi
 ### `savepersonalinfo` 存储用户个人相关信息
