@@ -1,4 +1,4 @@
-# chengbei_taishan(球迷通小程序)
+# chengbei_taishan(忠橙泰山小程序)
 一个由鲁能泰山北京球迷会会员开发的足球活动报名小程序
 
 ## 必要条件
@@ -64,6 +64,7 @@ data = {
   * docupdata -> index.js -> cloud.database()
 
 ## FAQ
+
 ## 贡献
 
 ## 证书
