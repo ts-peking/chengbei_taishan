@@ -63,6 +63,16 @@ data = {
   * docadd -> index.js -> cloud.database()
   * docupdata -> index.js -> cloud.database()
 
+### 上传代码
+* 标明版本号， 如 `1.1.0`
+* 标明更改信息， 如 `创建小程序欢迎页完成首次提交和审核`
+
+### 体验版测试
+* 使用体验版进行测试
+
+### 审核发布
+* 在微信公众号平台中进行审核发布
+
 ## FAQ
 
 ## 贡献
