@@ -55,13 +55,23 @@ data = {
 
 > 本项目未配置云函数全局变量，需要修改部分文件的环境变量才可正常访问和使用
 
-### 涉及本地修改
+### 涉及本地修改(云开发部分)
 * app.js
   * wx.cloud.init()  // 云函数全局环境变量
   * globalData.databaseEnv  // 云数据库全局环境变量
 * cloudfunctions
   * docadd -> index.js -> cloud.database()
   * docupdata -> index.js -> cloud.database()
+
+### 上传代码
+* 标明版本号， 如 `1.1.0`
+* 标明更改信息， 如 `创建小程序欢迎页完成首次提交和审核`
+
+### 体验版测试
+* 使用体验版进行测试
+
+### 审核发布
+* 在微信公众号平台中进行审核发布
 
 ## FAQ
 
