@@ -177,18 +177,15 @@ Page({
     let logList = this.data.activityLog
     let personalInfo = this.data.personalInfo
     for(let item in logList) {
-      console.log(logList[item])
       if (item == '_id') { continue }
       for(let i=0, len=logList[item].length; i<len; i++){
         if (logList[item][i] && logList[item][i]._openid && logList[item][i]._openid == this.data.openId) {
-          console.log(logList[item][i])
           logList[item].splice(i,1)
         }
       }
     }
     logList[status].push(personalInfo)
     delete logList._id
-    console.log('logList', logList)
     let data = {
       dbId: 'activityLog',
       docId: this.data.detailId,
