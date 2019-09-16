@@ -69,7 +69,7 @@ Page({
         console.log('error', err)
         wx.hideToast()
       }
-    })    
+    })
   },
   initWatchGameList: function() {
   },
