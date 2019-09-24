@@ -1,4 +1,16 @@
 /* games.wxss */
 .games {
-  /*background-image: url('/assets/img/club-bg.jpg')*/
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  /*background-image: url('cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/泰山手机壁纸.jpg')*/
+}
+.games-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }

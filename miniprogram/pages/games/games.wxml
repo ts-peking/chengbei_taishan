@@ -1,6 +1,6 @@
 <!-- games -->
-<view class="games">
-  <view class="games-content">
+<view class="games container">
+  <view class="games-content" style="background-image: url({{bgUrl}})">
     games
   </view>
 </view>

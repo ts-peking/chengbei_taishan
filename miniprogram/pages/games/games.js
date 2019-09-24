@@ -6,14 +6,42 @@ Page({
    * 页面的初始数据
    */
   data:{
-    
+    bgUrl: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getCloudImage()
+  },
+  getCloudImage: function() {
+    let self = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true
+    })    
+    wx.cloud.getTempFileURL({
+      fileList: ['cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/泰山手机壁纸.jpg'],
+      success: res => {
+        self.setData({
+          bgUrl: res.fileList[0].tempFileURL
+        })
+        wx.hideToast()
+      },
+      fail: err => {
+        wx.hideToast()
+        wx.showToast({
+          title: '操作成功',
+          icon: 'none',
+          mask: true,
+          duration: 1000
+        })
+        wx.hideToast()      
+        // handle error
+      }
+    })
   },
 
   /**

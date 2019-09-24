@@ -18,7 +18,6 @@
 
 .usermotto {
 	width: 100%;
-  margin-top: 150px;
 	text-align: center;
 }
 
@@ -29,7 +28,6 @@
 }
 
 .submitpage {
-	margin-top: 20px;
 }
 button {
 	height: 40px;
