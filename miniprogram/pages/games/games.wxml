@@ -1,0 +1,6 @@
+<!-- games -->
+<view class="games">
+  <view class="games-content">
+    games
+  </view>
+</view>

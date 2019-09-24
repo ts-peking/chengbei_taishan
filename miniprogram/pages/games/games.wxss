@@ -1,0 +1,4 @@
+/* games.wxss */
+.games {
+  /*background-image: url('/assets/img/club-bg.jpg')*/
+}
