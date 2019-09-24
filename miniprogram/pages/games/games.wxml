@@ -1,6 +1,22 @@
 <!-- games -->
 <view class="games container">
   <view class="games-content" style="background-image: url({{bgUrl}})">
-    games
+    <block>
+      <view class="games-avator">
+        <view class="avator-border">
+          <image class="avator" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{hasUserInfo}}">
+      <view class="games-button">
+        <button class="button-item">生成头像</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="games-button">
+        <button class="button-item" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
+      </view>
+    </block>    
   </view>
 </view>

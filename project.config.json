@@ -11,7 +11,7 @@
 	"version": "1.1.0",
 	"appid": "wx5771464a2baf6180",
 	"projectname": "chengbei_taishan",
-	"libVersion": "2.4.0",
+	"libVersion": "2.8.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

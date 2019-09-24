@@ -12,5 +12,28 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+.games-avator {
 
+}
+.avator-border {
+
+}
+.avator {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 0 auto;
+}
+.games-button {
+  width: 100%;
+  text-align: center;
+}
+.button-item {
+  width: 80%;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #fff;
 }

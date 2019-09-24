@@ -7,21 +7,42 @@ Page({
    */
   data:{
     bgUrl: '',
+    hasUserInfo: false,
+    openId: '',
+    userInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.userInfo) {
+      console.log(111)
+      this.setData({
+        openId: app.globalData.openid,
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    }
+    console.log(this.data.hasUserInfo)
     this.getCloudImage()
   },
+  getUserInfo: function(e) {
+    console.log('e', e)
+    if (e.detail && !e.detail.userInfo) { return }
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },  
   getCloudImage: function() {
     let self = this
     wx.showToast({
       title: '加载中',
       icon: 'loading',
       mask: true
-    })    
+    })
     wx.cloud.getTempFileURL({
       fileList: ['cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/泰山手机壁纸.jpg'],
       success: res => {
@@ -38,8 +59,7 @@ Page({
           mask: true,
           duration: 1000
         })
-        wx.hideToast()      
-        // handle error
+        wx.hideToast()
       }
     })
   },
