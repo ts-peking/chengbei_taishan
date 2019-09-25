@@ -12,7 +12,7 @@
 	<block wx:if="{{selectTab=='match'}}">
 		<view class="activity-content" wx:if="{{false}}">
 			<block wx:for="{{watchGameList}}" wx:key="{{index}}" wx:for-item="item">
-				<view class="activity-item" data-item="{{item}}" bindtap="">
+				<view class="activity-item" data-item="{{item}}">
 					<view class="item-image"></view>
 					<view class="item-info">
 						<span class="item-info-name">观赛: {{item.activityName}}</span>

@@ -1,5 +1,6 @@
 // games.js
 const app = getApp()
+import Wxml2Canvas from '../../utils/wxml2canvas.js'
 
 Page({
   /**
@@ -7,9 +8,20 @@ Page({
    */
   data:{
     bgUrl: '',
+    borderUrlList: [
+      '/assets/img/head1.png',
+      '/assets/img/head2.png',
+      '/assets/img/head3.png',
+      '/assets/img/head4.png'
+    ],
+    borderUrl: '/assets/img/head1.png',
+    borderIndex: 0,
+    resultUrl: '',
     hasUserInfo: false,
     openId: '',
-    userInfo: {}
+    userInfo: {},
+    showModel: false,
+    drawCanvas: '',
   },
 
   /**
@@ -17,25 +29,27 @@ Page({
    */
   onLoad: function (options) {
     if (app.globalData.userInfo) {
-      console.log(111)
       this.setData({
         openId: app.globalData.openid,
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
     }
-    console.log(this.data.hasUserInfo)
     this.getCloudImage()
+    setTimeout(() => {
+        this.drawCanvasPanel();
+    }, 1500)    
   },
+  // 获取用户信息
   getUserInfo: function(e) {
-    console.log('e', e)
     if (e.detail && !e.detail.userInfo) { return }
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },  
+  },
+  // 获取云存储库背景图片
   getCloudImage: function() {
     let self = this
     wx.showToast({
@@ -54,14 +68,99 @@ Page({
       fail: err => {
         wx.hideToast()
         wx.showToast({
-          title: '操作成功',
+          title: '访问人数太多了，请稍后再试',
           icon: 'none',
           mask: true,
-          duration: 1000
         })
-        wx.hideToast()
       }
     })
+  },
+  // 切换边框
+  changeBorder: function(e) {
+    let changeStatus = e.currentTarget.dataset.type
+    let index = this.data.borderIndex
+    let self = this
+    switch (changeStatus) {
+      case 'next':
+        if (this.data.borderIndex < this.data.borderUrlList.length-1) {
+          index++
+          this.setData({
+            borderIndex: index
+          })
+        }else {
+          wx.showToast({
+            title: '已经是最后一张了~~',
+            icon: 'none',
+            mask: true,
+            duration: 800
+          })
+        }
+        break
+      case 'previous':
+        if (this.data.borderIndex > 0) {
+          index--
+          this.setData({
+            borderIndex: index
+          })
+        }else {
+          wx.showToast({
+            title: '已经是第一张了~~',
+            icon: 'none',
+            mask: true,
+            duration: 800
+          })          
+        }
+        break
+      default:
+        console.log('切换按钮出错了')
+    }
+  },
+  // 生成canvas图像
+  drawCanvasPanel: function() {
+    console.log(111)
+    let self = this
+    this.data.drawCanvas = new Wxml2Canvas({
+      width: 320,
+      height: 320,
+      element: 'canvas-map',
+      background: '#fff',
+      progress (percent) {
+        // console.log('percent', percent)
+      },      
+      finish(res) {
+        self.setData({
+          resultUrl: res,
+          showModel: true
+        })
+        console.log('finish', res)
+      },
+      error (err) {
+        console.log('err', err)
+      }
+    });
+
+    // let data = {
+    //   list: [{
+    //     type: 'wxml',
+    //     class: '.games-avator .draw',
+    //     limit: '.games-avator',
+    //     x: 0,
+    //     y: 0
+    //   }]
+    // }
+    // drawCanvas.draw(data);    
+  },
+  drawCanvas: function() {
+    let data = {
+      list: [{
+        type: 'wxml',
+        class: '.games-avator .draw',
+        limit: '.games-avator',
+        x: 0,
+        y: 0
+      }]
+    }    
+    this.data.drawCanvas.draw(data)
   },
 
   /**

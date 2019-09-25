@@ -6,34 +6,113 @@
   /*background-image: url('cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/泰山手机壁纸.jpg')*/
 }
 .games-content {
+  position: relative;
   width: 100%;
   height: 100%;
-  padding: 0 20px;
+  box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+.middle-panel {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60%;
+  margin-top: -100px;
+  margin-left: -30%;
+  padding: 40px 0 40px 0;
+  background-color: rgba(247,249,244, .8);
+  /*background-color: #fff;*/
+  border-radius: 10px;
+}
 .games-avator {
-
+  position: relative;
 }
-.avator-border {
-
+.games-avator .games-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
 }
-.avator {
+.games-avator .left-games-icon {
+  left: -60rpx;
+  transform:rotate(90deg);
+  -ms-transform:rotate(90deg);   /* IE 9 */
+  -moz-transform:rotate(90deg);  /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+  -o-transform:rotate(90deg);  /* Opera */
+}
+.games-avator .right-games-icon {
+  right: -60rpx;
+  transform:rotate(-90deg);
+  -ms-transform:rotate(-90deg);   /* IE 9 */
+  -moz-transform:rotate(-90deg);  /* Firefox */
+  -webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+  -o-transform:rotate(-90deg);  /* Opera */  
+}
+.games-avator .avator-content {
+  position: relative;
+  text-align: center;
+}
+.games-avator .avator-border {
+  position: absolute;
+  left: 50%;
+  top: -10rpx;
+  margin-left: -160rpx;
+  width: 320rpx;
+  height: 320rpx;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+}
+.games-avator .avator {
   width: 300rpx;
   height: 300rpx;
-  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.games-content .games-model {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 80%;
+  height: 500px;
+  margin-left: -40%;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.games-model .games-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300rpx;
+  height: 300rpx;
+  z-index: 1;
+}
+.games-model .canvas-res {
+  position: absolute;
+  top: 0;
+  left: 0;  
+  width: 300rpx;
+  height: 300rpx;
+  z-index: 10;
 }
 .games-button {
   width: 100%;
+  margin-top: 40px;
   text-align: center;
 }
-.button-item {
-  width: 80%;
+.games-button .button-item {
+  width: 70%;
   height: 40px;
   line-height: 40px;
   margin: 0 auto;
   font-size: 18px;
-  font-weight: bold;
+  color: rgba(229,85,10);
   background-color: #fff;
 }
