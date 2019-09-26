@@ -22,8 +22,8 @@
   margin-top: -100px;
   margin-left: -30%;
   padding: 40px 0 40px 0;
-  background-color: rgba(247,249,244, .8);
-  /*background-color: #fff;*/
+  /*background-color: rgba(247,249,244, .8);*/
+  background-color: #000;
   border-radius: 10px;
 }
 .games-avator {
@@ -67,7 +67,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 25px;
+  border-radius: 22px;
 }
 .games-avator .avator {
   width: 300rpx;

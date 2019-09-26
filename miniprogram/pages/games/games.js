@@ -8,12 +8,13 @@ Page({
    */
   data:{
     bgUrl: '',
-    borderUrlList: [
-      '/assets/img/head1.png',
-      '/assets/img/head2.png',
-      '/assets/img/head3.png',
-      '/assets/img/head4.png'
-    ],
+    // borderUrlList: [
+    //   '/assets/img/head1.png',
+    //   '/assets/img/head2.png',
+    //   '/assets/img/head3.png',
+    //   '/assets/img/head4.png'
+    // ],
+    borderUrlList: [],
     borderUrl: '/assets/img/head1.png',
     borderIndex: 0,
     resultUrl: '',
@@ -35,6 +36,7 @@ Page({
         hasUserInfo: true
       })
     }
+    this.getBorderCloudImage()
     this.getCloudImage()
     setTimeout(() => {
         this.drawCanvasPanel();
@@ -74,6 +76,36 @@ Page({
         })
       }
     })
+  },
+  getBorderCloudImage: function() {
+    let self = this
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true
+    })
+    wx.cloud.getTempFileURL({
+      fileList: ['cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head1.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head3.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head4.png'],
+      success: res => {
+        console.log(res)
+        let list = []
+        res.fileList.forEach(item => {
+          list.push(item.tempFileURL)
+        })
+        self.setData({
+          borderUrlList: list
+        })
+        wx.hideToast()
+      },
+      fail: err => {
+        wx.hideToast()
+        wx.showToast({
+          title: '访问人数太多了，请稍后再试',
+          icon: 'none',
+          mask: true,
+        })
+      }
+    })    
   },
   // 切换边框
   changeBorder: function(e) {
@@ -159,7 +191,7 @@ Page({
         x: 0,
         y: 0
       }]
-    }    
+    }
     this.data.drawCanvas.draw(data)
   },
 
