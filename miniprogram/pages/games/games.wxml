@@ -6,7 +6,7 @@
         <view class="games-avator">
           <view class="avator-content">
             <icon class="iconfont iconjiantou games-icon left-games-icon" data-type="previous" bindtap="changeBorder"></icon>
-            <image class="avator draw" src="{{userInfo.avatarUrl}}" mode="cover" data-mode="cover" data-type="image" data-url="{{userInfo.avatarUrl}}"></image>
+            <image class="avator draw" src="{{avatarUrl}}" mode="cover" data-mode="cover" data-type="image" data-url="{{userInfo.avatarUrl}}"></image>
             <!-- <image class="avator" src="/assets/img/user.png" mode="cover"></image> -->
             <icon class="iconfont iconjiantou games-icon right-games-icon" data-type="next" bindtap="changeBorder"></icon>
           </view>
@@ -30,9 +30,13 @@
     <block wx:if="{{showModel}}">
       <view class="games-model">
         <!-- canvas 标签-->
-        <canvas class="cas" style="width:{{canvasWidth}};height:{{canvasHeight}};" canvas-id="firstCanvas"></canvas>
+        <canvas class="cas games-canvas" style="width:{{canvasWidth}};height:{{canvasHeight}};" canvas-id="firstCanvas"></canvas>
         <!-- 用来显示 合成成功的图片 -->
-        <image class="res_image" mode="widthFix" src="{{resSrc}}"></image>
+        <!-- <image class="canvas-res" mode="widthFix" src="{{resSrc}}"></image> -->
+        <view class="button-panel">
+          <button class="cav-button" bindtap="saveImgSrc">保存到本地</button>
+          <button class="cav-button" bindtap="hideModel">继续生成</button>
+        </view>
       </view>
     </block>
   </view>

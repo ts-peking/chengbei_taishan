@@ -14,25 +14,24 @@ Page({
     borderUrlList: [],
     borderUrl: '/assets/img/head1.png',
     borderIndex: 0,
-    resultUrl: '',
+    avatarUrl: '',
     hasUserInfo: false,
     openId: '',
     userInfo: {},
     showModel: false,
-    canvasWidth: 1, // 默认的canvas的宽度
-    canvasHeight: 1, // 默认的canvas高度
     resSrc: "",  // 最终生成的图片路径
-    saveImgSrc: "",
     baseImg: {},
     flagImg: {},
   },
 
   onLoad: function (options) {
     if (app.globalData.userInfo) {
+      let avatar = this.headimgHD(app.globalData.userInfo.avatarUrl)
       this.setData({
         openId: app.globalData.openid,
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        avatarUrl: avatar
       })
     }
     this.getBorderCloudImage()
@@ -41,13 +40,24 @@ Page({
       // this.drawCanvasPanel();
     // }, 1500)
   },
+  headimgHD: function(imageUrl) {        
+    imageUrl = imageUrl.split('/');        //把头像的路径切成数组
+    //把大小数值为 46 || 64 || 96 || 132 的转换为0
+    if (imageUrl[imageUrl.length - 1] && (imageUrl[imageUrl.length - 1] == 46 || imageUrl[imageUrl.length - 1] == 64 || imageUrl[imageUrl.length - 1] == 96 || imageUrl[imageUrl.length - 1] == 132)) {
+        imageUrl[imageUrl.length - 1] = 0;
+    }
+    imageUrl = imageUrl.join('/')   //重新拼接为字符串
+    return imageUrl;
+  },
   // 获取用户信息
   getUserInfo: function(e) {
     if (e.detail && !e.detail.userInfo) { return }
     app.globalData.userInfo = e.detail.userInfo
+    let avatar = this.headimgHD(e.detail.userInfo.avatarUrl)
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      hasUserInfo: true,
+      avatarUrl: avatar
     })
   },
   // 获取云存储库背景图片
@@ -76,6 +86,7 @@ Page({
       }
     })
   },
+  // 获取云存储库边框图片
   getBorderCloudImage: function() {
     let self = this
     wx.showToast({
@@ -86,7 +97,6 @@ Page({
     wx.cloud.getTempFileURL({
       fileList: ['cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head1.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head3.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head4.png'],
       success: res => {
-        console.log(res)
         let list = []
         res.fileList.forEach(item => {
           list.push(item.tempFileURL)
@@ -148,12 +158,31 @@ Page({
   },
   // 获取图片信息
   getWxImageInfo: function(src, name) {
+    let self = this
+    wx.showToast({
+      title: '图片生成中',
+      icon: 'loading',
+      mask: true
+    })
     wx.getImageInfo({
       src: src,
       success: (result) => {
         this.setData({
           [name]: result
         })
+        if (name == 'baseImg') {
+          wx.hideToast()
+          wx.showModal({
+            content: '确定生成图片？',
+            cancelText: '再换换',
+            confirmText: '生成',
+            success: function(res) {
+              if (res.confirm) {
+                self.drawCanvasPanel()
+              } else if (res.cancel) {}
+            }
+          })
+        }
       },
       fail: (err) => {
         console.log(err)
@@ -163,60 +192,89 @@ Page({
           mask: true,
           duration: 800
         })         
+      },
+      complete: (com) => {
+        console.log('com', com)
       }
     })
   },
   // 展开Model
   showCanvasModel: function() {
     let self = this
-    this.getWxImageInfo(this.data.userInfo.avatarUrl, 'baseImg')
+    this.getWxImageInfo(this.data.avatarUrl, 'baseImg')
     this.getWxImageInfo(this.data.borderUrlList[this.data.borderIndex], 'flagImg')
-    wx.showModal({
-      content: '确定生成图片？',
-      cancelText: '再换换',
-      confirmText: '生成',
-      success: function(res) {
-        if (res.confirm) {
-          self.drawCanvasPanel()
-        } else if (res.cancel) {}
+  },
+  // 隐藏Model
+  hideModel: function() {
+    this.setData({ showModel:false })
+  },
+  // 保存图片
+  saveImgSrc: function() {
+    let self = this
+    wx.saveImageToPhotosAlbum({
+      filePath: self.data.resSrc,
+      success(res) {
+        self.setData({ showModel:false })
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          mask: true,
+          duration: 1000
+        })
+      },
+      fail(err) {
+        wx.showToast({
+          title: '保存失败',
+          icon: 'fail',
+          mask: true,
+          duration: 1000
+        })        
       }
     })
   },
   // 生成canvas图像
   drawCanvasPanel: function() {
+    let self = this
     this.setData({ showModel:true })
     // 设备像素比
-    const { pixelRatio } = wx.getSystemInfoSync()
+    // const { pixelRatio } = wx.getSystemInfoSync()
     // 获取 画布实例
-    const context = wx.createCanvasContext('firstCanvas')
     const baseImg = this.data.baseImg
     const flagImg = this.data.flagImg
-    console.log(baseImg)
-    console.log(flagImg)
+    const context = wx.createCanvasContext('firstCanvas')
     // 将canvas的宽度设置中 图片的宽度
-    const canvasWidth = baseImg.width + "px"
+    const canvasWidth = "205px"
     // 将canvas的宽度设置中 图片的高度
-    const canvasHeight = baseImg.height + "px"
+    const canvasHeight = "205px"
     //  setData 函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）。
     // 因此需要将 描绘 图片的步骤写在回调中，否则 真机调试有bug！
-    this.setData({ canvasWidth, canvasHeight }, () => {
+    this.setData({ canvasWidth, canvasHeight }, () => {  
       // 如果个别机型出现图片失败错误，可以加上定时器。
       setTimeout(() => {
         // 先将头像 描绘到画布上
-        context.drawImage(baseImg.path, 0, 0, baseImg.width, baseImg.height)
+        context.drawImage(baseImg.path, 5, 5, 200, 200)
         // 再把边框 描绘到画布上
-        context.drawImage(flagImg.path, baseImg.width - (pixelRatio * 50), baseImg.height - (pixelRatio * 50), (pixelRatio * 50), (pixelRatio * 50))
+        // context.drawImage(flagImg.path, baseImg.width - (pixelRatio * 50), baseImg.height - (pixelRatio * 50), (pixelRatio * 50), (pixelRatio * 50))
+        context.drawImage(flagImg.path, 0, 0, 205, 205)
+        // context.drawImage(self.data.borderUrlList[self.data.borderIndex], 0, 0, 205, 205)
+
         context.draw(true, () => {
           // 将 画布生成 成图片
-          console.log(111)
-          const res1 = canvasToTempFilePath({
-            canvasId: "firstCanvas"
+          wx.canvasToTempFilePath({
+            x: 0,
+            y: 0,
+            width: 960,
+            height: 960,
+            fileType: 'png',
+            quality: 1,
+            canvasId: 'firstCanvas',
+            success(res) {
+              console.log(res.tempFilePath)
+              self.setData({ resSrc: res.tempFilePath })
+            }
           })
-          console.log('canvasdraw', res1.tempFilePath)
           // 让图片显示 合成后的效果
-          this.setData({ resSrc: res1.tempFilePath })
           // 保存起来，当点击保存图片时调用
-          this.saveImgSrc = res1.tempFilePath
         })
       }, 100)
     })
@@ -225,63 +283,45 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角转发
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: function () {},
 
   /**
    * 页面滚动触发事件的处理函数
    */
-  onPageScroll: function () {
-
-  },
+  onPageScroll: function () {},
 
   /**
    * 当前是 tab 页时，点击 tab 时触发
    */
-  onTabItemTap: function(item) {
-
-  },
+  onTabItemTap: function(item) {},
 })
