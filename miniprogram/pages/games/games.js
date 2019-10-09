@@ -6,12 +6,12 @@ import { getImageInfo, canvasToTempFilePath, saveImageToPhotosAlbum } from "../.
 Page({
   data:{
     bgUrl: '',
-    borderUrlList: [
-      '/assets/img/head1.png',
-      '/assets/img/head3.png',
-      '/assets/img/head4.png'
-    ],
-    // borderUrlList: [],
+    // borderUrlList: [
+    //   '/assets/img/head1.png',
+    //   '/assets/img/head3.png',
+    //   '/assets/img/head4.png'
+    // ],
+    borderUrlList: [],
     borderUrl: '/assets/img/head1.png',
     borderIndex: 0,
     resultUrl: '',
@@ -35,7 +35,7 @@ Page({
         hasUserInfo: true
       })
     }
-    // this.getBorderCloudImage()
+    this.getBorderCloudImage()
     this.getCloudImage()
     // setTimeout(() => {
       // this.drawCanvasPanel();
@@ -184,6 +184,7 @@ Page({
   },
   // 生成canvas图像
   drawCanvasPanel: function() {
+    this.setData({ showModel:true })
     // 设备像素比
     const { pixelRatio } = wx.getSystemInfoSync()
     // 获取 画布实例
@@ -201,9 +202,9 @@ Page({
     this.setData({ canvasWidth, canvasHeight }, () => {
       // 如果个别机型出现图片失败错误，可以加上定时器。
       setTimeout(() => {
-        // 先将柯南 描绘到画布上
+        // 先将头像 描绘到画布上
         context.drawImage(baseImg.path, 0, 0, baseImg.width, baseImg.height)
-        // 把红旗 描绘到画布上
+        // 再把边框 描绘到画布上
         context.drawImage(flagImg.path, baseImg.width - (pixelRatio * 50), baseImg.height - (pixelRatio * 50), (pixelRatio * 50), (pixelRatio * 50))
         context.draw(true, () => {
           // 将 画布生成 成图片
@@ -216,7 +217,6 @@ Page({
           this.setData({ resSrc: res1.tempFilePath })
           // 保存起来，当点击保存图片时调用
           this.saveImgSrc = res1.tempFilePath
-          this.setData({ showModel:true })
         })
       }, 100)
     })
