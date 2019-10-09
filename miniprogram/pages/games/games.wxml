@@ -18,20 +18,21 @@
       </block>
       <block wx:if="{{hasUserInfo}}">
         <view class="games-button">
-          <button class="button-item" bindtap="drawCanvas">点击生成头像</button>
+          <button class="button-item" bindtap="showCanvasModel">点击生成头像</button>
         </view>
       </block>
       <block wx:else>
         <view class="games-button">
           <button class="button-item" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
         </view>
-      </block>    
+      </block>
     </view>
     <block wx:if="{{showModel}}">
       <view class="games-model">
-        <canvas canvas-id="canvas-map" class="share_canvas games-canvas"></canvas>
-        <image class="canvas-res" src="{{resultUrl}}" mode="scaleToFill"></image>
-        <!-- <canvas canvas-id="canvas-map" class="share-canvas games-canvas"></canvas> -->
+        <!-- canvas 标签-->
+        <canvas class="cas" style="width:{{canvasWidth}};height:{{canvasHeight}};" canvas-id="firstCanvas"></canvas>
+        <!-- 用来显示 合成成功的图片 -->
+        <image class="res_image" mode="widthFix" src="{{resSrc}}"></image>
       </view>
     </block>
   </view>

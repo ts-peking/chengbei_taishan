@@ -1,20 +1,17 @@
 // games.js
 const app = getApp()
-import Wxml2Canvas from '../../utils/wxml2canvas.js'
+import regeneratorRuntime from "../../utils/runtime.js"
+import { getImageInfo, canvasToTempFilePath, saveImageToPhotosAlbum } from "../../utils/wxAsync.js"
 
 Page({
-  /**
-   * 页面的初始数据
-   */
   data:{
     bgUrl: '',
-    // borderUrlList: [
-    //   '/assets/img/head1.png',
-    //   '/assets/img/head2.png',
-    //   '/assets/img/head3.png',
-    //   '/assets/img/head4.png'
-    // ],
-    borderUrlList: [],
+    borderUrlList: [
+      '/assets/img/head1.png',
+      '/assets/img/head3.png',
+      '/assets/img/head4.png'
+    ],
+    // borderUrlList: [],
     borderUrl: '/assets/img/head1.png',
     borderIndex: 0,
     resultUrl: '',
@@ -22,12 +19,14 @@ Page({
     openId: '',
     userInfo: {},
     showModel: false,
-    drawCanvas: '',
+    canvasWidth: 1, // 默认的canvas的宽度
+    canvasHeight: 1, // 默认的canvas高度
+    resSrc: "",  // 最终生成的图片路径
+    saveImgSrc: "",
+    baseImg: {},
+    flagImg: {},
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
@@ -36,11 +35,11 @@ Page({
         hasUserInfo: true
       })
     }
-    this.getBorderCloudImage()
+    // this.getBorderCloudImage()
     this.getCloudImage()
-    setTimeout(() => {
-        this.drawCanvasPanel();
-    }, 1500)    
+    // setTimeout(() => {
+      // this.drawCanvasPanel();
+    // }, 1500)
   },
   // 获取用户信息
   getUserInfo: function(e) {
@@ -147,52 +146,80 @@ Page({
         console.log('切换按钮出错了')
     }
   },
+  // 获取图片信息
+  getWxImageInfo: function(src, name) {
+    wx.getImageInfo({
+      src: src,
+      success: (result) => {
+        this.setData({
+          [name]: result
+        })
+      },
+      fail: (err) => {
+        console.log(err)
+        wx.showToast({
+          title: '图片获取失败，请重新打开尝试',
+          icon: 'fail',
+          mask: true,
+          duration: 800
+        })         
+      }
+    })
+  },
+  // 展开Model
+  showCanvasModel: function() {
+    let self = this
+    this.getWxImageInfo(this.data.userInfo.avatarUrl, 'baseImg')
+    this.getWxImageInfo(this.data.borderUrlList[this.data.borderIndex], 'flagImg')
+    wx.showModal({
+      content: '确定生成图片？',
+      cancelText: '再换换',
+      confirmText: '生成',
+      success: function(res) {
+        if (res.confirm) {
+          self.drawCanvasPanel()
+        } else if (res.cancel) {}
+      }
+    })
+  },
   // 生成canvas图像
   drawCanvasPanel: function() {
-    console.log(111)
-    let self = this
-    this.data.drawCanvas = new Wxml2Canvas({
-      width: 320,
-      height: 320,
-      element: 'canvas-map',
-      background: '#fff',
-      progress (percent) {
-        // console.log('percent', percent)
-      },      
-      finish(res) {
-        self.setData({
-          resultUrl: res,
-          showModel: true
+    // 设备像素比
+    const { pixelRatio } = wx.getSystemInfoSync()
+    // 获取 画布实例
+    const context = wx.createCanvasContext('firstCanvas')
+    const baseImg = this.data.baseImg
+    const flagImg = this.data.flagImg
+    console.log(baseImg)
+    console.log(flagImg)
+    // 将canvas的宽度设置中 图片的宽度
+    const canvasWidth = baseImg.width + "px"
+    // 将canvas的宽度设置中 图片的高度
+    const canvasHeight = baseImg.height + "px"
+    //  setData 函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）。
+    // 因此需要将 描绘 图片的步骤写在回调中，否则 真机调试有bug！
+    this.setData({ canvasWidth, canvasHeight }, () => {
+      // 如果个别机型出现图片失败错误，可以加上定时器。
+      setTimeout(() => {
+        // 先将柯南 描绘到画布上
+        context.drawImage(baseImg.path, 0, 0, baseImg.width, baseImg.height)
+        // 把红旗 描绘到画布上
+        context.drawImage(flagImg.path, baseImg.width - (pixelRatio * 50), baseImg.height - (pixelRatio * 50), (pixelRatio * 50), (pixelRatio * 50))
+        context.draw(true, () => {
+          // 将 画布生成 成图片
+          console.log(111)
+          const res1 = canvasToTempFilePath({
+            canvasId: "firstCanvas"
+          })
+          console.log('canvasdraw', res1.tempFilePath)
+          // 让图片显示 合成后的效果
+          this.setData({ resSrc: res1.tempFilePath })
+          // 保存起来，当点击保存图片时调用
+          this.saveImgSrc = res1.tempFilePath
+          this.setData({ showModel:true })
         })
-        console.log('finish', res)
-      },
-      error (err) {
-        console.log('err', err)
-      }
-    });
-
-    // let data = {
-    //   list: [{
-    //     type: 'wxml',
-    //     class: '.games-avator .draw',
-    //     limit: '.games-avator',
-    //     x: 0,
-    //     y: 0
-    //   }]
-    // }
-    // drawCanvas.draw(data);    
-  },
-  drawCanvas: function() {
-    let data = {
-      list: [{
-        type: 'wxml',
-        class: '.games-avator .draw',
-        limit: '.games-avator',
-        x: 0,
-        y: 0
-      }]
-    }
-    this.data.drawCanvas.draw(data)
+      }, 100)
+    })
   },
 
   /**
