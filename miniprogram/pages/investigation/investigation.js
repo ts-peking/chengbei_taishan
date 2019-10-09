@@ -46,8 +46,14 @@ Page({
     return false
   },  
   submitInvest: function() {
+    wx.showToast({
+      title: '提交中',
+      icon: 'loading',
+      mask: true      
+    })
     if (this.ruleValidate()) {
       let errInfo = this.ruleValidate()
+      wx.hideToast()
       wx.showModal({
         title: '填写有误',
         content: errInfo,
@@ -64,6 +70,7 @@ Page({
       name: 'docadd',
       data: data,
       success: function(res) {
+        wx.hideToast()
         wx.showModal({
           title: '提交成功',
           content: '足球真正的魅力不是输赢，而是有它的地方就有兄弟姐妹。\r\n很多年后，当我们老得只能坐在场边，你会发现最怀念的不是踢足球，而是陪你踢球的那群人。',
@@ -80,6 +87,7 @@ Page({
       },
       fail:function(err){
         console.error(err)
+        wx.hideToast()
         wx.showModal({
           title: '提交失败',
           content: '请重新提交',

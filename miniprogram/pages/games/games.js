@@ -36,9 +36,6 @@ Page({
     }
     this.getBorderCloudImage()
     this.getCloudImage()
-    // setTimeout(() => {
-      // this.drawCanvasPanel();
-    // }, 1500)
   },
   headimgHD: function(imageUrl) {        
     imageUrl = imageUrl.split('/');        //把头像的路径切成数组
@@ -79,7 +76,7 @@ Page({
       fail: err => {
         wx.hideToast()
         wx.showToast({
-          title: '访问人数太多了，请稍后再试',
+          title: '请稍后再试',
           icon: 'none',
           mask: true,
         })
@@ -95,7 +92,18 @@ Page({
       mask: true
     })
     wx.cloud.getTempFileURL({
-      fileList: ['cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head1.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head3.png', 'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head4.png'],
+      fileList: [
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts7.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts6.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts1.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts2.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts3.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts4.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk/lnts5.png',
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head1.png', 
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head3.png', 
+        'cloud://prodenv-2sbjk.7072-prodenv-2sbjk-1259441852/head4.png'
+      ],
       success: res => {
         let list = []
         res.fileList.forEach(item => {
@@ -109,7 +117,7 @@ Page({
       fail: err => {
         wx.hideToast()
         wx.showToast({
-          title: '访问人数太多了，请稍后再试',
+          title: '请稍后再试',
           icon: 'none',
           mask: true,
         })
@@ -187,7 +195,7 @@ Page({
       fail: (err) => {
         console.log(err)
         wx.showToast({
-          title: '图片获取失败，请重新打开尝试',
+          title: '图片获取失败',
           icon: 'fail',
           mask: true,
           duration: 800
@@ -313,7 +321,19 @@ Page({
   /**
    * 用户点击右上角转发
    */
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () {
+    return {
+      title: '鲁蜜专属头像',
+      path: '/pages/games/games',
+      imageUrl: "/assets/img/club-avator.jpg",
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
+  },
 
   /**
    * 页面滚动触发事件的处理函数
