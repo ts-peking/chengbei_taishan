@@ -1,0 +1,43 @@
+<!-- games -->
+<view class="games">
+  <view class="games-content" style="background-image: url({{bgUrl}})">
+    <view class="middle-panel">
+      <block>
+        <view class="games-avator">
+          <view class="avator-content">
+            <icon class="iconfont iconjiantou games-icon left-games-icon" data-type="previous" bindtap="changeBorder"></icon>
+            <image class="avator draw" src="{{avatarUrl}}" mode="cover" data-mode="cover" data-type="image" data-url="{{userInfo.avatarUrl}}"></image>
+            <!-- <image class="avator" src="/assets/img/user.png" mode="cover"></image> -->
+            <icon class="iconfont iconjiantou games-icon right-games-icon" data-type="next" bindtap="changeBorder"></icon>
+          </view>
+          <image class="avator-border draw" src="{{borderUrlList[borderIndex]}}" mode="cover"  data-type="image"  data-mode="cover" data-url="{{borderUrlList[borderIndex]}}"></image>
+        </view>
+      </block>
+      <block>
+        <view style="clear:both;"></view>
+      </block>
+      <block wx:if="{{hasUserInfo}}">
+        <view class="games-button">
+          <button class="button-item" bindtap="showCanvasModel">点击生成头像</button>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="games-button">
+          <button class="button-item" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击授权</button>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{showModel}}">
+      <view class="games-model">
+        <!-- canvas 标签-->
+        <canvas class="cas games-canvas" style="width:{{canvasWidth}};height:{{canvasHeight}};" canvas-id="firstCanvas"></canvas>
+        <!-- 用来显示 合成成功的图片 -->
+        <!-- <image class="canvas-res" mode="widthFix" src="{{resSrc}}"></image> -->
+        <view class="button-panel">
+          <button class="cav-button" bindtap="saveImgSrc">保存到本地</button>
+          <button class="cav-button" bindtap="hideModel">继续生成</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

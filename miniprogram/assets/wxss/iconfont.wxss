@@ -10,6 +10,10 @@
   content: "\e64f";
 }
 
+.iconjiantou:before {
+  content: "\e64a";
+}
+
 .iconphone:before {
   content: "\e618";
 }

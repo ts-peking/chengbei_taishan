@@ -94,5 +94,10 @@ Page({
     wx.navigateTo({
       url:'/pages/investigation/investigation'
     })    
+  },
+  goGames: function() {
+    wx.navigateTo({
+      url:'/pages/games/games'
+    })    
   }
 })
