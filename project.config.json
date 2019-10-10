@@ -2,7 +2,7 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -18,7 +18,7 @@
 			"outputPath": ""
 		}
 	},
-	"version": "1.1.0",
+	"version": "1.2.3",
 	"appid": "wx5771464a2baf6180",
 	"projectname": "chengbei_taishan",
 	"libVersion": "2.8.3",
