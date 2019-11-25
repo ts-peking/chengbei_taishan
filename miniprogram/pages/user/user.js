@@ -18,7 +18,24 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      this.initUserInfo()
+    }else {
+      wx.showToast({
+        title: '请授权后访问',
+        icon: 'loading',
+        mask: true,
+        duration: 1000
+      })      
     }
+  },
+  getUserInfo:function(e) {
+    if (e.detail && !e.detail.userInfo) { return }
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      openId: app.globalData.openid,
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
     this.initUserInfo()
   },
   initUserInfo:function() {
@@ -29,7 +46,7 @@ Page({
       icon: 'loading',
       mask: true
     })
-    console.log(this.data.openId)
+    console.log('openId', this.data.openId)
     db.collection('userInfo').where({ _openid: this.data.openId}).get({
       success: function(res) {
         if (res.data && res.data.length>0) {
@@ -81,9 +98,6 @@ Page({
       content: '如果需要更改已发布的活动信息，请主动联系泰山北京球迷会1311号会员进行手动更改',
       showCancel: false
     })
-    // wx.navigateTo({
-    //   url:'/pages/login/login'
-    // })
   },
   editInfo:function() {
     wx.navigateTo({

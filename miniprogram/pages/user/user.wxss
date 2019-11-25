@@ -8,6 +8,21 @@
   padding: 10px 20px;
   margin-bottom: 10px;
 }
+.user .login-content { 
+  margin-top: 30px;
+}
+.user .login-content button {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 8px 15px 0 rgba(255, 127, 36, .3);
+  background-color: #f47920;  
+}
 .user .user-info-infos {
   
 }
@@ -36,10 +51,15 @@
   line-height: 40px;
   padding: 0 20px;
   margin-bottom: 10px;
+  text-align: left;
   font-size: 16px;
   font-weight: bold;
   color: #666;
+  border-radius: 0;
   background-color: #fff;
+}
+.user .user-target .user-target-item[disabled] {
+  color: #D5D5D5;
 }
 .user-target .user-target-item icon {
   float: right;
