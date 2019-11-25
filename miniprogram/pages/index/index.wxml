@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行授权 </button>
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行授权 </button> -->
+    <button bindtap="goLogin" wx:if="{{!hasUserInfo && canIUse}}"> 点击进入个人中心 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -12,7 +13,7 @@
     <text class="user-slogan">我们是永不倒的泰山</text>
   </view>
   <view class="submitpage">
-    <button bindtap="goLogin"> 点击进入个人中心 </button>
+    <button wx:if="{{hasUserInfo}}" bindtap="goLogin"> 点击进入个人中心 </button>
     <button wx:if="{{hasUserInfo}}" bindtap="goActivityList"> 查看活动列表 </button>
   </view>
 </view>

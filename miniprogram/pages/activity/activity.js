@@ -93,6 +93,13 @@ Page({
     })
   },
   editActivity: function () {
+    wx.showToast({
+      title: '请前往个人中心进行发布活动',
+      icon: 'none',
+      mask: true,
+      duration: 2000
+    })
+    return
     let editType = this.data.selectTab
     switch (editType) {
       case 'play': {
