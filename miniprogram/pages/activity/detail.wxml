@@ -96,11 +96,11 @@
     <block wx:if="{{submitCheck && hasUserInfo}}">
       <view class="submit-play-button">
         <view class="button-panel">
-          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="submit">报名</button>
+          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="submit">报名</button>
           <button class="button-item button-item-cancel" wx-if="{{false}}">已报名</button>
-          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="leave">请假</button>
+          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="leave">请假</button>
           <button class="button-item button-item-cancel" wx-if="{{false}}">已请假</button>
-          <button class="button-item" wx-if="{{true}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
+          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
           <button class="button-item button-item-cancel" wx-if="{{false}}">已待定</button>
         </view>
       </view>

@@ -134,6 +134,9 @@
     color: #fff;
     font-weight: bold;
 }
+.submit-play-button .button-panel .button-item[disabled] {
+    background-color: #666;
+}
 .submit-play-button .button-panel .button-item-submit {
     width: 100%;
 }
