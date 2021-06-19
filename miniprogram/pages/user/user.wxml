@@ -14,8 +14,8 @@
   <view class="user-target">
     <button class="user-target-item" bindtap="myActivity" disabled="{{!hasUserInfo}}">我的发布<icon class="iconfont iconxiangyou"></icon></button>
     <button class="user-target-item" bindtap="editInfo" disabled="{{!hasUserInfo}}">个人资料<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" disabled="true">我的球队(暂未开发)<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" disabled="true">协会公告(暂未开发)<icon class="iconfont iconxiangyou"></icon></button>
+    <button class="user-target-item" disabled="true">我的球队(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
+    <button class="user-target-item" disabled="true">协会公告(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
     <button class="user-target-item" bindtap="goInvest" disabled="{{!hasUserInfo}}">调查问卷<icon class="iconfont iconxiangyou"></icon></button>
     <button class="user-target-item" bindtap="goGames" disabled="{{!hasUserInfo}}">鲁蜜专属头像<icon class="iconfont iconxiangyou"></icon></button>
   </view>
