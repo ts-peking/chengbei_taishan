@@ -1,40 +1,38 @@
 <view class="investigation">
-  <block>
-    <view class="invest-title">
-      泰山橙北调查问卷
-    </view>
-    <view class="invest-title-line"></view>
-  </block>
-  <block>
-    <view class="invest-info">本问卷为匿名问卷，旨在了解大家参加活动的情况，为提高大家参加踢球积极性做参考</view>
-  </block>
-  <block>
-    <view class="form-item">
-      <view class="form-item-title"><span class="form-item-single">*</span>参加过几次球队踢球活动</view>
-      <radio-group class="form-item-group" bindchange="radioChange">
-        <label class="radio form-item-radio" wx:for="{{activityCount}}" wx:for-index="index" wx:key="item">
-          <radio value="{{item.value}}" checked="{{item.checked}}" color="#f47920"/>
-          {{item.value}}
-        </label>
-      </radio-group>
-    </view>
-    <view class="form-item">
-      <view class="form-item-title"><span class="form-item-single">*</span>影响参加球队活动的因素(多选)</view>
-      <checkbox-group class="form-item-group" bindchange="checkboxChange">
-        <label class="checkbox form-item-radio" wx:for="{{leaveReasonList}}" wx:for-index="index" wx:key="item">
-          <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-        </label>
-      </checkbox-group>
-      <view class="section" wx:if="{{showTextarea}}">
-        <textarea class="form-item-textarea" bindinput="bindInputChange" data-params="otherReason" placeholder="请填写其他原因" placeholder-style="color:#f47920;"/>
-      </view>
-    </view>
-    <view class="form-item">
-      <view class="form-item-title"><span class="form-item-single">*</span>吸引更多会员参加活动有什么建议</view>
-      <textarea class="form-item-textarea" bindinput="bindInputChange" data-params="advice" placeholder="请填写建议" placeholder-style="color:#f47920;"/>
-    </view>    
-    <view class="form-btn">
-      <button class="button-item" wx-if="{{true}}" bindtap="submitInvest">提交问卷</button>
-    </view>
-  </block>
+    <block>
+        <view class="invest-title">泰山橙北调查问卷</view>
+        <view class="invest-title-line"></view>
+    </block>
+    <block>
+        <view class="invest-info">本问卷为匿名问卷，旨在了解大家参加活动的情况，为提高大家参加踢球积极性做参考</view>
+    </block>
+    <block>
+        <view class="form-item">
+            <view class="form-item-title"><span class="form-item-single">*</span>参加过几次球队踢球活动</view>
+            <radio-group class="form-item-group" bindchange="radioChange">
+                <label class="radio form-item-radio" wx:for="{{activityCount}}" wx:for-index="index" wx:key="item">
+                    <radio value="{{item.value}}" checked="{{item.checked}}" color="#f47920"/>
+                    {{item.value}}
+                </label>
+            </radio-group>
+        </view>
+        <view class="form-item">
+            <view class="form-item-title"><span class="form-item-single">*</span>影响参加球队活动的因素(多选)</view>
+            <checkbox-group class="form-item-group" bindchange="checkboxChange">
+                <label class="checkbox form-item-radio" wx:for="{{leaveReasonList}}" wx:for-index="index" wx:key="item">
+                    <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                </label>
+            </checkbox-group>
+            <view class="section" wx:if="{{showTextarea}}">
+                <textarea class="form-item-textarea" bindinput="bindInputChange" data-params="otherReason" placeholder="请填写其他原因" placeholder-style="color:#f47920;"/>
+            </view>
+        </view>
+        <view class="form-item">
+            <view class="form-item-title"><span class="form-item-single">*</span>吸引更多会员参加活动有什么建议</view>
+            <textarea class="form-item-textarea" bindinput="bindInputChange" data-params="advice" placeholder="请填写建议" placeholder-style="color:#f47920;"/>
+        </view>    
+        <view class="form-btn">
+            <button class="button-item" wx-if="{{true}}" bindtap="submitInvest">提交问卷</button>
+        </view>
+    </block>
 </view>
