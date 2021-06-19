@@ -1,116 +1,116 @@
 <view class="submit">
-  <block wx:if="detailId">
-    <view class="submit-content">
-      <view class="submit-item submit-logo">
-        <view class="submit-item-image">
-          <view class="submit-item-addIcon">封面图下版本再做</view>
+    <block wx:if="detailId">
+        <view class="submit-content">
+            <view class="submit-item submit-logo">
+                <view class="submit-item-image">
+                    <view class="submit-item-addIcon">封面图下版本再做</view>
+                </view>
+            </view>
+            <view class="submit-item">
+                <view class="submit-item-title">活动名称</view>
+                <text class="submit-item-panel">{{activityData.title}}</text>
+            </view>
+            <view class="submit-item">
+                <view class="submit-item-title">地点</view>
+                <text class="submit-item-panel">{{activityData.location}}</text>
+            </view>
+            <view class="submit-item">
+                <view class="submit-item-title">开始日期</view>
+                <text class="submit-item-panel">{{activityData.startDate}}</text>
+            </view>         
+            <view class="submit-item">
+                <view class="submit-item-title">开始时间</view>
+                <text class="submit-item-panel">{{activityData.startTime}}</text>
+            </view>
+            <view class="submit-item">
+                <view class="submit-item-title">结束时间</view>
+                <text class="submit-item-panel">{{activityData.endTime}}</text>
+            </view>         
+            <view class="submit-item">
+                <view class="submit-item-title">费用</view>
+                <text class="submit-item-panel">{{activityData.price}}</text>
+            </view>
+            <view class="submit-item">
+                <view class="submit-item-title">人数</view>
+                <text class="submit-item-panel">{{activityData.activityNum}}</text>
+            </view> 
+            <view class="submit-item">
+                <view class="submit-item-title">发起人联系方式</view>
+                <text class="submit-item-panel">{{activityData.creatorPhone}}</text>
+            </view>
+            <view class="submit-desc">
+                <view class="submit-item-title">备注</view>
+                <text class="submit-item-text">{{activityData.description}}</text>
+            </view>
         </view>
-      </view>
-      <view class="submit-item">
-        <view class="submit-item-title">活动名称</view>
-        <text class="submit-item-panel">{{activityData.title}}</text>
-      </view>
-      <view class="submit-item">
-        <view class="submit-item-title">地点</view>
-        <text class="submit-item-panel">{{activityData.location}}</text>
-      </view>
-      <view class="submit-item">
-        <view class="submit-item-title">开始日期</view>
-        <text class="submit-item-panel">{{activityData.startDate}}</text>
-      </view>         
-      <view class="submit-item">
-        <view class="submit-item-title">开始时间</view>
-        <text class="submit-item-panel">{{activityData.startTime}}</text>
-      </view>
-      <view class="submit-item">
-        <view class="submit-item-title">结束时间</view>
-        <text class="submit-item-panel">{{activityData.endTime}}</text>
-      </view>         
-      <view class="submit-item">
-        <view class="submit-item-title">费用</view>
-        <text class="submit-item-panel">{{activityData.price}}</text>
-      </view>
-      <view class="submit-item">
-        <view class="submit-item-title">人数</view>
-        <text class="submit-item-panel">{{activityData.activityNum}}</text>
-      </view> 
-      <view class="submit-item">
-        <view class="submit-item-title">发起人联系方式</view>
-        <text class="submit-item-panel">{{activityData.creatorPhone}}</text>
-      </view>
-      <view class="submit-desc">
-        <view class="submit-item-title">备注</view>
-        <text class="submit-item-text">{{activityData.description}}</text>
-      </view>
-    </view>
-    <block wx:if="{{submitCheck}}">
-      <view class="submit-play-list">
-        <view class="submit-play-item">
-          <view class="submit-play-info">
-            <view class="play-item-title">已报名</view>
-            <view class="play-item-title">{{activityLog.submit.length}}人</view>
-          </view>
-          <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{activityLog.submit}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-              <view class="scroll-content">
-                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
-                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
-              </view>
-            </block>
-          </scroll-view>
-        </view>
-      </view>
-      <view class="submit-play-list">
-        <view class="submit-play-item">
-          <view class="submit-play-info">
-            <view class="play-item-title">已请假</view>
-            <view class="play-item-title">{{activityLog.leave.length}}人</view>
-          </view>
-          <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{activityLog.leave}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-              <view class="scroll-content">
-                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
-                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
-              </view>
-            </block>
-          </scroll-view>
-        </view> 
-      </view>
-      <view class="submit-play-list">     
-        <view class="submit-play-item">
-          <view class="submit-play-info">
-            <view class="play-item-title">待定</view>
-            <view class="play-item-title">{{activityLog.undetermined.length}}人</view>
-          </view>
-          <scroll-view class="play-item-scroll" scroll-x="true">
-            <block wx:for="{{activityLog.undetermined}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-              <view class="scroll-content">
-                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
-                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
-              </view>
-            </block>
-          </scroll-view>
-        </view>         
-      </view> 
+        <block wx:if="{{submitCheck}}">
+            <view class="submit-play-list">
+                <view class="submit-play-item">
+                    <view class="submit-play-info">
+                        <view class="play-item-title">已报名</view>
+                        <view class="play-item-title">{{activityLog.submit.length}}人</view>
+                    </view>
+                    <scroll-view class="play-item-scroll" scroll-x="true">
+                        <block wx:for="{{activityLog.submit}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                            <view class="scroll-content">
+                                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
+                            </view>
+                        </block>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="submit-play-list">
+                <view class="submit-play-item">
+                    <view class="submit-play-info">
+                        <view class="play-item-title">已请假</view>
+                        <view class="play-item-title">{{activityLog.leave.length}}人</view>
+                    </view>
+                    <scroll-view class="play-item-scroll" scroll-x="true">
+                        <block wx:for="{{activityLog.leave}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                            <view class="scroll-content">
+                                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
+                            </view>
+                        </block>
+                    </scroll-view>
+                </view> 
+            </view>
+            <view class="submit-play-list">     
+                <view class="submit-play-item">
+                    <view class="submit-play-info">
+                        <view class="play-item-title">待定</view>
+                        <view class="play-item-title">{{activityLog.undetermined.length}}人</view>
+                    </view>
+                    <scroll-view class="play-item-scroll" scroll-x="true">
+                        <block wx:for="{{activityLog.undetermined}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                            <view class="scroll-content">
+                                <span class="scroll-item-img" style="background-image: url({{item.userInfo.avatarUrl || '/assets/img/user-active.png'}});"></span>
+                                <span class="scroll-item-name">{{item.realName || '错误'}}</span>
+                            </view>
+                        </block>
+                    </scroll-view>
+                </view>         
+            </view> 
+        </block>
+        <block wx:if="{{submitCheck && hasUserInfo}}">
+            <view class="submit-play-button">
+                <view class="button-panel">
+                    <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="submit">报名</button>
+                    <button class="button-item button-item-cancel" wx-if="{{false}}">已报名</button>
+                    <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="leave">请假</button>
+                    <button class="button-item button-item-cancel" wx-if="{{false}}">已请假</button>
+                    <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
+                    <button class="button-item button-item-cancel" wx-if="{{false}}">已待定</button>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="submit-play-button">
+                <view class="button-panel">
+                    <button class="button-item" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行授权 </button>
+                </view>
+            </view>
+        </block>
     </block>
-    <block wx:if="{{submitCheck && hasUserInfo}}">
-      <view class="submit-play-button">
-        <view class="button-panel">
-          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="submit">报名</button>
-          <button class="button-item button-item-cancel" wx-if="{{false}}">已报名</button>
-          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="leave">请假</button>
-          <button class="button-item button-item-cancel" wx-if="{{false}}">已请假</button>
-          <button class="button-item" disabled="{{activityData.endTime>activityData.startTime}}" bindtap="changeStatus" data-status="undetermined">待定</button>                  
-          <button class="button-item button-item-cancel" wx-if="{{false}}">已待定</button>
-        </view>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="submit-play-button">
-        <view class="button-panel">
-          <button class="button-item" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行授权 </button>
-        </view>
-      </view>
-    </block>
-  </block>
 </view>

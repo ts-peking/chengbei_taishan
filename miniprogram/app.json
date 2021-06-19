@@ -1,26 +1,26 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/games/games",
-    "pages/user/user",
-    "pages/investigation/investigation",
-    "pages/activity/activity",
-    "pages/login/login",
-    "pages/activity/detail",
-    "pages/submit/submit",
-    "pages/logs/logs"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "鲁能泰山",
-    "navigationBarTextStyle": "black"
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "connectSocket": 20000,
-    "uploadFile": 20000,
-    "downloadFile": 20000
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index",
+        "pages/games/games",
+        "pages/user/user",
+        "pages/investigation/investigation",
+        "pages/activity/activity",
+        "pages/login/login",
+        "pages/activity/detail",
+        "pages/submit/submit",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "鲁能泰山",
+        "navigationBarTextStyle": "black"
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 20000,
+        "uploadFile": 20000,
+        "downloadFile": 20000
+    },
+    "sitemapLocation": "sitemap.json"
 }

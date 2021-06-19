@@ -1,6 +1,6 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <button class="log-btn" bindtap="cloudGetOpenid">点击获取 openid</button>
-  <button class="log-btn" bindtap="getTestDataBase">获取云函数数据库数据</button>
-  <button class="log-btn" bindtap="addTestDataBase">测试添加数据库数据</button>
+    <button class="log-btn" bindtap="cloudGetOpenid">点击获取 openid</button>
+    <button class="log-btn" bindtap="getTestDataBase">获取云函数数据库数据</button>
+    <button class="log-btn" bindtap="addTestDataBase">测试添加数据库数据</button>
 </view>

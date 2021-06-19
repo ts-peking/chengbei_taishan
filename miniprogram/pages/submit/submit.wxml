@@ -18,11 +18,12 @@
 				<view class="submit-item-title">开始日期</view>
 				<picker
 					class="submit-item-panel"
-			    mode="date"
-			    value="{{activityData.startDate}}"
-			    bindchange="bindDataChange"
-			    data-params="startDate"
-			    disabled="{{submitCheck}}">
+					mode="date"
+					value="{{activityData.startDate}}"
+					bindchange="bindDataChange"
+					data-params="startDate"
+					disabled="{{submitCheck}}"
+				>
 			    <view class="picker"> {{activityData.startDate}} </view>
 		    </picker>
 			</view>			
@@ -30,13 +31,14 @@
 				<view class="submit-item-title">开始时间</view>
 				<picker
 					class="submit-item-panel"
-			    mode="time"
-			    value="{{activityData.startTime}}"
-			    start="00:00"
-			    end="23:59"
-			    bindchange="bindDataChange"
-			    data-params="startTime"
-			    disabled="{{submitCheck}}">
+					mode="time"
+					value="{{activityData.startTime}}"
+					start="00:00"
+					end="23:59"
+					bindchange="bindDataChange"
+					data-params="startTime"
+					disabled="{{submitCheck}}"
+				>
 			    <view class="picker"> {{activityData.startTime}} </view>
 		    </picker>
 			</view>
@@ -44,13 +46,14 @@
 				<view class="submit-item-title">结束时间</view>
 				<picker
 					class="submit-item-panel"
-			    mode="time"
-			    value="{{activityData.endTime}}"
-			    start="00:00"
-			    end="23:59"
-			    bindchange="bindDataChange"
-			    data-params="endTime"
-			    disabled="{{submitCheck}}">
+					mode="time"
+					value="{{activityData.endTime}}"
+					start="00:00"
+					end="23:59"
+					bindchange="bindDataChange"
+					data-params="endTime"
+					disabled="{{submitCheck}}"
+				>
 			    <view class="picker"> {{activityData.endTime}} </view>
 		    </picker>
 			</view>			
