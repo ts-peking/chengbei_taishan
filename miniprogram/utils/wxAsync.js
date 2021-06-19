@@ -1,53 +1,62 @@
+/**
+ * @file wx 图片相关API封装
+ * @author savuer
+ */
+/* global wx */
+
 export const chooseImage = () => {
     return new Promise((resolve, reject) => {
         wx.chooseImage({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
-            success: (result) => {
-                resolve(result)
+            success: result => {
+                resolve(result);
             },
-            fail: (err) => {
+            fail: err => {
                 reject(err);
             }
         });
-    })
-}
-export const getImageInfo = (src) => {
+    });
+};
+
+export const getImageInfo = src => {
     return new Promise((resolve, reject) => {
         wx.getImageInfo({
             src: src,
-            success: (result) => {
-                resolve(result)
+            success: result => {
+                resolve(result);
             },
-            fail: (err) => {
+            fail: err => {
                 reject(err);
             }
         });
-    })
-}
-export const canvasToTempFilePath = (params) => {
+    });
+};
+
+export const canvasToTempFilePath = params => {
     return new Promise((resolve, reject) => {
         wx.canvasToTempFilePath({
             ...params,
-            success: (result) => {
-                resolve(result)
+            success: result => {
+                resolve(result);
             },
-            fail: (err) => {
+            fail: err => {
                 reject(err);
             }
         });
-    })
-}
-export const saveImageToPhotosAlbum = (filePath) => {
+    });
+};
+
+export const saveImageToPhotosAlbum = filePath => {
     return new Promise((resolve, reject) => {
         wx.saveImageToPhotosAlbum({
-            filePath:filePath ,
-            success: (result) => {
-                resolve(result)
+            filePath: filePath,
+            success: result => {
+                resolve(result);
             },
-            fail: (err) => {
+            fail: err => {
                 reject(err);
             }
         });
-    })
-}
+    });
+};

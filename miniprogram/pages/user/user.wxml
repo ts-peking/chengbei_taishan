@@ -1,27 +1,27 @@
 <view class="user">
-  <view class="user-info">
-    <view class="login-content" wx:if="{{!hasUserInfo}}">
-      <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行微信授权 </button>
+    <view class="user-info">
+        <view class="login-content" wx:if="{{!hasUserInfo}}">
+            <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击进行微信授权 </button>
+        </view>
+        <view class="user-info-infos" wx:if="{{hasUserInfo}}">
+            <text class="userinfo-nickname" decode="{{true}}">微信昵称:&nbsp;{{userInfo.nickName}}</text>
+            <text class="userinfo-realname" decode="{{true}}">真实姓名:&nbsp;{{personalInfo.realName}}</text>
+            <text class="userinfo-vipid" decode="{{true}}">会员号&nbsp;&nbsp;&nbsp;:&nbsp;{{personalInfo.vipId}}</text>
+            <text class="userinfo-vipid" decode="{{true}}">所属分队:&nbsp;{{teamIdMap[personalInfo.selectTeamId]}}</text>
+        </view>
+        <image class="user-info-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     </view>
-    <view class="user-info-infos" wx:if="{{hasUserInfo}}">
-      <text class="userinfo-nickname" decode="{{true}}">微信昵称:&nbsp;{{userInfo.nickName}}</text>
-      <text class="userinfo-realname" decode="{{true}}">真实姓名:&nbsp;{{personalInfo.realName}}</text>
-      <text class="userinfo-vipid" decode="{{true}}">会员号&nbsp;&nbsp;&nbsp;:&nbsp;{{personalInfo.vipId}}</text>
-      <text class="userinfo-vipid" decode="{{true}}">所属分队:&nbsp;{{teamIdMap[personalInfo.selectTeamId]}}</text>
+    <view class="user-target">
+        <button class="user-target-item" bindtap="myActivity" disabled="{{!hasUserInfo}}">我的发布<icon class="iconfont iconxiangyou"></icon></button>
+        <button class="user-target-item" bindtap="editInfo" disabled="{{!hasUserInfo}}">个人资料<icon class="iconfont iconxiangyou"></icon></button>
+        <button class="user-target-item" disabled="true">我的球队(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
+        <button class="user-target-item" disabled="true">协会公告(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
+        <button class="user-target-item" bindtap="goInvest" disabled="{{!hasUserInfo}}">调查问卷<icon class="iconfont iconxiangyou"></icon></button>
+        <button class="user-target-item" bindtap="goGames" disabled="{{!hasUserInfo}}">鲁蜜专属头像<icon class="iconfont iconxiangyou"></icon></button>
     </view>
-    <image class="user-info-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-  </view>
-  <view class="user-target">
-    <button class="user-target-item" bindtap="myActivity" disabled="{{!hasUserInfo}}">我的发布<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" bindtap="editInfo" disabled="{{!hasUserInfo}}">个人资料<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" disabled="true">我的球队(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" disabled="true">协会公告(暂未开放)<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" bindtap="goInvest" disabled="{{!hasUserInfo}}">调查问卷<icon class="iconfont iconxiangyou"></icon></button>
-    <button class="user-target-item" bindtap="goGames" disabled="{{!hasUserInfo}}">鲁蜜专属头像<icon class="iconfont iconxiangyou"></icon></button>
-  </view>
-  <block>
-    <icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
-    <icon class="iconfont icongengxinshijian soccer-icon" bindtap="goActivity"></icon>
-    <button class="iconfont iconbianji1 edit-icon" bindtap="editActivity" disabled="{{!hasUserInfo}}"></button>
-  </block>  
+    <block>
+        <icon class="iconfont iconfl-jia index-icon" bindtap="goIndex"></icon>
+        <icon class="iconfont icongengxinshijian soccer-icon" bindtap="goActivity"></icon>
+        <button class="iconfont iconbianji1 edit-icon" bindtap="editActivity" disabled="{{!hasUserInfo}}"></button>
+    </block>  
 </view>
