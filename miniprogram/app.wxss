@@ -1,45 +1,45 @@
 /**app.wxss**/
 page {
-  height: 100%;
+    height: 100%;
 }
 .container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 200rpx;
-  box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 200rpx;
+    box-sizing: border-box;
 } 
 view {
-  font-size: 14px;
+    font-size: 14px;
 }
 button {
-  font-size: 28rpx;
-  background-color: #fff;
-  border: none;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
+    font-size: 28rpx;
+    background-color: #fff;
+    border: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
 }
 
 input {
-  outline: none;
-  border: none;
-  list-style: none;
+    outline: none;
+    border: none;
+    list-style: none;
 }
 
 button::after {
-  border: none;
+    border: none;
 }
 
 @font-face {
-  font-family: 'iconfont';  /* project id 1072169 */
-  src: url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.eot');
-  src: url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.svg#iconfont') format('svg');
+    font-family: 'iconfont';  /* project id 1072169 */
+    src: url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.eot');
+    src: url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1072169_vx1zoz7ltwd.svg#iconfont') format('svg');
 }
 @import 'assets/wxss/iconfont.wxss'
