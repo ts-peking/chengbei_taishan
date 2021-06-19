@@ -26,13 +26,13 @@
 
 ```
 data = {
-  dbId: 'activityLog', // 目标数据库名
-  data: {  // 存储数据
-    _id: id,
-    submit: [],
-    leave: [],
-    undetermined: []
-  }
+    dbId: 'activityLog', // 目标数据库名
+    data: {  // 存储数据
+        _id: id,
+        submit: [],
+        leave: [],
+        undetermined: []
+    }
 }
 ```
 
@@ -41,9 +41,9 @@ data = {
 
 ```
 data = {
-  dbId: 'activityLog',  // 目标数据库名
-  docId: this.data.detailId,  // 目标数据库数据项
-  data: logList  // 存储数据
+    dbId: 'activityLog',  // 目标数据库名
+    docId: this.data.detailId,  // 目标数据库数据项
+    data: logList  // 存储数据
 }
 ```
 
@@ -57,11 +57,11 @@ data = {
 
 ### 涉及本地修改(云开发部分)
 * app.js
-  * wx.cloud.init()  // 云函数全局环境变量
-  * globalData.databaseEnv  // 云数据库全局环境变量
+    * wx.cloud.init()  // 云函数全局环境变量
+    * globalData.databaseEnv  // 云数据库全局环境变量
 * cloudfunctions
-  * docadd -> index.js -> cloud.database()
-  * docupdata -> index.js -> cloud.database()
+    * docadd -> index.js -> cloud.database()
+    * docupdata -> index.js -> cloud.database()
 
 ### 上传代码
 * 标明版本号， 如 `1.1.0`
@@ -90,13 +90,13 @@ data = {
 	* 完成所有页面和数据在微信云开发平台的绑定
 	* 完成微信云开发平台必要环境，云函数的搭建
 * `1.2.0 版本`
-  * 增加个人信息页面model显示
-  * 增加活动调研
+    * 增加个人信息页面model显示
+    * 增加活动调研
 * `1.2.3 版本`
-  * 增加鲁蜜专属头像
-  * 修复问卷调查频繁提交BUG
+    * 增加鲁蜜专属头像
+    * 修复问卷调查频繁提交BUG
 * `1.3.0 版本`
-  * ESlint代码规范处理
+    * ESlint代码规范处理
 
 ## 其他部分
 ### 如何提交Issue或需求？
